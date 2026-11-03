@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+body{background:#E9EDF1;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#15232E;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0A5FC2;text-decoration:none}
+a:hover{color:#CE1021}
+button{font-family:inherit}
+input,select{font-family:inherit}
+::selection{background:#CE1021;color:#fff}
+:focus-visible{outline:2px solid #CE1021;outline-offset:2px}
+.m243-scroll{scrollbar-width:none;-ms-overflow-style:none;overflow-y:hidden}
+.m243-scroll::-webkit-scrollbar{display:none}
+.m243-nav a{white-space:nowrap}
+</style>
+</helmet>
+
+<div id="m243-wrap" style="display:flex;justify-content:center;width:100%;background:#E9EDF1">
+<div style="zoom:{{ zoom }}">
+<div style="width:{{ pageW }}px;background:#fff;overflow:hidden">
+
+<header style="position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #E3E9EE">
+  <div style="max-width:1320px;margin:0 auto;padding:{{ sHeadPad }};display:flex;align-items:center;gap:24px">
+    <a href="#" style="display:flex;align-items:center;gap:10px;flex:none">
+      <span style="width:34px;height:34px;border-radius:9px;background:#0A5FC2;display:flex;align-items:center;justify-content:center;flex:none">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V20h13V9.5"></path><path d="M10 20v-5.5h4V20"></path></svg>
+      </span>
+      <span style="font-size:23px;font-weight:800;letter-spacing:-.03em;color:#0A5FC2">maison<span style="color:#CE1021">243</span></span>
+    </a>
+    <nav class="m243-nav" style="display:{{ dNav }};align-items:center;justify-content:center;gap:30px;flex:1">
+      <a href="#" style="font-size:16px;font-weight:600;color:#05294F;white-space:nowrap" style-hover="color:#CE1021">Buy</a>
+      <a href="#" style="font-size:16px;font-weight:600;color:#05294F;white-space:nowrap" style-hover="color:#CE1021">Rent</a>
+      <a href="#" style="font-size:16px;font-weight:600;color:#05294F;white-space:nowrap" style-hover="color:#CE1021">Sell</a>
+      <a href="#" style="font-size:16px;font-weight:600;color:#05294F;white-space:nowrap" style-hover="color:#CE1021">New Developments</a>
+      <a href="#" style="font-size:16px;font-weight:600;color:#05294F;white-space:nowrap" style-hover="color:#CE1021">Commercial</a>
+      <a href="#" style="font-size:16px;font-weight:600;color:#05294F;white-space:nowrap" style-hover="color:#CE1021">Advice</a>
+    </nav>
+    <div style="display:{{ dNav }};align-items:center;gap:10px;flex:none">
+      <a href="#" style="padding:12px 20px;border:1px solid #CBD6DE;border-radius:4px;font-size:15.5px;font-weight:700;color:#05294F;white-space:nowrap" style-hover="border-color:#0A5FC2;color:#0A5FC2">List privately</a>
+      <a href="#" style="padding:12px 24px;border:1px solid #CE1021;border-radius:4px;font-size:15.5px;font-weight:700;color:#CE1021;white-space:nowrap" style-hover="background:#CE1021;color:#fff">Sign in</a>
+    </div>
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ dBurger }};margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid #E3E9EE;background:#fff;border-radius:8px;cursor:pointer;flex:none">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#05294F" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </div>
+  <div style="display:{{ dDrawer }};flex-direction:column;padding:8px 20px 20px;gap:2px;border-top:1px solid #E3E9EE;background:#fff">
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">Buy</a>
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">Rent</a>
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">Sell</a>
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">New Developments</a>
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">Commercial</a>
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">Advice</a>
+    <a href="#" style="padding:14px 4px;font-size:17px;font-weight:600;color:#05294F;border-bottom:1px solid #F0F3F6">Find an Agent</a>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <a href="#" style="flex:1;padding:14px;text-align:center;border:1px solid #CBD6DE;border-radius:4px;font-size:16px;font-weight:700;color:#05294F">List privately</a>
+      <a href="#" style="flex:1;padding:14px;text-align:center;border:1px solid #CE1021;border-radius:4px;font-size:16px;font-weight:700;color:#CE1021">Sign in</a>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section style="position:relative;background:#0A5FC2;overflow:hidden">
+  <div style="position:absolute;top:0;left:0;right:0;height:{{ sPhotoH }}">
+    <image-slot id="m243-hero" src="https://images.pexels.com/photos/7587880/pexels-photo-7587880.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1800" shape="rect" placeholder="Drop a hero photo"></image-slot>
+    <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,.62),rgba(5,41,79,.48) 55%,rgba(5,41,79,.66));pointer-events:none"></span>
+  </div>
+  <div style="position:relative;max-width:1320px;margin:0 auto;padding:{{ sHeroPad }}">
+    <h1 style="margin:0;text-align:center;font-size:{{ sH1 }};line-height:1.05;letter-spacing:-.03em;font-weight:800;color:#fff;text-shadow:0 2px 18px rgba(5,41,79,.35);text-wrap:pretty">Find your next home in South Africa</h1>
+    <p style="margin:14px 0 0;text-align:center;font-size:{{ sHeroSub }};line-height:1.5;color:rgba(255,255,255,.9);font-weight:500">Verified listings from Pretoria to the Cape Winelands.</p>
+    <div class="m243-scroll" style="margin-top:{{ sTabsTop }};display:flex;justify-content:{{ sTabsJustify }};gap:{{ sTabsGap }};overflow-x:auto">
+      <sc-for list="{{ heroTabs }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+
+    <div onClick="{{ openModal }}" style="margin-top:{{ sBarTop }};background:#fff;border-radius:8px;box-shadow:0 10px 34px rgba(5,41,79,.26);padding:10px;display:flex;align-items:center;gap:10px;cursor:pointer;flex-wrap:{{ sBarWrap }}">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F6372" stroke-width="2" stroke-linecap="round" style="flex:none;margin-left:8px"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex:1;min-width:160px">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+          <span style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:4px;background:#E3EFFC;color:#0A5FC2;font-size:15px;font-weight:700;white-space:nowrap">{{ c.label }}
+            <button onClick="{{ c.remove }}" aria-label="Remove" style="border:0;background:transparent;cursor:pointer;display:flex;padding:0;color:#0A5FC2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+            </button>
+          </span>
+        </sc-for>
+        <span style="font-size:14.5px;font-weight:700;color:#4F6372;white-space:nowrap">{{ chipsMore }}</span>
+      </div>
+      <button style="display:{{ dNav }};align-items:center;gap:8px;height:52px;padding:0 18px;border:1px solid #CBD6DE;background:#fff;border-radius:4px;font-size:15.5px;font-weight:700;color:#05294F;cursor:pointer;flex:none" style-hover="border-color:#0A5FC2;color:#0A5FC2">Map
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Z"></path><path d="M9 4v13M15 6.5v13"></path></svg>
+      </button>
+      <button onClick="{{ goResults }}" style="height:52px;padding:0 44px;border:0;border-radius:4px;background:#CE1021;color:#fff;font-size:16.5px;font-weight:700;cursor:pointer;flex:{{ sSearchFlex }}" style-hover="background:#A60C1A">Search</button>
+    </div>
+
+    <div style="height:{{ sHeroBottom }}"></div>
+    </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F;max-width:620px;text-wrap:pretty">Everything property, all in one place</h2>
+    <p style="margin:14px 0 0;font-size:17px;line-height:1.55;color:#5E7180;max-width:560px;font-weight:500">From your first viewing to the bond approval — and the agent who gets you there.</p>
+    <div style="margin-top:40px;display:grid;grid-template-columns:{{ sGrid3 }};gap:24px">
+      <div style="background:#FEF4D4;border-radius:18px;padding:0 0 28px;overflow:hidden">
+        <div style="height:240px">
+          <svg viewBox="0 0 400 240" width="100%" height="240" preserveAspectRatio="xMidYMid meet" style="display:block">
+            <circle cx="300" cy="92" r="48" fill="#F7D618" opacity=".38"></circle>
+            <ellipse cx="108" cy="72" rx="34" ry="12" fill="#fff" opacity=".85"></ellipse>
+            <ellipse cx="132" cy="66" rx="22" ry="10" fill="#fff" opacity=".85"></ellipse>
+            <polygon points="136,126 202,74 268,126" fill="#0A5FC2"></polygon>
+            <rect x="236" y="80" width="15" height="28" fill="#05294F"></rect>
+            <rect x="152" y="124" width="140" height="76" fill="#fff" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="166" y="140" width="32" height="28" fill="#E3EFFC" stroke="#05294F" stroke-width="2.5"></rect>
+            <path d="M182 140v28M166 154h32" stroke="#05294F" stroke-width="2"></path>
+            <rect x="208" y="150" width="26" height="50" fill="#0A5FC2" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="244" y="152" width="44" height="48" fill="#F7D618" stroke="#05294F" stroke-width="2.5"></rect>
+            <path d="M244 164h44M244 176h44M244 188h44" stroke="#05294F" stroke-width="1.6" opacity=".55"></path>
+            <rect x="96" y="132" width="5" height="68" fill="#05294F"></rect>
+            <rect x="68" y="124" width="56" height="36" fill="#CE1021"></rect>
+            <text x="76" y="140" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#fff">FOR</text>
+            <text x="76" y="153" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#fff">SALE</text>
+            <circle cx="126" cy="196" r="16" fill="#0A5FC2" opacity=".18"></circle>
+            <circle cx="146" cy="198" r="11" fill="#0A5FC2" opacity=".25"></circle>
+            <circle cx="300" cy="196" r="14" fill="#0A5FC2" opacity=".18"></circle>
+            <path d="M40 200h330" stroke="#05294F" stroke-width="2.5"></path>
+          </svg>
+        </div>
+        <div style="padding:28px 28px 0">
+          <h3 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-.015em;color:#05294F">Buy a Property</h3>
+          <p style="margin:14px 0 0;font-size:16.5px;line-height:1.5;color:#33536F;font-weight:500">With thousands of homes for sale across South Africa, we help you find the one that fits.</p>
+          <a href="#" style="display:inline-block;margin-top:18px;font-size:16.5px;font-weight:700;color:#0A5FC2" style-hover="color:#CE1021">Search properties</a>
+        </div>
+      </div>
+      <div style="background:#E3EFFC;border-radius:18px;padding:0 0 28px;overflow:hidden">
+        <div style="height:240px">
+          <svg viewBox="0 0 400 240" width="100%" height="240" preserveAspectRatio="xMidYMid meet" style="display:block">
+            <ellipse cx="300" cy="70" rx="36" ry="13" fill="#fff" opacity=".9"></ellipse>
+            <ellipse cx="272" cy="64" rx="22" ry="10" fill="#fff" opacity=".9"></ellipse>
+            <rect x="316" y="92" width="30" height="108" fill="#E3EFFC" stroke="#05294F" stroke-width="2.5"></rect>
+            <circle cx="331" cy="110" r="4" fill="#05294F" opacity=".5"></circle>
+            <circle cx="331" cy="126" r="4" fill="#05294F" opacity=".5"></circle>
+            <rect x="196" y="76" width="124" height="124" fill="#fff" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="192" y="66" width="132" height="10" fill="#0A5FC2"></rect>
+            <rect x="208" y="90" width="26" height="24" fill="#E3EFFC" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="244" y="90" width="26" height="24" fill="#F7D618" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="280" y="90" width="26" height="24" fill="#E3EFFC" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="208" y="126" width="26" height="24" fill="#F7D618" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="244" y="126" width="26" height="24" fill="#E3EFFC" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="280" y="126" width="26" height="24" fill="#E3EFFC" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="208" y="162" width="62" height="38" fill="#E3EFFC" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="282" y="162" width="24" height="38" fill="#0A5FC2" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="62" y="140" width="96" height="44" fill="#F7D618" stroke="#05294F" stroke-width="2.5"></rect>
+            <path d="M62 140h-14l-10 18v26h24" fill="#F7D618" stroke="#05294F" stroke-width="2.5"></path>
+            <rect x="86" y="148" width="50" height="22" fill="#CE1021"></rect>
+            <text x="92" y="165" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#fff">RENT</text>
+            <circle cx="60" cy="188" r="12" fill="#05294F"></circle>
+            <circle cx="138" cy="188" r="12" fill="#05294F"></circle>
+            <rect x="164" y="168" width="24" height="20" fill="#F7D618" stroke="#05294F" stroke-width="2"></rect>
+            <rect x="170" y="186" width="20" height="14" fill="#fff" stroke="#05294F" stroke-width="2"></rect>
+            <path d="M24 200h350" stroke="#05294F" stroke-width="2.5"></path>
+          </svg>
+        </div>
+        <div style="padding:28px 28px 0">
+          <h3 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-.015em;color:#05294F">Rent a Property</h3>
+          <p style="margin:14px 0 0;font-size:16.5px;line-height:1.5;color:#33536F;font-weight:500">Find a rental you will actually love — or advertise your own place to vetted tenants.</p>
+          <a href="#" style="display:inline-block;margin-top:18px;font-size:16.5px;font-weight:700;color:#0A5FC2" style-hover="color:#CE1021">Search rentals</a>
+        </div>
+      </div>
+      <div style="background:#FBE3E6;border-radius:18px;padding:0 0 28px;overflow:hidden">
+        <div style="height:240px">
+          <svg viewBox="0 0 400 240" width="100%" height="240" preserveAspectRatio="xMidYMid meet" style="display:block">
+            <circle cx="304" cy="140" r="44" fill="#CE1021" opacity=".14"></circle>
+            <circle cx="104" cy="150" r="34" fill="#CE1021" opacity=".14"></circle>
+            <ellipse cx="268" cy="72" rx="32" ry="12" fill="#fff" opacity=".9"></ellipse>
+            <polygon points="130,124 216,70 302,124" fill="#05294F"></polygon>
+            <rect x="146" y="122" width="150" height="78" fill="#fff" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="162" y="146" width="28" height="54" fill="#0A5FC2" stroke="#05294F" stroke-width="2.5"></rect>
+            <rect x="202" y="138" width="32" height="28" fill="#F7D618" stroke="#05294F" stroke-width="2.5"></rect>
+            <path d="M218 138v28M202 152h32" stroke="#05294F" stroke-width="2"></path>
+            <rect x="246" y="152" width="46" height="48" fill="#E3EFFC" stroke="#05294F" stroke-width="2.5"></rect>
+            <path d="M246 164h46M246 176h46M246 188h46" stroke="#05294F" stroke-width="1.6" opacity=".5"></path>
+            <rect x="92" y="118" width="5" height="82" fill="#05294F"></rect>
+            <g transform="rotate(-11 96 136)">
+              <rect x="62" y="120" width="68" height="32" fill="#CE1021"></rect>
+              <text x="72" y="142" font-family="Plus Jakarta Sans, sans-serif" font-size="15" font-weight="800" fill="#fff">SOLD</text>
+            </g>
+            <path d="M36 200h338" stroke="#05294F" stroke-width="2.5"></path>
+          </svg>
+        </div>
+        <div style="padding:28px 28px 0">
+          <h3 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-.015em;color:#05294F">Sell a Property</h3>
+          <p style="margin:14px 0 0;font-size:16.5px;line-height:1.5;color:#33536F;font-weight:500">List with us and put your property in front of millions of South African buyers.</p>
+          <a href="#" style="display:inline-block;margin-top:18px;font-size:16.5px;font-weight:700;color:#0A5FC2" style-hover="color:#CE1021">Get started</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:{{ sChipCols }};gap:16px">
+      <a href="#" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fff;border:1px solid #E3E9EE;border-radius:14px;box-shadow:0 1px 2px rgba(5,41,79,.05)" style-hover="border-color:#0A5FC2;box-shadow:0 8px 22px rgba(5,41,79,.1)">
+        <span style="width:42px;height:42px;border-radius:11px;background:#FBE3E6;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#A60C1A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15a3 3 0 0 1-3 3H9l-4 3v-6a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3Z"></path><path d="M12.5 9.5 9 6.2A2 2 0 1 1 12.5 4a2 2 0 1 1 3.5 2.2L12.5 9.5Z"></path></svg></span>
+        <span style="font-size:16.5px;font-weight:700;color:#0A5FC2;letter-spacing:-.01em">Property advice</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fff;border:1px solid #E3E9EE;border-radius:14px;box-shadow:0 1px 2px rgba(5,41,79,.05)" style-hover="border-color:#0A5FC2;box-shadow:0 8px 22px rgba(5,41,79,.1)">
+        <span style="width:42px;height:42px;border-radius:11px;background:#FBE3E6;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#A60C1A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8 7h8"></path><path d="M8.5 11.5h0M12 11.5h0M15.5 11.5h0M8.5 15h0M12 15h0M15.5 15h0M8.5 18.5h4"></path></svg></span>
+        <span style="font-size:16.5px;font-weight:700;color:#0A5FC2;letter-spacing:-.01em">Bond calculator</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fff;border:1px solid #E3E9EE;border-radius:14px;box-shadow:0 1px 2px rgba(5,41,79,.05)" style-hover="border-color:#0A5FC2;box-shadow:0 8px 22px rgba(5,41,79,.1)">
+        <span style="width:42px;height:42px;border-radius:11px;background:#FBE3E6;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#A60C1A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="9" r="3.5"></circle><path d="M4 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"></path><path d="m17.5 15.5 3 3"></path></svg></span>
+        <span style="font-size:16.5px;font-weight:700;color:#0A5FC2;letter-spacing:-.01em">Find an agent</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fff;border:1px solid #E3E9EE;border-radius:14px;box-shadow:0 1px 2px rgba(5,41,79,.05)" style-hover="border-color:#0A5FC2;box-shadow:0 8px 22px rgba(5,41,79,.1)">
+        <span style="width:42px;height:42px;border-radius:11px;background:#FBE3E6;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#A60C1A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h8a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"></path><path d="M16 7h3v13H8"></path><path d="M8.5 8.5h4M8.5 12h4"></path></svg></span>
+        <span style="font-size:16.5px;font-weight:700;color:#0A5FC2;letter-spacing:-.01em">Property guides</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fff;border:1px solid #E3E9EE;border-radius:14px;box-shadow:0 1px 2px rgba(5,41,79,.05)" style-hover="border-color:#0A5FC2;box-shadow:0 8px 22px rgba(5,41,79,.1)">
+        <span style="width:42px;height:42px;border-radius:11px;background:#FBE3E6;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#A60C1A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 3 5v16l5-2 8 2 5-2V3l-5 2-8-2Z"></path><path d="M8 3v16M16 5v16"></path></svg></span>
+        <span style="font-size:16.5px;font-weight:700;color:#0A5FC2;letter-spacing:-.01em">Neighbourhoods</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#F5F7F9">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
+      <div>
+        <h2 style="margin:0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F">Featured listings</h2>
+        <p style="margin:12px 0 0;font-size:17px;color:#5E7180;font-weight:500">Hand-picked this week by our listing team.</p>
+      </div>
+      <div style="display:flex;gap:4px;padding:4px;background:#E7ECF0;border-radius:12px">
+        <sc-for list="{{ listTabs }}" as="t" hint-placeholder-count="2">
+          <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ isSale }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:32px;display:grid;grid-template-columns:{{ sGrid4 }};gap:20px">
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-s1" src="https://images.pexels.com/photos/8134821/pexels-photo-8134821.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Listing photo 1"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;padding:6px 11px;border-radius:7px;background:#CE1021;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase">Featured</span>
+            <button onClick="{{ toggleSave }}" data-k="s1" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.s1 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 1 450 000</div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">3 bed house in Garsfontein</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Pretoria East, Gauteng</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>620 m²</span>
+            </div>
+          </div>
+        </article>
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-s2" src="https://images.pexels.com/photos/6934189/pexels-photo-6934189.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Listing photo 2"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;padding:6px 11px;border-radius:7px;background:#0A5FC2;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase">New</span>
+            <button onClick="{{ toggleSave }}" data-k="s2" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.s2 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 3 295 000</div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">2 bed apartment in Sea Point</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Cape Town, Western Cape</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>96 m²</span>
+            </div>
+          </div>
+        </article>
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-s3" src="https://images.pexels.com/photos/8134820/pexels-photo-8134820.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Listing photo 3"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;padding:6px 11px;border-radius:7px;background:#CE1021;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase">Featured</span>
+            <button onClick="{{ toggleSave }}" data-k="s3" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.s3 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 5 900 000</div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">4 bed cluster in Bryanston</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Sandton, Johannesburg</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>4</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>3</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>3</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>410 m²</span>
+            </div>
+          </div>
+        </article>
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-s4" src="https://images.pexels.com/photos/30484316/pexels-photo-30484316.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Listing photo 4"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;padding:6px 11px;border-radius:7px;background:#0A5FC2;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase">New</span>
+            <button onClick="{{ toggleSave }}" data-k="s4" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.s4 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 2 180 000</div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">3 bed townhouse in Umhlanga Ridge</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Durban, KwaZulu-Natal</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>184 m²</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isRent }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:32px;display:grid;grid-template-columns:{{ sGrid4 }};gap:20px">
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-r1" src="https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Rental photo 1"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;padding:6px 11px;border-radius:7px;background:#0A5FC2;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase">New</span>
+            <button onClick="{{ toggleSave }}" data-k="r1" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.r1 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 12 500 <span style="font-size:15px;font-weight:600;color:#5E7180">/ month</span></div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">2 bed apartment in Menlyn</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Pretoria, Gauteng</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>78 m²</span>
+            </div>
+          </div>
+        </article>
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-r2" src="https://images.pexels.com/photos/6422929/pexels-photo-6422929.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Rental photo 2"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;padding:6px 11px;border-radius:7px;background:#CE1021;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase">Featured</span>
+            <button onClick="{{ toggleSave }}" data-k="r2" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.r2 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 24 000 <span style="font-size:15px;font-weight:600;color:#5E7180">/ month</span></div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">3 bed house in Claremont</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Cape Town, Western Cape</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>240 m²</span>
+            </div>
+          </div>
+        </article>
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-r3" src="https://images.pexels.com/photos/20390760/pexels-photo-20390760.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Rental photo 3"></image-slot>
+            <button onClick="{{ toggleSave }}" data-k="r3" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.r3 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 9 800 <span style="font-size:15px;font-weight:600;color:#5E7180">/ month</span></div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">1 bed loft in Maboneng</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Johannesburg, Gauteng</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>64 m²</span>
+            </div>
+          </div>
+        </article>
+        <article style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(5,41,79,.06),0 6px 18px rgba(5,41,79,.06)" style-hover="box-shadow:0 14px 36px rgba(5,41,79,.14)">
+          <div style="position:relative;height:200px">
+            <image-slot id="m243-r4" src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Rental photo 4"></image-slot>
+            <button onClick="{{ toggleSave }}" data-k="r4" aria-label="Save listing" style="position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(5,41,79,.18)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="{{ sv.r4 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#05294F">R 16 750 <span style="font-size:15px;font-weight:600;color:#5E7180">/ month</span></div>
+            <div style="margin-top:5px;font-size:16px;font-weight:600;color:#15232E">2 bed apartment in Umhlanga</div>
+            <div style="margin-top:2px;font-size:15px;color:#5E7180;font-weight:500">Durban, KwaZulu-Natal</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid #EEF2F5;color:#5E7180">
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:14.5px;font-weight:600"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>112 m²</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </sc-if>
+
+    <a href="#" style="display:inline-flex;align-items:center;gap:7px;margin-top:28px;font-size:16.5px;font-weight:700;color:#0A5FC2">View all listings
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13m-5-6 6 6-6 6"></path></svg>
+    </a>
+  </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#fff;overflow:hidden">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px">
+      <div>
+        <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#CE1021">Spotlight</span>
+        <h2 style="margin:10px 0 0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F">New developments</h2>
+        <p style="margin:12px 0 0;font-size:17px;color:#5E7180;font-weight:500;max-width:520px">Buy off-plan and pay no transfer duty — launch pricing while units last.</p>
+      </div>
+      <div style="display:{{ dNav }};gap:8px;flex:none">
+        <button onClick="{{ carPrev }}" aria-label="Previous" style="width:46px;height:46px;border:1px solid #CBD6DE;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#F5F7F9;border-color:#0A5FC2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#05294F" stroke-width="2.1" stroke-linecap="round"><path d="M14 6l-6 6 6 6"></path></svg>
+        </button>
+        <button onClick="{{ carNext }}" aria-label="Next" style="width:46px;height:46px;border:1px solid #CBD6DE;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#F5F7F9;border-color:#0A5FC2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#05294F" stroke-width="2.1" stroke-linecap="round"><path d="M10 6l6 6-6 6"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div id="m243-carousel" class="m243-scroll" style="margin-top:32px;display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding-bottom:4px">
+      <article style="flex:none;width:{{ sDevW }};scroll-snap-align:start;border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:210px"><image-slot id="m243-d1" src="https://images.pexels.com/photos/29145562/pexels-photo-29145562.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Development render 1"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-.01em;color:#05294F">Olivewood Estate</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Centurion, Gauteng</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid #EEF2F5">
+            <span style="font-size:17px;font-weight:800;color:#0A5FC2">From R 1 195 000</span>
+            <span style="padding:6px 10px;border-radius:7px;background:#F5F7F9;font-size:13.5px;font-weight:700;color:#5E7180">42 units</span>
+          </div>
+        </div>
+      </article>
+      <article style="flex:none;width:{{ sDevW }};scroll-snap-align:start;border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:210px"><image-slot id="m243-d2" src="https://images.pexels.com/photos/17672408/pexels-photo-17672408.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Development render 2"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-.01em;color:#05294F">The Bluff Collection</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Umhlanga, KwaZulu-Natal</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid #EEF2F5">
+            <span style="font-size:17px;font-weight:800;color:#0A5FC2">From R 2 450 000</span>
+            <span style="padding:6px 10px;border-radius:7px;background:#F5F7F9;font-size:13.5px;font-weight:700;color:#5E7180">18 units</span>
+          </div>
+        </div>
+      </article>
+      <article style="flex:none;width:{{ sDevW }};scroll-snap-align:start;border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:210px"><image-slot id="m243-d3" src="https://images.pexels.com/photos/38274451/pexels-photo-38274451.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Development render 3"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-.01em;color:#05294F">Vineyard Walk</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Stellenbosch, Western Cape</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid #EEF2F5">
+            <span style="font-size:17px;font-weight:800;color:#0A5FC2">From R 3 100 000</span>
+            <span style="padding:6px 10px;border-radius:7px;background:#F5F7F9;font-size:13.5px;font-weight:700;color:#5E7180">9 units</span>
+          </div>
+        </div>
+      </article>
+      <article style="flex:none;width:{{ sDevW }};scroll-snap-align:start;border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:210px"><image-slot id="m243-d4" src="https://images.pexels.com/photos/18362805/pexels-photo-18362805.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Development render 4"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-.01em;color:#05294F">Linden Yard Lofts</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Randburg, Johannesburg</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid #EEF2F5">
+            <span style="font-size:17px;font-weight:800;color:#0A5FC2">From R 849 000</span>
+            <span style="padding:6px 10px;border-radius:7px;background:#F5F7F9;font-size:13.5px;font-weight:700;color:#5E7180">66 units</span>
+          </div>
+        </div>
+      </article>
+      <article style="flex:none;width:{{ sDevW }};scroll-snap-align:start;border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:210px"><image-slot id="m243-d5" src="https://images.pexels.com/photos/34443159/pexels-photo-34443159.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Development render 5"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-.01em;color:#05294F">Waterkloof Rise</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Pretoria East, Gauteng</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid #EEF2F5">
+            <span style="font-size:17px;font-weight:800;color:#0A5FC2">From R 1 675 000</span>
+            <span style="padding:6px 10px;border-radius:7px;background:#F5F7F9;font-size:13.5px;font-weight:700;color:#5E7180">27 units</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="background:#05294F">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ sSplit }};align-items:stretch">
+    <div style="min-height:{{ sSplitH }};position:relative;overflow:hidden"><image-slot style="position:absolute;inset:0" id="m243-sell" shape="rect" src="https://images.pexels.com/photos/8112187/pexels-photo-8112187.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" credit="Photo by Pavel Danilyuk on Pexels" credit-href="https://www.pexels.com/@pavel-danilyuk/" placeholder="Photo: owner handing over keys"></image-slot></div>
+    <div style="padding:{{ sSplitPad }};display:flex;flex-direction:column;justify-content:center">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F7D618">For owners</span>
+      <h2 style="margin:12px 0 0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#fff;text-wrap:pretty">Sell or rent out your property with confidence</h2>
+      <ul style="margin:24px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7D618" stroke-width="2.2" stroke-linecap="round" style="flex:none;margin-top:2px"><path d="M4 12.5 9 17.5 20 6.5"></path></svg>
+          <span style="font-size:17px;line-height:1.45;color:rgba(255,255,255,.88);font-weight:500">A free, data-backed valuation of your home in under two minutes</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7D618" stroke-width="2.2" stroke-linecap="round" style="flex:none;margin-top:2px"><path d="M4 12.5 9 17.5 20 6.5"></path></svg>
+          <span style="font-size:17px;line-height:1.45;color:rgba(255,255,255,.88);font-weight:500">Three vetted agents in your suburb, with their real sales records</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7D618" stroke-width="2.2" stroke-linecap="round" style="flex:none;margin-top:2px"><path d="M4 12.5 9 17.5 20 6.5"></path></svg>
+          <span style="font-size:17px;line-height:1.45;color:rgba(255,255,255,.88);font-weight:500">Enquiries, viewings and offers tracked in one dashboard</span>
+        </li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+        <a href="#" style="padding:15px 24px;border-radius:11px;background:#CE1021;color:#fff;font-size:16.5px;font-weight:700;box-shadow:0 6px 18px rgba(206,16,33,.3)" style-hover="background:#A60C1A;color:#fff">Get a free valuation</a>
+        <a href="#" style="padding:15px 24px;border-radius:11px;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:16.5px;font-weight:700" style-hover="background:rgba(255,255,255,.1);color:#fff">List your property</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#F5F7F9">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ sCalcCols }};gap:{{ sCalcGap }};align-items:start">
+    <div>
+      <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0A5FC2">Affordability</span>
+      <h2 style="margin:10px 0 0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F;text-wrap:pretty">What will the bond actually cost?</h2>
+      <p style="margin:14px 0 0;font-size:17px;line-height:1.55;color:#5E7180;font-weight:500">Work out your monthly repayment before you fall in love with a listing. Rates shown are the current prime lending rate — your bank may offer prime less a margin.</p>
+      <a href="#" style="display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-size:16.5px;font-weight:700;color:#0A5FC2">Get pre-approved
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h13m-5-6 6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:{{ sCalcPad }};box-shadow:0 1px 2px rgba(5,41,79,.06),0 12px 32px rgba(5,41,79,.08)">
+      <div style="display:grid;grid-template-columns:{{ sCalcFields }};gap:16px">
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label style="font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E7180">Purchase price</label>
+          <div style="display:flex;align-items:center;gap:6px;height:52px;padding:0 14px;border:1px solid #CBD6DE;border-radius:11px">
+            <span style="font-size:16px;font-weight:700;color:#5E7180">R</span>
+            <input type="text" value="{{ price }}" onChange="{{ setPrice }}" style="border:0;outline:0;width:100%;font-size:16px;font-weight:600;color:#15232E;background:transparent">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label style="font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E7180">Deposit</label>
+          <div style="display:flex;align-items:center;gap:6px;height:52px;padding:0 14px;border:1px solid #CBD6DE;border-radius:11px">
+            <span style="font-size:16px;font-weight:700;color:#5E7180">R</span>
+            <input type="text" value="{{ deposit }}" onChange="{{ setDeposit }}" style="border:0;outline:0;width:100%;font-size:16px;font-weight:600;color:#15232E;background:transparent">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label style="font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E7180">Interest rate</label>
+          <div style="display:flex;align-items:center;gap:6px;height:52px;padding:0 14px;border:1px solid #CBD6DE;border-radius:11px">
+            <input type="text" value="{{ rate }}" onChange="{{ setRate }}" style="border:0;outline:0;width:100%;font-size:16px;font-weight:600;color:#15232E;background:transparent">
+            <span style="font-size:16px;font-weight:700;color:#5E7180">%</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label style="font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E7180">Loan term</label>
+          <select value="{{ term }}" onChange="{{ setTerm }}" style="height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:11px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option value="20">20 years</option>
+            <option value="25">25 years</option>
+            <option value="30">30 years</option>
+            <option value="15">15 years</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:24px;padding:22px;border-radius:14px;background:#0A5FC2;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75)">Estimated monthly repayment</div>
+          <div style="margin-top:6px;font-size:{{ sCalcNum }};font-weight:800;letter-spacing:-.025em;color:#fff">{{ monthly }}</div>
+        </div>
+        <div style="font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.78);font-weight:500;max-width:200px">Over {{ term }} years on a {{ loanLabel }} bond</div>
+      </div>
+      <p style="margin:14px 0 0;font-size:13.5px;line-height:1.5;color:#4F6372;font-weight:500">Estimate only, excluding rates, levies and insurance. Final terms depend on your credit profile.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F">Popular areas</h2>
+    <p style="margin:12px 0 0;font-size:17px;color:#5E7180;font-weight:500">Where South Africans are searching most this month.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:{{ sAreaCols }};gap:16px">
+      <a href="#" style="position:relative;display:block;height:{{ sTileH }};border-radius:16px;overflow:hidden">
+        <image-slot id="m243-a1" src="https://images.pexels.com/photos/4064211/pexels-photo-4064211.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Sea Point"></image-slot>
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,0) 35%,rgba(5,41,79,.82));pointer-events:none"></span>
+        <span style="position:absolute;left:18px;bottom:16px;pointer-events:none">
+          <span style="display:block;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Sea Point</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">2 406 listings</span>
+        </span>
+      </a>
+      <a href="#" style="position:relative;display:block;height:{{ sTileH }};border-radius:16px;overflow:hidden">
+        <image-slot id="m243-a2" src="https://images.pexels.com/photos/6422929/pexels-photo-6422929.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Centurion"></image-slot>
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,0) 35%,rgba(5,41,79,.82));pointer-events:none"></span>
+        <span style="position:absolute;left:18px;bottom:16px;pointer-events:none">
+          <span style="display:block;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Centurion</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">3 274 listings</span>
+        </span>
+      </a>
+      <a href="#" style="position:relative;display:block;height:{{ sTileH }};border-radius:16px;overflow:hidden">
+        <image-slot id="m243-a3" src="https://images.pexels.com/photos/37833044/pexels-photo-37833044.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Cape Town City Bowl"></image-slot>
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,0) 35%,rgba(5,41,79,.82));pointer-events:none"></span>
+        <span style="position:absolute;left:18px;bottom:16px;pointer-events:none">
+          <span style="display:block;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Cape Town City Bowl</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">3 912 listings</span>
+        </span>
+      </a>
+      <a href="#" style="position:relative;display:block;height:{{ sTileH }};border-radius:16px;overflow:hidden">
+        <image-slot id="m243-a4" src="https://images.pexels.com/photos/35374021/pexels-photo-35374021.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Camps Bay"></image-slot>
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,0) 35%,rgba(5,41,79,.82));pointer-events:none"></span>
+        <span style="position:absolute;left:18px;bottom:16px;pointer-events:none">
+          <span style="display:block;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Camps Bay</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">742 listings</span>
+        </span>
+      </a>
+      <a href="#" style="position:relative;display:block;height:{{ sTileH }};border-radius:16px;overflow:hidden">
+        <image-slot id="m243-a5" src="https://images.pexels.com/photos/18362805/pexels-photo-18362805.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Sandton"></image-slot>
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,0) 35%,rgba(5,41,79,.82));pointer-events:none"></span>
+        <span style="position:absolute;left:18px;bottom:16px;pointer-events:none">
+          <span style="display:block;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Sandton</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">5 160 listings</span>
+        </span>
+      </a>
+      <a href="#" style="position:relative;display:block;height:{{ sTileH }};border-radius:16px;overflow:hidden">
+        <image-slot id="m243-a6" src="https://images.pexels.com/photos/129494/pexels-photo-129494.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Umhlanga"></image-slot>
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,41,79,0) 35%,rgba(5,41,79,.82));pointer-events:none"></span>
+        <span style="position:absolute;left:18px;bottom:16px;pointer-events:none">
+          <span style="display:block;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Umhlanga</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">1 938 listings</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#F5F7F9">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
+      <div>
+        <h2 style="margin:0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F">Find an agent</h2>
+        <p style="margin:12px 0 0;font-size:17px;color:#5E7180;font-weight:500">Top performers by suburb, ranked on properties actually sold.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;height:54px;padding:0 16px;background:#fff;border:1px solid #CBD6DE;border-radius:12px;width:{{ sAgentSearchW }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E7180" stroke-width="1.9" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input type="text" placeholder="Agent name, agency or suburb" style="border:0;outline:0;width:100%;font-size:16px;font-weight:500;background:transparent;color:#15232E">
+      </div>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:{{ sAgentCols }};gap:20px">
+      <div style="background:#fff;border:1px solid #E3E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <image-slot id="m243-ag1" src="https://images.pexels.com/photos/30004322/pexels-photo-30004322.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" shape="circle" style="width:76px;height:76px" placeholder="Agent"></image-slot>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#05294F">Megan Kruger</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Keystone Properties · Pretoria East</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:700;color:#0A5FC2">64 listings <span style="width:4px;height:4px;border-radius:50%;background:#CBD6DE"></span> <span style="color:#5E7180;font-weight:600">11 yrs</span></div>
+      </div>
+      <div style="background:#fff;border:1px solid #E3E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <image-slot id="m243-ag2" src="https://images.pexels.com/photos/8815878/pexels-photo-8815878.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" shape="circle" style="width:76px;height:76px" placeholder="Agent"></image-slot>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#05294F">Riaan de Villiers</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Cape Reach Realty · Sea Point</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:700;color:#0A5FC2">38 listings <span style="width:4px;height:4px;border-radius:50%;background:#CBD6DE"></span> <span style="color:#5E7180;font-weight:600">7 yrs</span></div>
+      </div>
+      <div style="background:#fff;border:1px solid #E3E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <image-slot id="m243-ag3" src="https://images.pexels.com/photos/34381970/pexels-photo-34381970.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" shape="circle" style="width:76px;height:76px" placeholder="Agent"></image-slot>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#05294F">Chantal Oosthuizen</div>
+          <div style="margin-top:3px;font-size:15px;color:#5E7180;font-weight:500">Ridge &amp; Bay · Umhlanga</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:700;color:#0A5FC2">51 listings <span style="width:4px;height:4px;border-radius:50%;background:#CBD6DE"></span> <span style="color:#5E7180;font-weight:600">9 yrs</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:{{ sSecPad }};background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F">Property advice &amp; news</h2>
+    <p style="margin:12px 0 0;font-size:17px;color:#5E7180;font-weight:500">Plain-language guides for the South African market.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:{{ sGrid3 }};gap:20px">
+      <article style="border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:190px"><image-slot id="m243-n1" src="https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Article image 1"></image-slot></div>
+        <div style="padding:22px">
+          <span style="display:inline-block;padding:5px 10px;border-radius:7px;background:#E3EFFC;color:#0A5FC2;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase">Buying</span>
+          <h3 style="margin:14px 0 0;font-size:19px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#05294F;text-wrap:pretty">Transfer duty in 2026: what you'll actually pay on a R 1,8m home</h3>
+          <div style="margin-top:14px;font-size:14.5px;font-weight:600;color:#5E7180">6 min read</div>
+        </div>
+      </article>
+      <article style="border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:190px"><image-slot id="m243-n2" src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Article image 2"></image-slot></div>
+        <div style="padding:22px">
+          <span style="display:inline-block;padding:5px 10px;border-radius:7px;background:#FBE3E6;color:#A60C1A;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase">Renting</span>
+          <h3 style="margin:14px 0 0;font-size:19px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#05294F;text-wrap:pretty">Your deposit rights as a tenant — and how to get it back in full</h3>
+          <div style="margin-top:14px;font-size:14.5px;font-weight:600;color:#5E7180">4 min read</div>
+        </div>
+      </article>
+      <article style="border:1px solid #E3E9EE;border-radius:16px;overflow:hidden;background:#fff">
+        <div style="height:190px"><image-slot id="m243-n3" src="https://images.pexels.com/photos/6933852/pexels-photo-6933852.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Article image 3"></image-slot></div>
+        <div style="padding:22px">
+          <span style="display:inline-block;padding:5px 10px;border-radius:7px;background:#E3EFFC;color:#0A5FC2;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase">Market</span>
+          <h3 style="margin:14px 0 0;font-size:19px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#05294F;text-wrap:pretty">Semigration slows: where Western Cape prices are cooling</h3>
+          <div style="margin-top:14px;font-size:14.5px;font-weight:600;color:#5E7180">5 min read</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="background:#E3EFFC;padding:{{ sAppPad }};overflow:hidden">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ sAppCols }};gap:40px;align-items:center">
+    <div>
+      <h2 style="margin:0;font-size:{{ sH2 }};line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#05294F;text-wrap:pretty">Get alerts the moment a listing goes live</h2>
+      <p style="margin:14px 0 0;font-size:17px;line-height:1.55;color:#33536F;font-weight:500;max-width:440px">Save a search, and the Maison243 app pings you before the show day queue forms.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+        <a href="#" style="display:flex;align-items:center;gap:11px;padding:13px 20px;border-radius:12px;background:#05294F;color:#fff" style-hover="background:#0A3E73;color:#fff">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 3c.3 1.6-.8 3.2-2.3 3.4C9.5 4.8 10.7 3.2 12 3Zm4.6 13.2c-.5 1.2-1.6 2.9-2.8 2.9-1 0-1.3-.6-2.4-.6-1.1 0-1.5.6-2.4.6-1.3 0-2.6-2-3.2-3.5-.8-2.1-.5-4.7 1.3-5.8.8-.5 1.8-.5 2.5 0 .5.3.9.3 1.4 0 .8-.5 1.8-.5 2.6 0 .5.3.9.8 1.2 1.3-1.6 1-1.6 3.3.2 4.1-.1.3-.2.7-.4 1Z"></path></svg>
+          <span style="display:block"><span style="display:block;font-size:11.5px;font-weight:600;opacity:.75">Download on the</span><span style="display:block;font-size:16.5px;font-weight:700;letter-spacing:-.01em">App Store</span></span>
+        </a>
+        <a href="#" style="display:flex;align-items:center;gap:11px;padding:13px 20px;border-radius:12px;background:#05294F;color:#fff" style-hover="background:#0A3E73;color:#fff">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M4 3.5v17l9.3-8.5L4 3.5Zm10.8 7.2 2.6-2.4-11-6.3 8.4 8.7Zm0 2.6-8.4 8.7 11-6.3-2.6-2.4Zm3.9-1.3 2.3-2.1c.7-.4.7-1.4 0-1.8l-2.3-2.1-2.9 2.6 2.9 3.4Z"></path></svg>
+          <span style="display:block"><span style="display:block;font-size:11.5px;font-weight:600;opacity:.75">Get it on</span><span style="display:block;font-size:16.5px;font-weight:700;letter-spacing:-.01em">Google Play</span></span>
+        </a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:{{ sAppAlign }}">
+      <div style="width:{{ sPhoneW }};height:{{ sPhoneH }};border-radius:38px;background:#05294F;padding:10px;box-shadow:0 24px 60px rgba(5,41,79,.26);flex:none">
+        <div style="position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#fff">
+          <div style="position:absolute;inset:0;background:#F5F7F9;display:flex;flex-direction:column">
+            <div style="background:#05294F;padding:26px 16px 14px">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:14px;font-weight:800;color:#fff;letter-spacing:-.01em">Maison<span style="color:#F7D618">243</span></span>
+                <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.18)"></span>
+              </div>
+              <div style="margin-top:12px;height:34px;border-radius:9px;background:#fff;display:flex;align-items:center;padding:0 10px;gap:7px">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4F6372" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+                <span style="font-size:11.5px;font-weight:600;color:#4F6372">Pretoria East</span>
+              </div>
+            </div>
+            <div style="padding:12px;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372">New today</span>
+                <span style="padding:3px 7px;border-radius:5px;background:#CE1021;color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.04em">3 ALERTS</span>
+              </div>
+              <div style="background:#fff;border-radius:11px;overflow:hidden;box-shadow:0 1px 3px rgba(5,41,79,.1)">
+                <div style="height:62px;background:linear-gradient(135deg,#0A5FC2,#05294F)"></div>
+                <div style="padding:9px 10px">
+                  <div style="font-size:12.5px;font-weight:800;color:#05294F">R 1 450 000</div>
+                  <div style="margin-top:2px;font-size:10px;font-weight:600;color:#4F6372">3 bed · Garsfontein</div>
+                </div>
+              </div>
+              <div style="background:#fff;border-radius:11px;overflow:hidden;box-shadow:0 1px 3px rgba(5,41,79,.1)">
+                <div style="height:62px;background:linear-gradient(135deg,#E3EFFC,#0A5FC2)"></div>
+                <div style="padding:9px 10px">
+                  <div style="font-size:12.5px;font-weight:800;color:#05294F">R 2 180 000</div>
+                  <div style="margin-top:2px;font-size:10px;font-weight:600;color:#4F6372">3 bed · Waterkloof</div>
+                </div>
+              </div>
+              <div style="background:#E3EFFC;border-radius:11px;padding:9px 10px;display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:10.5px;font-weight:700;color:#05294F">Saved search · Waterkloof</span>
+                <span style="font-size:10px;font-weight:700;color:#0A5FC2">12 new</span>
+              </div>
+            </div>
+            <div style="height:46px;background:#fff;border-top:1px solid #E3E9EE;display:flex;align-items:center;justify-content:space-around">
+              <span style="width:18px;height:3px;border-radius:2px;background:#0A5FC2"></span>
+              <span style="width:18px;height:3px;border-radius:2px;background:#CBD6DE"></span>
+              <span style="width:18px;height:3px;border-radius:2px;background:#CBD6DE"></span>
+              <span style="width:18px;height:3px;border-radius:2px;background:#CBD6DE"></span>
+            </div>
+          </div>
+          <span style="position:absolute;top:10px;left:50%;transform:translateX(-50%);width:78px;height:20px;border-radius:999px;background:#05294F;pointer-events:none"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#05294F;padding:{{ sFootPad }}">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:{{ sFootCols }};gap:{{ sFootGap }}">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="width:34px;height:34px;border-radius:9px;background:#CE1021;display:flex;align-items:center;justify-content:center;flex:none">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V20h13V9.5"></path><path d="M10 20v-5.5h4V20"></path></svg>
+          </span>
+          <span style="font-size:19px;font-weight:800;letter-spacing:-.02em;color:#fff">Maison243</span>
+        </div>
+        <p style="margin:16px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.66);font-weight:500;max-width:260px">South Africa's property platform — buy, rent, sell and build, suburb by suburb.</p>
+        <div style="display:flex;gap:10px;margin-top:22px">
+          <a href="#" aria-label="Social" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,.12)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.6"></circle><circle cx="17" cy="7" r="1"></circle></svg>
+          </a>
+          <a href="#" aria-label="Social" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,.12)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V9m0-3.5v.01"></path><path d="M10 20v-6a3 3 0 0 1 6 0v6"></path><path d="M10 20v-7"></path></svg>
+          </a>
+          <a href="#" aria-label="Social" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,.12)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M21 5.5a9 9 0 0 1-2.6.9A4 4 0 0 0 12 9.5v1A11 11 0 0 1 4 6s-3 7 4 10a9 9 0 0 1-5 1.5c7 4 15 0 15-10.5a4 4 0 0 0 3-4.5Z"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F7D618">Buy &amp; Rent</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Houses for sale</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Apartments to rent</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Commercial property</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Bond calculator</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F7D618">Sell</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Free valuation</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">List your property</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Compare agents</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Seller's guide</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F7D618">Developments</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">New developments</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Off-plan buying</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">For developers</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Retirement estates</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F7D618">Company</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">About</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Contact</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Careers</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Privacy</a>
+          <a href="#" style="font-size:16px;font-weight:500;color:rgba(255,255,255,.78)" style-hover="color:#fff">Terms</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:44px;padding:{{ sNewsPad }};border-radius:16px;background:rgba(255,255,255,.06);display:grid;grid-template-columns:{{ sNewsCols }};gap:20px;align-items:center">
+      <div>
+        <div style="font-size:19px;font-weight:700;color:#fff;letter-spacing:-.01em">Weekly market letter</div>
+        <div style="margin-top:6px;font-size:15.5px;color:rgba(255,255,255,.68);font-weight:500">Price movements, new launches and rate news. Every Thursday.</div>
+      </div>
+      <form style="display:flex;gap:10px;flex-wrap:wrap">
+        <input type="email" placeholder="you@email.co.za" style="flex:1;min-width:180px;height:52px;padding:0 16px;border:1px solid rgba(255,255,255,.28);border-radius:11px;background:rgba(255,255,255,.07);color:#fff;font-size:16px;font-weight:500;outline:0">
+        <button type="button" style="height:52px;padding:0 24px;border:0;border-radius:11px;background:#CE1021;color:#fff;font-size:16.5px;font-weight:700;cursor:pointer" style-hover="background:#A60C1A">Subscribe</button>
+      </form>
+    </div>
+
+    <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+      <div style="font-size:14.5px;color:rgba(255,255,255,.55);font-weight:500">© 2026 Maison243 (Pty) Ltd. All rights reserved.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px">
+        <a href="#" style="font-size:14.5px;color:rgba(255,255,255,.55);font-weight:500" style-hover="color:#fff">PAIA manual</a>
+        <a href="#" style="font-size:14.5px;color:rgba(255,255,255,.55);font-weight:500" style-hover="color:#fff">POPIA</a>
+        <a href="#" style="font-size:14.5px;color:rgba(255,255,255,.55);font-weight:500" style-hover="color:#fff">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</sc-if>
+
+<sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+<section style="background:#F5F7F9;padding:{{ sResPad }}">
+  <div style="max-width:1320px;margin:0 auto">
+    <h1 style="margin:0;font-size:{{ sResH1 }};line-height:1.1;letter-spacing:-.03em;font-weight:800;color:#05294F;text-wrap:pretty">{{ resTitle }}</h1>
+    <div style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:15px;font-weight:600">
+      <button onClick="{{ goHome }}" style="border:0;background:transparent;padding:0;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:#0A5FC2">{{ resCrumb }}</button>
+      <span style="color:#9FB0BD">&gt;</span>
+      <a href="#" style="color:#0A5FC2">Gauteng</a>
+      <span style="color:#9FB0BD">&gt;</span>
+      <span style="color:#7A8B99">Centurion</span>
+    </div>
+
+    <div style="margin-top:34px;display:grid;grid-template-columns:{{ sSubCols }};gap:20px 28px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Laudium</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Kosmosdal</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Wierda Park</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Erasmia</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Thatch Hill Estate</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Zwartkop</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Celtisdal</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Hennopspark</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Irene</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Heuweloord</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Olievenhoutbosch</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Die Hoewes</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Raslouw</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Valhalla</a>
+          <a href="#" style="font-size:15.5px;font-weight:600;color:#05294F" style-hover="color:#CE1021">Lyttelton Manor</a>
+        </div>
+    </div>
+    <a href="#" style="display:inline-block;margin-top:26px;font-size:16px;font-weight:700;color:#0A5FC2" style-hover="color:#CE1021">All areas in Centurion</a>
+
+    <div style="margin-top:30px;display:grid;grid-template-columns:{{ sResCols }};gap:24px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:18px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+          <div style="font-size:16.5px;font-weight:500;color:#4F6372"><strong style="font-weight:800;color:#05294F">53</strong> results</div>
+          <label style="display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;color:#05294F">Sort by
+            <select defaultValue="Default" style="height:44px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:15.5px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+              <option>Default</option><option>Newest first</option><option>Price: low to high</option><option>Price: high to low</option>
+            </select>
+          </label>
+        </div>
+
+      <article onClick="{{ goDetail }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9EE;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:{{ sResCard }}">
+        <div style="position:relative;min-height:{{ sResImgH }}">
+          <image-slot id="m243-res1" src="https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Listing photo"></image-slot>
+          <span style="position:absolute;left:12px;bottom:12px;padding:6px 11px;border-radius:999px;background:#0A5FC2;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;pointer-events:none">{{ resBadge }}</span>
+        </div>
+        <div style="padding:20px 22px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:-.02em;color:#0A5FC2">{{ p1 }}</div>
+            <div style="font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372;text-align:right;line-height:1.35">Keystone Capital</div>
+          </div>
+          <div style="font-size:16px;font-weight:600;color:#4F6372">3 bedroom apartment</div>
+          <div style="font-size:16.5px;font-weight:700;color:#05294F">Raslouw</div>
+          <div style="font-size:15.5px;font-weight:500;color:#4F6372">258 Ephrams View, 1 Erasmus Avenue</div>
+          <p style="margin:4px 0 0;font-size:15.5px;line-height:1.5;color:#4F6372;font-weight:500">Modern three-bedroom apartment in a secure Raslouw complex, with a private patio and fibre already installed.</p>
+          <div style="margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>131 m²</span>
+            <button onClick="{{ toggleSave }}" data-k="res1" aria-label="Save listing" style="margin-left:auto;width:42px;height:42px;border:1px solid #CBD6DE;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#CE1021">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="{{ sv.res1 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article onClick="{{ goDetail }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9EE;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:{{ sResCard }}">
+        <div style="position:relative;min-height:{{ sResImgH }}">
+          <image-slot id="m243-res2" src="https://images.pexels.com/photos/6422929/pexels-photo-6422929.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Listing photo"></image-slot>
+          <span style="position:absolute;left:12px;bottom:12px;padding:6px 11px;border-radius:999px;background:#0A5FC2;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;pointer-events:none">{{ resBadge }}</span>
+        </div>
+        <div style="padding:20px 22px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:-.02em;color:#0A5FC2">{{ p2 }}</div>
+            <div style="font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372;text-align:right;line-height:1.35">Listed by owner</div>
+          </div>
+          <div style="font-size:16px;font-weight:600;color:#4F6372">3 bedroom house</div>
+          <div style="font-size:16.5px;font-weight:700;color:#05294F">Heuweloord</div>
+          <div style="font-size:15.5px;font-weight:500;color:#4F6372">24 Wit-Elshout Avenue</div>
+          <p style="margin:4px 0 0;font-size:15.5px;line-height:1.5;color:#4F6372;font-weight:500">Spacious three-bedroom, two-bathroom home {{ letVerb }} in Heuweloord, complete with a walled garden and borehole.</p>
+          <div style="margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>2</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>186 m²</span>
+            <button onClick="{{ toggleSave }}" data-k="res2" aria-label="Save listing" style="margin-left:auto;width:42px;height:42px;border:1px solid #CBD6DE;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#CE1021">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="{{ sv.res2 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article onClick="{{ goDetail }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9EE;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:{{ sResCard }}">
+        <div style="position:relative;min-height:{{ sResImgH }}">
+          <image-slot id="m243-res3" src="https://images.pexels.com/photos/20390760/pexels-photo-20390760.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Listing photo"></image-slot>
+          <span style="position:absolute;left:12px;bottom:12px;padding:6px 11px;border-radius:999px;background:#0A5FC2;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;pointer-events:none">{{ resBadge }}</span>
+        </div>
+        <div style="padding:20px 22px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:-.02em;color:#0A5FC2">{{ p3 }}</div>
+            <div style="font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372;text-align:right;line-height:1.35">Jacaranda Group</div>
+          </div>
+          <div style="font-size:16px;font-weight:600;color:#4F6372">2 bedroom apartment</div>
+          <div style="font-size:16.5px;font-weight:700;color:#05294F">Die Hoewes</div>
+          <div style="font-size:15.5px;font-weight:500;color:#4F6372">12 Glover Avenue, Unit 304</div>
+          <p style="margin:4px 0 0;font-size:15.5px;line-height:1.5;color:#4F6372;font-weight:500">Bright corner unit a short walk from Centurion Gate, with secure parking and a north-facing balcony.</p>
+          <div style="margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>2</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>1</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>98 m²</span>
+            <button onClick="{{ toggleSave }}" data-k="res3" aria-label="Save listing" style="margin-left:auto;width:42px;height:42px;border:1px solid #CBD6DE;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#CE1021">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="{{ sv.res3 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article onClick="{{ goDetail }}" style="cursor:pointer;background:#fff;border:1px solid #E3E9EE;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:{{ sResCard }}">
+        <div style="position:relative;min-height:{{ sResImgH }}">
+          <image-slot id="m243-res4" src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" shape="rect" placeholder="Listing photo"></image-slot>
+          <span style="position:absolute;left:12px;bottom:12px;padding:6px 11px;border-radius:999px;background:#0A5FC2;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;pointer-events:none">{{ resBadge }}</span>
+        </div>
+        <div style="padding:20px 22px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:-.02em;color:#0A5FC2">{{ p4 }}</div>
+            <div style="font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372;text-align:right;line-height:1.35">Ridge &amp; Bay</div>
+          </div>
+          <div style="font-size:16px;font-weight:600;color:#4F6372">3 bedroom townhouse</div>
+          <div style="font-size:16.5px;font-weight:700;color:#05294F">Irene Farm Villages</div>
+          <div style="font-size:15.5px;font-weight:500;color:#4F6372">8 Nellmapius Drive</div>
+          <p style="margin:4px 0 0;font-size:15.5px;line-height:1.5;color:#4F6372;font-weight:500">Three-bedroom townhouse in a village estate with clubhouse access, pet friendly on request.</p>
+          <div style="margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>2</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#4F6372"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>164 m²</span>
+            <button onClick="{{ toggleSave }}" data-k="res4" aria-label="Save listing" style="margin-left:auto;width:42px;height:42px;border:1px solid #CBD6DE;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#CE1021">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="{{ sv.res4 }}" stroke="#CE1021" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+        <button style="height:56px;border:1px solid #0A5FC2;background:#fff;border-radius:6px;font-family:inherit;font-size:16.5px;font-weight:700;color:#0A5FC2;cursor:pointer" style-hover="background:#E3EFFC">Load more listings</button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:16px">
+          <div style="position:relative;height:240px;border-radius:6px;overflow:hidden;background:#F2EEE3">
+            <iframe src="./centurion-map.html" title="Map of Centurion" loading="lazy" style="width:100%;height:240px;border:0;display:block"></iframe>
+          </div>
+          <button style="margin-top:16px;width:100%;height:52px;border:1px solid #0A5FC2;background:#fff;border-radius:6px;font-family:inherit;font-size:16.5px;font-weight:700;color:#0A5FC2;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#E3EFFC">View map
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Z"></path><path d="M9 4v13M15 6.5v13"></path></svg>
+          </button>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:22px">
+          <div style="font-size:18px;font-weight:800;letter-spacing:-.01em;color:#05294F">Centurion trends</div>
+          <div style="margin-top:4px;font-size:15px;font-weight:600;color:#7A8B99">Average property price</div>
+          <div style="margin-top:18px;position:relative">
+            <svg viewBox="0 0 280 120" width="100%" height="120" style="display:block">
+              <text x="0" y="14" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="800" fill="#7A8B99">2M</text>
+              <text x="0" y="112" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="800" fill="#7A8B99">1M</text>
+              <path d="M30 12h250M30 106h250" stroke="#EEF2F5" stroke-width="2"></path>
+              <path d="M34 72c40 6 70 4 104-3s74-10 138-14" stroke="#0A5FC2" stroke-width="4" fill="none" stroke-linecap="round"></path>
+              <rect x="186" y="34" width="86" height="26" rx="13" fill="#0A5FC2"></rect>
+              <text x="200" y="51" font-family="Plus Jakarta Sans, sans-serif" font-size="12.5" font-weight="800" fill="#fff">R 1.6 million</text>
+            </svg>
+          </div>
+          <div style="margin-top:14px;font-size:14.5px;line-height:1.5;color:#4F6372;font-weight:500">Median asking price over the last 12 months, based on 1 284 Centurion listings.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border-bottom:1px solid #E3E9EE">
+  <div class="m243-scroll" style="max-width:1320px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:12px;overflow-x:auto;font-size:14.5px;font-weight:600;white-space:nowrap">
+    <button onClick="{{ backToResults }}" style="display:flex;align-items:center;gap:7px;border:0;background:transparent;padding:0;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:700;color:#0A5FC2">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M14 6l-6 6 6 6"></path></svg>
+      Back to results
+    </button>
+    <span style="width:1px;height:16px;background:#E3E9EE"></span>
+    <button onClick="{{ backToResults }}" style="border:0;background:transparent;padding:0;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:600;color:#0A5FC2">{{ resCrumb }}</button>
+    <span style="color:#9FB0BD">&gt;</span><a href="#" style="color:#0A5FC2">Gauteng</a>
+    <span style="color:#9FB0BD">&gt;</span><a href="#" style="color:#0A5FC2">Centurion</a>
+    <span style="color:#9FB0BD">&gt;</span><a href="#" style="color:#0A5FC2">Raslouw</a>
+    <span style="color:#9FB0BD">&gt;</span><span style="color:#7A8B99">M243-117647</span>
+  </div>
+</div>
+
+<section style="background:#F5F7F9;padding:{{ sDetPad }}">
+  <div style="max-width:1320px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:{{ sGalCols }};gap:8px">
+      <div style="position:relative;height:{{ sGalH }};border-radius:8px 0 0 0;overflow:hidden">
+        <image-slot id="m243-det1" src="https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" shape="rect" placeholder="Main photo"></image-slot>
+      </div>
+      <div style="display:grid;grid-template-rows:1fr 1fr;gap:8px;height:{{ sGalH }}">
+        <div style="position:relative;overflow:hidden;border-radius:0 8px 0 0"><image-slot id="m243-det2" src="https://images.pexels.com/photos/6934189/pexels-photo-6934189.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Photo"></image-slot></div>
+        <div style="position:relative;overflow:hidden">
+          <image-slot id="m243-det3" src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" shape="rect" placeholder="Photo"></image-slot>
+          <span style="position:absolute;right:12px;bottom:12px;padding:8px 13px;border-radius:5px;background:rgba(255,255,255,.94);font-size:13.5px;font-weight:700;color:#05294F;pointer-events:none">See all 16 images</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:#05294F;border-radius:0 0 8px 8px;padding:12px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px">
+      <span style="display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;color:#fff">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F7D618" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m6 16 4-5 3 3 2-2 3 4"></path></svg>
+        Photos (16)
+      </span>
+      <span style="display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg>
+        Photo grid
+      </span>
+      <span style="display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Z"></path><path d="M9 4v13M15 6.5v13"></path></svg>
+        Map
+      </span>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:16px">
+        <button style="display:flex;align-items:center;gap:8px;border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 15V4m0 0L8 8m4-4 4 4"></path><path d="M5 14v5h14v-5"></path></svg>
+          Share
+        </button>
+        <button onClick="{{ toggleSave }}" data-k="det" style="display:flex;align-items:center;gap:8px;border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:700;color:#fff">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ sv.det }}" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.4 12 20 12 20Z"></path></svg>
+          Save
+        </button>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;display:grid;grid-template-columns:{{ sDetCols }};gap:24px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:{{ sDetCardPad }}">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+            <div style="font-size:{{ sDetPrice }};font-weight:800;letter-spacing:-.025em;color:#0A5FC2">{{ detPrice }} <span style="font-size:17px;font-weight:600;color:#4F6372">{{ detPriceSuffix }}</span></div>
+            <span style="padding:7px 13px;border-radius:999px;background:#E3EFFC;color:#0A5FC2;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase">{{ detBadge }}</span>
+          </div>
+          <h1 style="margin:14px 0 0;font-size:{{ sDetH1 }};line-height:1.25;letter-spacing:-.02em;font-weight:800;color:#05294F;text-wrap:pretty">{{ detTitle }}</h1>
+          <div style="margin-top:8px;font-size:16px;font-weight:600;color:#4F6372">258 Ephrams View, 1 Erasmus Avenue, Raslouw, Centurion</div>
+          <div style="margin-top:18px;padding-top:18px;border-top:1px solid #EEF2F5;display:flex;flex-wrap:wrap;gap:22px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#05294F"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><path d="M21 13v-2a3 3 0 0 0-3-3h-6v5"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg>3 beds</span>
+            <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#05294F"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"></path><path d="M7 12V6a2 2 0 0 1 4 0"></path></svg>2 baths</span>
+            <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#05294F"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path><circle cx="8" cy="17" r="1.5"></circle><circle cx="16" cy="17" r="1.5"></circle></svg>1 garage</span>
+            <span style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#05294F"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg>131 m²</span>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:{{ sDetCardPad }}">
+          <div style="font-size:19px;font-weight:800;letter-spacing:-.015em;color:#05294F">Secure three-bedroom apartment in a Raslouw complex</div>
+          <p style="margin:14px 0 0;font-size:16.5px;line-height:1.6;color:#4F6372;font-weight:500">This well-appointed apartment offers comfortable living inside a secure Raslouw complex. With 131 m² of floor area it suits families and professionals who want space without leaving Centurion's main routes behind.</p>
+          <p style="margin:12px 0 0;font-size:16.5px;line-height:1.6;color:#4F6372;font-weight:500">The unit has an en-suite main bedroom, an open-plan lounge and dining area, a single garage and a fibre connection already installed. Access control runs 24 hours with security patrols on site.</p>
+          <button style="margin-top:16px;display:flex;align-items:center;gap:8px;border:0;background:transparent;padding:0;cursor:pointer;font-family:inherit;font-size:16px;font-weight:700;color:#0A5FC2">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+            Show more
+          </button>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:{{ sDetCardPad }}">
+          <div style="font-size:19px;font-weight:800;letter-spacing:-.015em;color:#05294F">Property details</div>
+          <div style="margin-top:8px;display:grid;grid-template-columns:{{ sPairCols }};gap:0 32px">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 8h6M9 12h6M9 16h3"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Listing number</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">M243-117647</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V20h13V9.5"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Property type</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">Apartment / flat</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M4 11h16"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Listing date</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">21 Sep 2026</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="M8 4v3M4 8h3"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Floor size</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">131 m²</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="11" rx="2"></rect><circle cx="12" cy="12.5" r="2.4"></circle></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">{{ detMoneyLabel }}</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">{{ detMoneyValue }}</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"></path><path d="M6 20V8l6-4 6 4v12"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Levies</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">R 1 180</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4.5l3 2"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Occupation</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">01 Nov 2026</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #EEF2F5">
+          <span style="color:#0A5FC2;flex:none;margin-top:1px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z"></path></svg></span>
+          <span style="font-size:15.5px;font-weight:600;color:#4F6372;flex:1">Lifestyle</span>
+          <span style="font-size:15.5px;font-weight:800;color:#05294F;text-align:right">Security complex</span>
+        </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:{{ sDetCardPad }}">
+          <div style="font-size:19px;font-weight:800;letter-spacing:-.015em;color:#05294F">Features</div>
+          <div style="margin-top:16px;display:grid;grid-template-columns:{{ sFeatCols }};gap:14px 24px">
+        <div style="display:flex;align-items:center;gap:11px"><span style="color:#0A5FC2;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a10 10 0 0 1 14 0"></path><path d="M8.5 16.5a5.5 5.5 0 0 1 7 0"></path><circle cx="12" cy="20" r="1.2"></circle></svg></span><span style="font-size:15.5px;font-weight:600;color:#15232E">Fibre internet ready</span></div>
+        <div style="display:flex;align-items:center;gap:11px"><span style="color:#0A5FC2;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"></path><path d="M6 11V7h12v4"></path></svg></span><span style="font-size:15.5px;font-weight:600;color:#15232E">Unfurnished</span></div>
+        <div style="display:flex;align-items:center;gap:11px"><span style="color:#0A5FC2;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2"></circle><circle cx="16" cy="9" r="2"></circle><path d="M12 20c-3 0-5-2-5-4s2-3 5-3 5 1 5 3-2 4-5 4Z"></path></svg></span><span style="font-size:15.5px;font-weight:600;color:#15232E">No pets allowed</span></div>
+        <div style="display:flex;align-items:center;gap:11px"><span style="color:#0A5FC2;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z"></path></svg></span><span style="font-size:15.5px;font-weight:600;color:#15232E">24-hour access control</span></div>
+        <div style="display:flex;align-items:center;gap:11px"><span style="color:#0A5FC2;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14"></path><path d="M6 17v-4l2-5h8l2 5v4"></path></svg></span><span style="font-size:15.5px;font-weight:600;color:#15232E">Single garage</span></div>
+        <div style="display:flex;align-items:center;gap:11px"><span style="color:#0A5FC2;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-5h18v5"></path><path d="M3 13V8"></path><circle cx="7.5" cy="10" r="1.8"></circle></svg></span><span style="font-size:15.5px;font-weight:600;color:#15232E">En-suite main bedroom</span></div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:{{ sDetCardPad }}">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+            <div style="font-size:19px;font-weight:800;letter-spacing:-.015em;color:#05294F">Photo gallery</div>
+            <a href="#" style="font-size:15.5px;font-weight:700;color:#0A5FC2">View all</a>
+          </div>
+          <div style="margin-top:16px;display:grid;grid-template-columns:{{ sThumbCols }};gap:10px">
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g1" src="https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g2" src="https://images.pexels.com/photos/6934189/pexels-photo-6934189.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g3" src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g4" src="https://images.pexels.com/photos/20390760/pexels-photo-20390760.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g5" src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g6" src="https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g7" src="https://images.pexels.com/photos/6933852/pexels-photo-6933852.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g8" src="https://images.pexels.com/photos/6422929/pexels-photo-6422929.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+          </div>
+          <div style="position:relative;height:{{ sThumbH }};border-radius:6px;overflow:hidden">
+            <image-slot id="m243-g9" src="https://images.pexels.com/photos/8134821/pexels-photo-8134821.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=500" shape="rect" placeholder="Photo"></image-slot>
+            <span style="position:absolute;inset:0;background:rgba(5,41,79,.62);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:800;pointer-events:none">+8</span>
+          </div>
+          </div>
+        </div>
+
+        <sc-if value="{{ showBond }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:{{ sDetCardPad }}">
+          <div style="font-size:19px;font-weight:800;letter-spacing:-.015em;color:#05294F">Bond calculator</div>
+          <div style="margin-top:16px;display:grid;grid-template-columns:{{ sPairCols }};gap:18px;align-items:start">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <div style="font-size:14.5px;font-weight:700;color:#4F6372">Purchase price</div>
+                <div style="margin-top:7px;display:flex;align-items:center;gap:6px;height:50px;padding:0 14px;border:1px solid #CBD6DE;border-radius:6px">
+                  <span style="font-size:15.5px;font-weight:700;color:#4F6372">R</span>
+                  <input type="text" value="{{ price }}" onChange="{{ setPrice }}" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:600;color:#15232E">
+                </div>
+              </div>
+              <div>
+                <div style="font-size:14.5px;font-weight:700;color:#4F6372">Deposit</div>
+                <div style="margin-top:7px;display:flex;align-items:center;gap:6px;height:50px;padding:0 14px;border:1px solid #CBD6DE;border-radius:6px">
+                  <span style="font-size:15.5px;font-weight:700;color:#4F6372">R</span>
+                  <input type="text" value="{{ deposit }}" onChange="{{ setDeposit }}" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:600;color:#15232E">
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+                <div>
+                  <div style="font-size:14.5px;font-weight:700;color:#4F6372">Interest rate</div>
+                  <div style="margin-top:7px;display:flex;align-items:center;gap:6px;height:50px;padding:0 14px;border:1px solid #CBD6DE;border-radius:6px">
+                    <input type="text" value="{{ rate }}" onChange="{{ setRate }}" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:600;color:#15232E">
+                    <span style="font-size:15.5px;font-weight:700;color:#4F6372">%</span>
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size:14.5px;font-weight:700;color:#4F6372">Loan term</div>
+                  <select value="{{ term }}" onChange="{{ setTerm }}" style="margin-top:7px;width:100%;height:50px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:15.5px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+                    <option value="20">20 years</option><option value="25">25 years</option><option value="30">30 years</option><option value="15">15 years</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style="background:#F5F7F9;border-radius:6px;padding:20px">
+              <div style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372">Monthly repayment</div>
+              <div style="margin-top:6px;font-size:32px;font-weight:800;letter-spacing:-.025em;color:#05294F">{{ monthly }}</div>
+              <div style="margin-top:16px;padding-top:16px;border-top:1px solid #E3E9EE;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <span style="font-size:15px;font-weight:600;color:#4F6372">Loan value</span>
+                <span style="font-size:15.5px;font-weight:800;color:#05294F">{{ loanLabel }}</span>
+              </div>
+              <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <span style="font-size:15px;font-weight:600;color:#4F6372">Term</span>
+                <span style="font-size:15.5px;font-weight:800;color:#05294F">{{ term }} years</span>
+              </div>
+              <a href="#" style="display:inline-block;margin-top:16px;font-size:15.5px;font-weight:700;color:#0A5FC2">Can I afford this?</a>
+            </div>
+          </div>
+          <p style="margin:14px 0 0;font-size:13.5px;line-height:1.5;color:#4F6372;font-weight:500">Estimate only, at the current prime rate and excluding rates, levies and insurance.</p>
+        </div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:22px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <image-slot id="m243-detag" src="https://images.pexels.com/photos/30004322/pexels-photo-30004322.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" shape="circle" style="width:58px;height:58px" placeholder="Agent"></image-slot>
+            <div>
+              <div style="font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#4F6372">Contact agent</div>
+              <div style="margin-top:3px;font-size:17.5px;font-weight:800;color:#05294F">Megan Kruger</div>
+              <div style="font-size:14.5px;font-weight:600;color:#4F6372">Keystone Properties</div>
+            </div>
+          </div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">
+            <button style="height:50px;border:1px solid #0A5FC2;background:#fff;border-radius:6px;font-family:inherit;font-size:15.5px;font-weight:700;color:#0A5FC2;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="background:#E3EFFC">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1Z"></path></svg>
+              Show contact number
+            </button>
+            <button style="height:50px;border:1px solid #CBD6DE;background:#fff;border-radius:6px;font-family:inherit;font-size:15.5px;font-weight:700;color:#05294F;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="border-color:#0A5FC2;color:#0A5FC2">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.2-4.6A9 9 0 1 1 21 12Z"></path></svg>
+              Chat on WhatsApp
+            </button>
+          </div>
+          <div style="margin-top:18px;padding-top:18px;border-top:1px solid #EEF2F5;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;height:50px;padding:0 14px;border:1px solid #CBD6DE;border-radius:6px"><span style="color:#7A8B99;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.2"></circle><path d="M5 20c0-3.3 3-5.5 7-5.5s7 2.2 7 5.5"></path></svg></span><input type="text" placeholder="Your name" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:500;color:#15232E"></div>
+        <div style="display:flex;align-items:center;gap:10px;height:50px;padding:0 14px;border:1px solid #CBD6DE;border-radius:6px"><span style="color:#7A8B99;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="m4 8 8 5 8-5"></path></svg></span><input type="text" placeholder="Your email" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:500;color:#15232E"></div>
+        <div style="display:flex;align-items:center;gap:10px;height:50px;padding:0 14px;border:1px solid #CBD6DE;border-radius:6px"><span style="color:#7A8B99;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"></rect><path d="M11 18h2"></path></svg></span><input type="text" placeholder="Your mobile number" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:500;color:#15232E"></div>
+        <textarea rows="3" style="width:100%;padding:12px 14px;border:1px solid #CBD6DE;border-radius:6px;font-family:inherit;font-size:15.5px;font-weight:500;color:#15232E;resize:vertical">I'm interested in this property, please get in touch.</textarea>
+            <button style="height:52px;border:0;border-radius:6px;background:#CE1021;color:#fff;font-family:inherit;font-size:16.5px;font-weight:700;cursor:pointer" style-hover="background:#A60C1A">Send message</button>
+            <p style="margin:0;font-size:12.5px;line-height:1.5;color:#4F6372;font-weight:500">By sending this message you accept our <a href="#" style="font-weight:700">terms</a> and <a href="#" style="font-weight:700">privacy policy</a>.</p>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px">
+          <div style="height:56px;border-radius:6px;background:#E3EFFC;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;letter-spacing:-.01em;color:#0A5FC2">Keystone Properties</div>
+          <div style="font-size:14.5px;font-weight:600;color:#4F6372">Letting specialists in Centurion and Pretoria East since 2011 · 64 active listings</div>
+          <a href="#" style="font-size:15.5px;font-weight:700;color:#0A5FC2">View agency listings</a>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E9EE;border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px">
+          <a href="#" style="display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;color:#0A5FC2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 21V4h9l1 2h5v9h-6l-1-2H5"></path></svg>
+            Report this listing
+          </a>
+          <a href="#" style="display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;color:#0A5FC2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg>
+            Listing quality score
+          </a>
+          <a href="#" style="display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;color:#0A5FC2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7 9V4h10v5"></path><rect x="5" y="9" width="14" height="7" rx="1"></rect><path d="M7 16v4h10v-4"></path></svg>
+            Print or download brochure
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+
+
+</div>
+</div>
+</div>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:300;background:rgba(5,41,79,.55);display:flex;align-items:flex-start;justify-content:center;padding:{{ sModalPad }}">
+  <div onClick="{{ stop }}" style="width:100%;max-width:{{ sModalMax }};max-height:88vh;background:#fff;border-radius:10px;box-shadow:0 30px 80px rgba(5,41,79,.45);display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:18px 24px 0;border-bottom:1px solid #E3E9EE;flex:none">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+        <div style="display:flex;gap:26px">
+          <sc-for list="{{ modalTabs }}" as="t" hint-placeholder-count="2">
+            <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <button onClick="{{ closeModal }}" aria-label="Close" style="border:0;background:transparent;cursor:pointer;padding:4px;color:#4F6372;display:flex" style-hover="color:#CE1021">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+      <div style="margin:16px 0 20px;display:flex;align-items:center;gap:10px;border:1px solid #CBD6DE;border-radius:6px;padding:6px 6px 6px 14px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F6372" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input type="text" placeholder="Search city, suburb or area" style="flex:1;min-width:0;border:0;outline:0;font-size:16.5px;font-weight:500;color:#15232E;background:transparent">
+        <button onClick="{{ goResults }}" style="height:48px;padding:0 28px;border:0;border-radius:5px;background:#CE1021;color:#fff;font-size:16.5px;font-weight:700;cursor:pointer;flex:none" style-hover="background:#A60C1A">Search</button>
+      </div>
+    </div>
+
+    <div style="overflow-y:auto;padding:22px 24px 28px">
+      <div style="font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7A8B99">Suggested areas</div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ suggested }}" as="s" hint-placeholder-count="3">
+          <button onClick="{{ s.onClick }}" style="{{ s.style }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+            {{ s.label }}
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:22px;display:grid;grid-template-columns:{{ sCatCols }};border:1px solid #E3E9EE;border-radius:6px;overflow:hidden">
+        <button onClick="{{ setCatRes }}" style="{{ cat.res }}">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V20h13V9.5"></path><path d="M10 20v-5.5h4V20"></path></svg>
+          Residential
+        </button>
+        <button onClick="{{ setCatCom }}" style="{{ cat.com }}">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18"></rect><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"></path></svg>
+          Commercial
+        </button>
+        <button onClick="{{ setCatFarm }}" style="{{ cat.farm }}">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 5l9 6"></path><path d="M5 11v9h14v-9"></path><path d="M9 20v-5h6v5"></path></svg>
+          Farms
+        </button>
+        <button onClick="{{ setCatDev }}" style="{{ cat.dev }}">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l6-3v17"></path><path d="M10 10h10v11"></path><path d="M14 14h1M14 17h1"></path></svg>
+          Developments
+        </button>
+      </div>
+
+      <div style="margin-top:26px;font-size:16px;font-weight:700;color:#05294F">Property type</div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:12px 24px">
+        <sc-for list="{{ ptypes }}" as="t" hint-placeholder-count="5">
+          <button onClick="{{ t.onClick }}" style="display:flex;align-items:center;gap:9px;border:0;background:transparent;cursor:pointer;padding:4px 0;font-family:inherit">
+            <span style="{{ t.box }}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" style="display:{{ t.tick }}"><path d="M5 12.5 10 17.5 19 7"></path></svg>
+            </span>
+            <span style="font-size:15.5px;font-weight:600;color:#15232E">{{ t.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:{{ sPairCols }};gap:18px">
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Min price</div>
+          <select defaultValue="Any" style="margin-top:8px;width:100%;height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option>Any</option><option>R 500 000</option><option>R 950 000</option><option>R 1 500 000</option><option>R 2 500 000</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Max price</div>
+          <select defaultValue="Any" style="margin-top:8px;width:100%;height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option>Any</option><option>R 1 500 000</option><option>R 2 500 000</option><option>R 5 000 000</option><option>R 10 000 000+</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:{{ sPairCols }};gap:18px">
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Bedrooms</div>
+          <div style="margin-top:8px;display:flex;border:1px solid #CBD6DE;border-radius:6px;overflow:hidden">
+            <sc-for list="{{ bedOpts }}" as="o" hint-placeholder-count="6">
+              <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Bathrooms</div>
+          <div style="margin-top:8px;display:flex;border:1px solid #CBD6DE;border-radius:6px;overflow:hidden">
+            <sc-for list="{{ bathOpts }}" as="o" hint-placeholder-count="6">
+              <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:{{ sPairCols }};gap:18px">
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Garages</div>
+          <div style="margin-top:8px;display:flex;border:1px solid #CBD6DE;border-radius:6px;overflow:hidden">
+            <sc-for list="{{ garOpts }}" as="o" hint-placeholder-count="6">
+              <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Parkings</div>
+          <div style="margin-top:8px;display:flex;border:1px solid #CBD6DE;border-radius:6px;overflow:hidden">
+            <sc-for list="{{ parkOpts }}" as="o" hint-placeholder-count="6">
+              <button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:{{ sPairCols }};gap:18px">
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Min floor size</div>
+          <select defaultValue="Any" style="margin-top:8px;width:100%;height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option>Any</option><option>60 m²</option><option>100 m²</option><option>200 m²</option><option>400 m²</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Max floor size</div>
+          <select defaultValue="Any" style="margin-top:8px;width:100%;height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option>Any</option><option>150 m²</option><option>300 m²</option><option>600 m²</option><option>1 000 m²</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:{{ sPairCols }};gap:18px">
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Min land size</div>
+          <select defaultValue="Any" style="margin-top:8px;width:100%;height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option>Any</option><option>250 m²</option><option>500 m²</option><option>1 000 m²</option><option>1 ha</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:15.5px;font-weight:700;color:#05294F">Max land size</div>
+          <select defaultValue="Any" style="margin-top:8px;width:100%;height:52px;padding:0 12px;border:1px solid #CBD6DE;border-radius:6px;background:#fff;font-size:16px;font-weight:600;color:#15232E;appearance:none;cursor:pointer">
+            <option>Any</option><option>800 m²</option><option>2 000 m²</option><option>1 ha</option><option>5 ha+</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;font-size:16px;font-weight:700;color:#05294F">Features</div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ featureChips }}" as="c" hint-placeholder-count="6">
+          <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:24px;font-size:16px;font-weight:700;color:#05294F">Security</div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ securityChips }}" as="c" hint-placeholder-count="5">
+          <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:24px;font-size:16px;font-weight:700;color:#05294F">General</div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ generalChips }}" as="c" hint-placeholder-count="2">
+          <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:26px;font-size:16px;font-weight:700;color:#05294F">Property status</div>
+      <button onClick="{{ toggleStatus }}" style="margin-top:12px;display:flex;align-items:center;gap:9px;border:0;background:transparent;cursor:pointer;padding:4px 0;font-family:inherit">
+        <span style="{{ statusBox }}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" style="display:{{ statusTick }}"><path d="M5 12.5 10 17.5 19 7"></path></svg>
+        </span>
+        <span style="font-size:15.5px;font-weight:600;color:#15232E">Include under offer &amp; sold</span>
+      </button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+
+<div style="position:fixed;bottom:18px;right:18px;z-index:200;display:flex;gap:4px;padding:5px;background:rgba(5,41,79,.92);backdrop-filter:blur(8px);border-radius:999px;box-shadow:0 8px 28px rgba(5,41,79,.3)">
+  <sc-for list="{{ viewTabs }}" as="t" hint-placeholder-count="2">
+    <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+  </sc-for>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;listingsTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;For Sale&quot;,&quot;To Rent&quot;],&quot;default&quot;:&quot;For Sale&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  constructor(p){
+    super(p);
+    this.state = {
+      view: p.view || 'desktop',
+      win: typeof window !== 'undefined' ? window.innerWidth : 1440,
+      heroTab: 'Buy',
+      listTab: p.listingsTab || 'For Sale',
+      menu: false,
+      saved: { s1:false, s2:true, s3:false, s4:false, r1:false, r2:false, r3:false, r4:false, res1:false, res2:true, res3:false, res4:false, det:false },
+      price: '1 450 000', deposit: '145 000', rate: '10.75', term: '20',
+      chips: ['Garsfontein','Waterkloof','Menlyn','Faerie Glen'],
+      modalOpen: false, modalTab: 'Buy', cat: 'Residential',
+      ptypes: ['All types'], beds: 'Any', baths: 'Any', garages: 'Any', parkings: 'Any',
+      feats: [], secs: [], gens: [], status: true, screen: 'home'
+    };
+    this.car = React.createRef();
+    this.wrap = React.createRef();
+  }
+  componentDidMount(){
+    this._r = () => {
+      const el = document.getElementById('m243-wrap');
+      const w = (el && el.getBoundingClientRect().width) || window.innerWidth;
+      if (w && w !== this.state.win) this.setState({ win: w });
+    };
+    window.addEventListener('resize', this._r);
+    this._r();
+    requestAnimationFrame(this._r);
+    setTimeout(this._r, 150);
+    const wrapEl = document.getElementById('m243-wrap');
+    if (typeof ResizeObserver !== 'undefined' && wrapEl) {
+      this._ro = new ResizeObserver(this._r);
+      this._ro.observe(wrapEl);
+    }
+  }
+  componentWillUnmount(){ window.removeEventListener('resize', this._r); if (this._ro) this._ro.disconnect(); }
+
+  num(s){ return parseFloat(String(s).replace(/[^\d.]/g,'')) || 0; }
+  zar(n){ return 'R ' + Math.round(n).toLocaleString('en-ZA').replace(/,/g,' '); }
+
+  pill(active, big){
+    const base = 'border:0;cursor:pointer;font-family:inherit;white-space:nowrap;border-radius:'+(big?'9px':'999px')+';font-weight:700;transition:background .15s,color .15s;';
+    if (big) return base + 'padding:16px 20px;background:transparent;border-bottom:3px solid '+(active?'#CE1021':'transparent')+';font-size:16px;color:'+(active?'#05294F':'#5E7180')+';border-radius:0';
+    return base + 'padding:10px 18px;font-size:15px;background:'+(active?'#fff':'transparent')+';color:'+(active?'#05294F':'#4F6372')+';box-shadow:'+(active?'0 1px 3px rgba(5,41,79,.16)':'none');
+  }
+
+  chipStyle(on){
+    return 'display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:5px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;white-space:nowrap;border:1px solid '
+      + (on ? '#0A5FC2' : '#CBD6DE') + ';background:' + (on ? '#E3EFFC' : '#fff') + ';color:' + (on ? '#0A5FC2' : '#15232E');
+  }
+  boxStyle(on){
+    return 'width:22px;height:22px;border-radius:4px;flex:none;display:flex;align-items:center;justify-content:center;border:2px solid '
+      + (on ? '#0A5FC2' : '#9FB0BD') + ';background:' + (on ? '#0A5FC2' : '#fff');
+  }
+  segStyle(on){
+    return 'flex:1;height:50px;border:0;border-left:1px solid #CBD6DE;cursor:pointer;font-family:inherit;font-size:15.5px;font-weight:700;background:'
+      + (on ? '#E3EFFC' : '#fff') + ';color:' + (on ? '#0A5FC2' : '#4F6372');
+  }
+  toggleIn(key, v){
+    this.setState(s => ({ [key]: s[key].indexOf(v) < 0 ? s[key].concat([v]) : s[key].filter(x => x !== v) }));
+  }
+  segList(key, vals){
+    return vals.map(v => ({ label: v, style: this.segStyle(this.state[key] === v), onClick: () => this.setState({ [key]: v }) }));
+  }
+  chipList(key, vals){
+    return vals.map(v => ({ label: v, style: this.chipStyle(this.state[key].indexOf(v) >= 0), onClick: () => this.toggleIn(key, v) }));
+  }
+  catStyle(name){
+    const on = this.state.cat === name;
+    return 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 10px;border:0;border-right:1px solid #E3E9EE;cursor:pointer;font-family:inherit;font-size:15.5px;font-weight:700;background:'
+      + (on ? '#E3EFFC' : '#fff') + ';color:' + (on ? '#0A5FC2' : '#4F6372');
+  }
+  renderVals(){
+    const m = this.state.view === 'mobile';
+    const pageW = m ? 390 : 1440;
+    const avail = Math.max(320, this.state.win - (m ? 0 : 48));
+    const zoom = Math.min(1, avail / pageW);
+
+    const P = this.num(this.state.price), D = this.num(this.state.deposit);
+    const loan = Math.max(0, P - D), r = this.num(this.state.rate)/100/12, n = this.num(this.state.term)*12;
+    const monthly = r > 0 && n > 0 ? loan * r / (1 - Math.pow(1+r, -n)) : loan / (n || 1);
+
+    const rent = this.state.modalTab === 'Rent';
+    const sv = {};
+    Object.keys(this.state.saved).forEach(k => { sv[k] = this.state.saved[k] ? '#CE1021' : 'none'; });
+
+    const mk = (labels, cur, set, big) => labels.map(l => ({
+      label: l, style: this.pill(cur === l, big), onClick: () => this.setState(set(l))
+    }));
+
+    return {
+      zoom, pageW, sv, wrapRef: this.wrap,
+      dNav: m ? 'none' : 'flex',
+      dBurger: m ? 'flex' : 'none',
+      dDrawer: m && this.state.menu ? 'flex' : 'none',
+      dStats: 'flex',
+      sHeadPad: m ? '14px 20px' : '16px 24px',
+      sHeroPad: m ? '44px 20px 0' : '110px 24px 0',
+      sH1: m ? '34px' : '58px',
+      sH2: m ? '29px' : '42px',
+      sHeroSub: m ? '16.5px' : '19px',
+      sCardMax: m ? '100%' : '1000px',
+      sCardPad: m ? '18px' : '24px',
+      sCardPadX: m ? '10px' : '14px',
+      sSearchCols: m ? '1fr' : '1.5fr 1fr 1.2fr .8fr auto',
+      sStatsGap: m ? '12px' : '18px',
+      sSecPad: m ? '56px 20px' : '88px 24px',
+      sGrid3: m ? '1fr' : 'repeat(3,minmax(0,1fr))',
+      sGrid4: m ? '1fr' : 'repeat(4,minmax(0,1fr))',
+      sChipCols: m ? '1fr' : 'repeat(5,minmax(0,1fr))',
+      sAgentCols: m ? '1fr' : 'repeat(3,minmax(0,1fr))',
+      sDevW: m ? '300px' : '340px',
+      sSplit: m ? '1fr' : '1fr 1fr',
+      sSplitH: m ? '260px' : '520px',
+      sSplitPad: m ? '48px 20px 56px' : '80px 64px',
+      sCalcCols: m ? '1fr' : '1fr 1.25fr',
+      sCalcGap: m ? '32px' : '56px',
+      sCalcPad: m ? '22px' : '32px',
+      sCalcFields: m ? '1fr 1fr' : '1fr 1fr',
+      sCalcNum: m ? '32px' : '40px',
+      sAreaCols: m ? '1fr 1fr' : 'repeat(3,minmax(0,1fr))',
+      sTileH: m ? '150px' : '240px',
+      sAgentSearchW: m ? '100%' : '340px',
+      sAppPad: m ? '56px 20px' : '80px 24px',
+      sAppCols: m ? '1fr' : '1fr 1fr',
+      sAppAlign: m ? 'center' : 'flex-end',
+      sPhoneW: m ? '240px' : '300px',
+      sPhoneH: m ? '480px' : '600px',
+      sFootPad: m ? '56px 20px 40px' : '80px 24px 48px',
+      sFootCols: m ? '1fr' : '1.6fr 1fr 1fr 1fr 1fr',
+      sFootGap: m ? '36px' : '32px',
+      sNewsPad: m ? '24px' : '28px 32px',
+      sNewsCols: m ? '1fr' : '1fr 1fr',
+
+      sPhotoH: m ? '330px' : '365px',
+      sTabsTop: m ? '28px' : '44px',
+      sTabsJustify: m ? 'flex-start' : 'center',
+      sTabsGap: m ? '18px' : '40px',
+      sBarTop: m ? '20px' : '26px',
+      sBarWrap: m ? 'wrap' : 'nowrap',
+      sSearchFlex: m ? '1 1 100%' : 'none',
+      sFilterCols: m ? '1fr 1fr' : 'repeat(4,minmax(0,1fr)) auto',
+      sHeroBottom: m ? '40px' : '64px',
+      chips: (this.state.chips || []).map(c => ({
+        label: c, remove: (e) => { e.stopPropagation(); this.setState(s => ({ chips: s.chips.filter(x => x !== c) })); }
+      })),
+      chipsMore: '+3',
+      modalOpen: this.state.modalOpen,
+      openModal: () => this.setState({ modalOpen: true }),
+      closeModal: () => this.setState({ modalOpen: false }),
+      stop: (e) => e.stopPropagation(),
+      sModalPad: m ? '12px' : '5vh 24px',
+      sModalMax: m ? '366px' : '880px',
+      isHome: this.state.screen === 'home',
+      isDetail: this.state.screen === 'detail',
+      p1: rent ? 'R 11 250' : 'R 1 450 000',
+      p2: rent ? 'R 12 000' : 'R 1 795 000',
+      p3: rent ? 'R 11 000' : 'R 1 095 000',
+      p4: rent ? 'R 14 500' : 'R 2 650 000',
+      resBadge: rent ? 'Available now' : 'New listing',
+      letVerb: rent ? 'to let' : 'for sale',
+      detBadge: rent ? 'Available now' : 'Immediate occupation',
+      detPrice: rent ? 'R 11 250' : 'R 1 450 000',
+      detPriceSuffix: rent ? '/ month' : '',
+      detTitle: '3 bedroom apartment ' + (rent ? 'to rent' : 'for sale') + ' in Raslouw',
+      detMoneyLabel: rent ? 'Deposit' : 'Rates and taxes',
+      detMoneyValue: rent ? 'R 11 250' : 'R 1 240 pm',
+      showBond: !rent,
+      goDetail: () => { this.setState({ screen: 'detail' }); window.scrollTo(0, 0); },
+      backToResults: () => { this.setState({ screen: 'results' }); window.scrollTo(0, 0); },
+      sDetPad: m ? '16px 12px 48px' : '24px 24px 72px',
+      sDetCols: m ? '1fr' : 'minmax(0,1fr) 360px',
+      sDetCardPad: m ? '20px' : '26px',
+      sDetPrice: m ? '28px' : '34px',
+      sDetH1: m ? '22px' : '26px',
+      sGalCols: m ? '1fr' : 'minmax(0,1.9fr) minmax(0,1fr)',
+      sGalH: m ? '240px' : '440px',
+      sThumbCols: m ? '1fr 1fr' : 'repeat(3,minmax(0,1fr))',
+      sThumbH: m ? '110px' : '140px',
+      sFeatCols: m ? '1fr' : '1fr 1fr',
+      isResults: this.state.screen === 'results',
+      goHome: () => { this.setState({ screen: 'home' }); window.scrollTo(0, 0); },
+      goResults: (e) => { if (e) e.stopPropagation(); this.setState({ screen: 'results', modalOpen: false }); window.scrollTo(0, 0); },
+      resTitle: 'Property to ' + (this.state.modalTab === 'Rent' ? 'Rent' : 'Buy') + ' in Centurion',
+      resCrumb: 'Property to ' + (this.state.modalTab === 'Rent' ? 'Rent' : 'Buy'),
+      sResPad: m ? '32px 20px 56px' : '48px 24px 80px',
+      sResH1: m ? '30px' : '46px',
+      sSubCols: m ? '1fr 1fr' : 'repeat(5,minmax(0,1fr))',
+      sResCols: m ? '1fr' : 'minmax(0,1fr) 340px',
+      sResCard: m ? '1fr' : '320px minmax(0,1fr)',
+      sResImgH: m ? '200px' : '240px',
+      sCatCols: m ? '1fr 1fr' : 'repeat(4,minmax(0,1fr))',
+      sPairCols: m ? '1fr' : '1fr 1fr',
+      modalTabs: ['Buy','Rent'].map(l => {
+        const on = this.state.modalTab === l;
+        return { label: l, onClick: () => this.setState({ modalTab: l }),
+          style: 'border:0;background:transparent;cursor:pointer;font-family:inherit;padding:4px 2px 12px;font-size:17px;font-weight:700;color:'+(on?'#05294F':'#4F6372')+';border-bottom:3px solid '+(on?'#CE1021':'transparent') };
+      }),
+      suggested: ['Monument Park','Centurion','Lynnwood'].map(v => ({
+        label: v, style: this.chipStyle(this.state.chips.indexOf(v) >= 0),
+        onClick: () => this.toggleIn('chips', v)
+      })),
+      cat: { res: this.catStyle('Residential'), com: this.catStyle('Commercial'), farm: this.catStyle('Farms'), dev: this.catStyle('Developments') },
+      setCatRes: () => this.setState({ cat: 'Residential' }),
+      setCatCom: () => this.setState({ cat: 'Commercial' }),
+      setCatFarm: () => this.setState({ cat: 'Farms' }),
+      setCatDev: () => this.setState({ cat: 'Developments' }),
+      ptypes: ['All types','House','Apartment','Townhouse','Land'].map(v => {
+        const on = this.state.ptypes.indexOf(v) >= 0;
+        return { label: v, box: this.boxStyle(on), tick: on ? 'block' : 'none', onClick: () => this.setState(s => {
+          if (v === 'All types') return { ptypes: ['All types'] };
+          const next = s.ptypes.filter(x => x !== 'All types');
+          const picked = next.indexOf(v) < 0 ? next.concat([v]) : next.filter(x => x !== v);
+          return { ptypes: picked.length ? picked : ['All types'] };
+        }) };
+      }),
+      bedOpts: this.segList('beds', ['Any','1+','2+','3+','4+','5+']),
+      bathOpts: this.segList('baths', ['Any','1+','2+','3+','4+','5+']),
+      garOpts: this.segList('garages', ['Any','1+','2+','3+','4+','5+']),
+      parkOpts: this.segList('parkings', ['Any','1+','2+','3+','4+','5+']),
+      featureChips: this.chipList('feats', ['Garden','Flatlet','Pets allowed','Pool','Sea view','Staff quarters']),
+      securityChips: this.chipList('secs', ['Access gate','Alarm','Electric fencing','Intercom','Security post']),
+      generalChips: this.chipList('gens', ['Bank-assisted sales & repossessions','On show']),
+      toggleStatus: () => this.setState(s => ({ status: !s.status })),
+      statusBox: this.boxStyle(this.state.status),
+      statusTick: this.state.status ? 'block' : 'none',
+      heroTabs: ['Buy','Rent','Developments','Agents','Sold Prices'].map(l => {
+        const on = this.state.heroTab === l;
+        return { label: l, onClick: () => this.setState({ heroTab: l }),
+          style: 'border:0;background:transparent;cursor:pointer;font-family:inherit;white-space:nowrap;padding:8px 2px 12px;font-size:'+(m?'16px':'19px')+';font-weight:700;color:'+(on?'#fff':'rgba(255,255,255,.82)')+';border-bottom:3px solid '+(on?'#F7D618':'transparent') };
+      }),
+      listTabs: mk(['For Sale','To Rent'], this.state.listTab, l => ({listTab:l}), false),
+      viewTabs: ['Desktop 1440','Mobile 390'].map(l => {
+        const active = (l === 'Mobile 390') === m;
+        return { label: l, onClick: () => this.setState({ view: l === 'Mobile 390' ? 'mobile' : 'desktop', menu:false }),
+          style: 'border:0;cursor:pointer;font-family:inherit;padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;white-space:nowrap;background:'+(active?'#CE1021':'transparent')+';color:'+(active?'#fff':'rgba(255,255,255,.7)') };
+      }),
+      isSale: this.state.listTab === 'For Sale',
+      isRent: this.state.listTab === 'To Rent',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      toggleSave: (e) => { const k = e.currentTarget.dataset.k; this.setState(s => ({ saved: Object.assign({}, s.saved, { [k]: !s.saved[k] }) })); },
+      carPrev: () => { const c = document.getElementById('m243-carousel'); if (c) c.scrollBy({ left: -360, behavior: 'smooth' }); },
+      carNext: () => { const c = document.getElementById('m243-carousel'); if (c) c.scrollBy({ left: 360, behavior: 'smooth' }); },
+      price: this.state.price, deposit: this.state.deposit, rate: this.state.rate, term: this.state.term,
+      setPrice: e => this.setState({ price: e.target.value }),
+      setDeposit: e => this.setState({ deposit: e.target.value }),
+      setRate: e => this.setState({ rate: e.target.value }),
+      setTerm: e => this.setState({ term: e.target.value }),
+      monthly: this.zar(monthly),
+      loanLabel: this.zar(loan)
+    };
+  }
+}
+
+</script>
+</body>
+</html>

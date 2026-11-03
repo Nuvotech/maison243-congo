@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0;background:#f4f5f8;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#14161b;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+button,input,select,textarea{font-family:inherit}
+a{color:#4361ee}
+a:hover{color:#2f4bd6}
+input[type=checkbox]{accent-color:#4361ee;width:16px;height:16px;margin:0;cursor:pointer}
+:focus-visible{outline:2px solid #4361ee;outline-offset:2px}
+</style>
+</helmet>
+
+<div style="display:grid;grid-template-columns:{{ gridCols }};min-height:100vh;background:#f4f5f8;color:#14161b;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:14px">
+
+<aside style="display:flex;flex-direction:{{ asideDir }};gap:22px;padding:20px 16px;border-right:{{ asideBorderR }};border-bottom:{{ asideBorderB }};position:sticky;top:0;align-self:start;height:{{ asideH }};background:#f8f9fb;z-index:5;overflow-x:auto">
+  <div style="display:flex;align-items:center;gap:10px;padding:2px 8px 6px;flex:none">
+    <span style="width:32px;height:32px;border-radius:9px;background:#14161b;color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px">M</span>
+    <span style="font-weight:700;font-size:19px;letter-spacing:-0.02em">Maison243</span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:8px;flex:none">
+    <div style="display:{{ navLabel }};font-size:12px;color:#8a909c;padding:0 12px">Menu</div>
+    <nav style="display:flex;flex-direction:{{ asideDir }};gap:2px">
+      <sc-for list="{{ navMain }}" as="n" hint-placeholder-count="3">
+        <button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:0;border-radius:9px;cursor:pointer;font-size:14px;font-weight:500;text-align:left;white-space:nowrap;background:{{ n.bg }};color:{{ n.fg }}" style-hover="background:#eceef3;color:#14161b">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg>
+          <span style="flex:1">{{ n.label }}</span>
+          <sc-if value="{{ n.hasCount }}"><span style="min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#e5484d;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center">{{ n.count }}</span></sc-if>
+        </button>
+      </sc-for>
+    </nav>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:8px;flex:none">
+    <div style="display:{{ navLabel }};font-size:12px;color:#8a909c;padding:0 12px">Settings</div>
+    <nav style="display:flex;flex-direction:{{ asideDir }};gap:2px">
+      <sc-for list="{{ navOther }}" as="n" hint-placeholder-count="3">
+        <button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:0;border-radius:9px;cursor:pointer;font-size:14px;font-weight:500;text-align:left;white-space:nowrap;background:{{ n.bg }};color:{{ n.fg }}" style-hover="background:#eceef3;color:#14161b">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ n.icon }}"></path></svg>
+          <span style="flex:1">{{ n.label }}</span>
+          <sc-if value="{{ n.hasCount }}"><span style="min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#e5484d;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center">{{ n.count }}</span></sc-if>
+        </button>
+      </sc-for>
+    </nav>
+  </div>
+</aside>
+
+<main style="min-width:0;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;gap:12px;padding:14px 28px;min-height:72px;background:#fff;border-bottom:1px solid #e7e9ee;position:{{ headerPos }};top:0;z-index:4">
+    <h1 style="margin:0;font-size:22px;font-weight:700;letter-spacing:-0.02em;flex:1">{{ title }}</h1>
+    <button onClick="{{ goPlans }}" aria-label="Settings" style="width:38px;height:38px;border-radius:50%;border:1px solid #e7e9ee;background:#fff;display:grid;place-items:center;cursor:pointer;color:#14161b" style-hover="background:#f5f6f9"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></button>
+    <button onClick="{{ goPending }}" aria-label="Notifications" style="position:relative;width:38px;height:38px;border-radius:50%;border:1px solid #e7e9ee;background:#fff;display:grid;place-items:center;cursor:pointer;color:#14161b" style-hover="background:#f5f6f9"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg><span style="position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:#e5484d;border:1.5px solid #fff"></span></button>
+    <span style="width:1px;height:28px;background:#e7e9ee;margin:0 4px"></span>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="width:38px;height:38px;border-radius:50%;background:#e3e8fd;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:13px">NO</span>
+      <div style="display:{{ navLabel }};line-height:1.25"><div style="font-weight:600;font-size:14px">Nadia Osman</div><div style="font-size:12px;color:#8a909c">Super admin</div></div>
+    </div>
+  </header>
+
+  <div style="padding:{{ mainPad }};display:flex;flex-direction:column;gap:20px">
+
+  <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <button onClick="{{ s.go }}" style="display:flex;flex-direction:column;gap:12px;padding:18px;background:#fff;border:1px solid #e7e9ee;border-radius:14px;text-align:left;cursor:pointer;color:inherit;font:inherit" style-hover="border-color:#c9d2fb;box-shadow:0 6px 18px rgba(20,22,27,.06)">
+          <span style="font-size:13px;font-weight:600;color:#3a3f4b">{{ s.label }}</span>
+          <div style="display:flex;align-items:flex-end;gap:12px;width:100%">
+            <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;flex:1;line-height:1">{{ s.value }}</span>
+            <svg width="110" height="44" viewBox="0 0 120 44" style="flex:none;overflow:visible"><path d="{{ s.area }}" fill="{{ s.fill }}"></path><path d="{{ s.line }}" fill="none" stroke="{{ s.stroke }}" stroke-width="2" stroke-linecap="round"></path></svg>
+          </div>
+          <span style="font-size:12px;color:#8a909c">{{ s.sub }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:{{ split }};gap:16px">
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:18px;min-width:0">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Listing activity</h3>
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#5b6170"><span style="width:8px;height:8px;border-radius:2px;background:#4361ee"></span>For sale</span>
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#5b6170"><span style="width:8px;height:8px;border-radius:2px;background:#e5484d"></span>To rent</span>
+          <span style="font-size:12px;font-weight:600;color:#3a3f4b;border:1px solid #e7e9ee;border-radius:8px;padding:6px 10px">Last 12 weeks</span>
+        </div>
+        <div style="display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:8px;row-gap:8px">
+          <div style="display:flex;flex-direction:column;justify-content:space-between;height:234px;margin-top:-7px;font-size:11px;color:#8a909c;line-height:14px">
+            <sc-for list="{{ chart.yTicks }}" as="t" hint-placeholder-count="5"><span>{{ t.label }}</span></sc-for>
+          </div>
+          <div onMouseLeave="{{ chart.leave }}" style="position:relative;height:220px">
+            <div style="position:absolute;left:0;right:0;top:0;border-top:1px dashed #e9ecf1"></div>
+            <div style="position:absolute;left:0;right:0;top:25%;border-top:1px dashed #e9ecf1"></div>
+            <div style="position:absolute;left:0;right:0;top:50%;border-top:1px dashed #e9ecf1"></div>
+            <div style="position:absolute;left:0;right:0;top:75%;border-top:1px dashed #e9ecf1"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;border-top:1px solid #e9ecf1"></div>
+            <div style="position:absolute;inset:0;display:flex">
+              <sc-for list="{{ chart.cols }}" as="c" hint-placeholder-count="12"><div onMouseEnter="{{ c.enter }}" style="flex:1;border-radius:6px;background:{{ c.band }}"></div></sc-for>
+            </div>
+            <svg viewBox="0 0 600 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible">
+              <path d="{{ chart.saleArea }}" fill="rgba(67,97,238,.09)"></path>
+              <path d="{{ chart.sale }}" fill="none" stroke="#4361ee" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+              <path d="{{ chart.rent }}" fill="none" stroke="#e5484d" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+            </svg>
+            <sc-if value="{{ chart.hasTip }}">
+              <span style="position:absolute;left:{{ chart.tip.left }};top:{{ chart.tip.saleTop }};width:12px;height:12px;border-radius:50%;background:#4361ee;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transform:translate(-50%,-50%);pointer-events:none"></span>
+              <span style="position:absolute;left:{{ chart.tip.left }};top:{{ chart.tip.rentTop }};width:12px;height:12px;border-radius:50%;background:#e5484d;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transform:translate(-50%,-50%);pointer-events:none"></span>
+              <div style="position:absolute;left:{{ chart.tip.left }};top:28%;transform:translateX({{ chart.tip.shift }});background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(20,22,27,.14);padding:10px 12px;font-size:12px;pointer-events:none;display:flex;flex-direction:column;gap:5px;white-space:nowrap">
+                <span style="color:#8a909c">{{ chart.tip.label }}</span>
+                <span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#4361ee"></span>For sale<strong style="margin-left:auto;padding-left:12px">{{ chart.tip.sale }}</strong></span>
+                <span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#e5484d"></span>To rent<strong style="margin-left:auto;padding-left:12px">{{ chart.tip.rent }}</strong></span>
+              </div>
+            </sc-if>
+          </div>
+          <div></div>
+          <div style="display:flex">
+            <sc-for list="{{ chart.cols }}" as="c" hint-placeholder-count="12"><span style="flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-align:center;font-size:11px;color:{{ c.lblColor }};font-weight:{{ c.lblWeight }}">{{ c.label }}</span></sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="display:flex;align-items:center;gap:12px">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Listing mix</h3>
+          <span style="font-size:12px;font-weight:600;color:#3a3f4b;border:1px solid #e7e9ee;border-radius:8px;padding:6px 10px">Active listings</span>
+        </div>
+        <div style="position:relative;width:240px;max-width:100%;margin:6px auto 0">
+          <svg viewBox="0 0 220 124" width="100%" style="display:block;overflow:visible">
+            <path d="M 20 110 A 90 90 0 0 1 200 110" fill="none" stroke="{{ gA.color }}" stroke-width="22" stroke-linecap="round" style="stroke-dasharray:{{ gA.dash }};stroke-dashoffset:{{ gA.off }}"></path>
+            <path d="M 20 110 A 90 90 0 0 1 200 110" fill="none" stroke="{{ gB.color }}" stroke-width="22" stroke-linecap="round" style="stroke-dasharray:{{ gB.dash }};stroke-dashoffset:{{ gB.off }}"></path>
+            <path d="M 20 110 A 90 90 0 0 1 200 110" fill="none" stroke="{{ gC.color }}" stroke-width="22" stroke-linecap="round" style="stroke-dasharray:{{ gC.dash }};stroke-dashoffset:{{ gC.off }}"></path>
+          </svg>
+          <div style="position:absolute;left:0;right:0;bottom:6px;display:flex;flex-direction:column;align-items:center;gap:2px">
+            <span style="font-size:12px;color:#8a909c">Live share</span>
+            <span style="font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.1">{{ gaugePct }}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px">
+          <sc-for list="{{ gauge }}" as="g" hint-placeholder-count="3">
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px"><span style="width:9px;height:9px;border-radius:2px;background:{{ g.color }}"></span>{{ g.label }}<strong>{{ g.count }}</strong></span>
+          </sc-for>
+        </div>
+        <div style="margin-top:auto;font-size:13px;color:#6b7180;text-align:center;padding-top:14px;border-top:1px solid #f0f1f4"><strong style="color:#14161b">{{ soldN }}</strong> listings sold this quarter</div>
+      </section>
+    </div>
+
+    <div style="display:grid;grid-template-columns:{{ split }};gap:16px;align-items:start">
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="display:flex;align-items:center;gap:12px">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Awaiting review</h3>
+          <button onClick="{{ goPending }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #e3e6ec;background:#fff;color:#14161b;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap" style-hover="background:#f5f6f9">View all</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px">
+          <sc-for list="{{ reviewQueue }}" as="r" hint-placeholder-count="4">
+            <div style="border:1px solid #e7e9ee;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:10px">
+              <div style="height:140px;border-radius:9px;overflow:hidden;background:#eef0f4;position:relative">
+                <image-slot id="review-{{ r.id }}" shape="rect" placeholder="Listing photo"></image-slot>
+                <span style="position:absolute;top:8px;left:8px;display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:#fff;color:#14161b;pointer-events:none">{{ r.deal }}</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:8px;padding:0 2px">
+                <button onClick="{{ r.open }}" style="flex:1;min-width:0;border:0;background:none;padding:0;cursor:pointer;text-align:left;font-size:14px;font-weight:700;color:#14161b" style-hover="color:#4361ee">{{ r.title }}</button>
+                <span style="font-size:13px;font-weight:700;color:#4361ee;white-space:nowrap">{{ r.price }}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#5b6170;padding:0 2px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0ZM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></svg><span style="flex:1">{{ r.loc }}</span><span style="color:#8a909c">{{ r.when }}</span></div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <span style="display:flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid #e7e9ee;border-radius:20px;font-size:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"></path></svg>{{ r.beds }}</span>
+                <span style="display:flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid #e7e9ee;border-radius:20px;font-size:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.7 3 4 3.7 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M2 12h20M7 19v2M17 19v2"></path></svg>{{ r.baths }}</span>
+                <span style="display:flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid #e7e9ee;border-radius:20px;font-size:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM3 9h6V3M15 21v-6h6"></path></svg>{{ r.size }}</span>
+              </div>
+              <div style="font-size:12px;color:#8a909c;padding:0 2px">{{ r.by }}</div>
+              <div style="display:flex;gap:8px">
+                <button onClick="{{ r.reject }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #e3e6ec;background:#fff;color:#14161b;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;flex:1;justify-content:center;height:34px" style-hover="background:#f5f6f9">Reject</button>
+                <button onClick="{{ r.approve }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #4361ee;background:#4361ee;color:#fff;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;flex:1;justify-content:center;height:34px" style-hover="background:#3550e0;border-color:#3550e0">Approve</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ reviewEmpty }}"><p style="margin:0;color:#8a909c">Queue is clear.</p></sc-if>
+      </section>
+
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0">
+        <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:4px">Accounts to verify</h3>
+        <sc-for list="{{ verifyQueue }}" as="v" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;border:1px solid #e7e9ee;border-radius:12px">
+            <span style="width:40px;height:40px;flex:none;border-radius:10px;background:#eef1fe;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:13px">{{ v.ini }}</span>
+            <button onClick="{{ v.open }}" style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:0;background:none;padding:0;cursor:pointer;text-align:left;color:#14161b">
+              <span style="font-weight:600;font-size:14px">{{ v.name }}</span>
+              <span style="font-size:12px;color:#8a909c;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%">{{ v.sub }}</span>
+            </button>
+            <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:#eff0f3;color:#4b5160">{{ v.kind }}</span>
+            <button onClick="{{ v.verify }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #4361ee;background:#4361ee;color:#fff;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:32px;padding:0 12px" style-hover="background:#3550e0;border-color:#3550e0">Verify</button>
+          </div>
+        </sc-for>
+        <sc-if value="{{ verifyEmpty }}"><p style="margin:0;color:#8a909c">Nobody waiting.</p></sc-if>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isPlans }}" hint-placeholder-val="{{ false }}">
+    <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-size:13px;font-weight:600;color:#3a3f4b">Show prices</span>
+        <div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px">
+          <sc-for list="{{ vatOpts }}" as="o">
+            <button onClick="{{ o.pick }}" style="padding:7px 14px;border:0;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};box-shadow:{{ o.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;width:200px">
+        <span style="font-size:13px;font-weight:600;color:#3a3f4b">Annual billing discount (%)</span>
+        <input type="number" min="0" max="50" value="{{ annualDisc }}" onChange="{{ onDisc }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+      </div>
+      <p style="font-size:13px;color:#6b7180;margin:0 0 4px;flex:1;min-width:240px;max-width:520px;line-height:1.5">Agency plans are priced excl. 15% VAT; seller listing plans and fees include VAT. Price changes apply to new purchases right away and to existing subscribers at their next renewal.</p>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Agency subscriptions <span style="font-size:13px;font-weight:500;color:#8a909c;margin-left:6px">Billed monthly per agency</span></h3>
+        <button onClick="{{ addPlan }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #4361ee;background:#4361ee;color:#fff;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap" style-hover="background:#3550e0;border-color:#3550e0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>Add plan</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <sc-for list="{{ plansView }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:16px;padding:20px;background:#fff;border:1px solid #e7e9ee;border-radius:14px;opacity:{{ p.opacity }}">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-weight:700;font-size:17px;flex:1">{{ p.name }}</span>
+              <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ p.tagBg }};color:{{ p.tagFg }}">{{ p.status }}</span>
+            </div>
+            <div>
+              <div style="display:flex;align-items:baseline;gap:6px"><span style="font-weight:700;font-size:30px;letter-spacing:-0.02em;line-height:1">{{ p.price }}</span><span style="font-size:13px;color:#8a909c">/ month</span></div>
+              <div style="font-size:12px;color:#8a909c;margin-top:6px">{{ p.annual }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <sc-for list="{{ p.specs }}" as="sp">
+                <div style="display:flex;gap:12px;padding:8px 0;border-top:1px solid #f0f1f4;font-size:13px"><span style="flex:1;color:#6b7180">{{ sp.label }}</span><span style="font-weight:600">{{ sp.value }}</span></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:auto">
+              <button onClick="{{ p.edit }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #4361ee;background:#4361ee;color:#fff;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;flex:1;justify-content:center" style-hover="background:#3550e0;border-color:#3550e0">Edit plan</button>
+              <button onClick="{{ p.toggle }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #e3e6ec;background:#fff;color:#14161b;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap" style-hover="background:#f5f6f9">{{ p.toggleLabel }}</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Private seller listing plans <span style="font-size:13px;font-weight:500;color:#8a909c;margin-left:6px">Once-off per listing · VAT included</span></h3>
+        <button onClick="{{ addPack }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff" style-hover="background:#3550e0;border-color:#3550e0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add listing plan</button>
+      </div>
+      <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow-x:auto">
+        <table style="width:100%;min-width:860px;border-collapse:collapse;font-size:14px">
+          <thead><tr style="background:#fafbfc"><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Plan</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Deal</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Price</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Advertised for</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Max asking price</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Photos</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Listings</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Status</th><th style="text-align:left;padding:12px 16px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap"></th></tr></thead>
+          <tbody>
+            <sc-for list="{{ packsView }}" as="k" hint-placeholder-count="3">
+              <tr style="opacity:{{ k.opacity }}">
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4;font-weight:600">{{ k.name }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4">{{ k.deal }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4;font-weight:600;white-space:nowrap">{{ k.price }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4">{{ k.months }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4">{{ k.max }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4">{{ k.photos }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4">{{ k.users }}</td>
+                <td style="padding:14px 16px;border-bottom:1px solid #f0f1f4"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ k.tagBg }};color:{{ k.tagFg }}">{{ k.status }}</span></td>
+                <td style="padding:10px 16px;border-bottom:1px solid #f0f1f4"><div style="display:flex;gap:6px;justify-content:flex-end"><button onClick="{{ k.edit }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:32px" style-hover="background:#f5f6f9">Edit</button><button onClick="{{ k.toggle }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:32px" style-hover="background:#f5f6f9">{{ k.toggleLabel }}</button></div></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Other fees <span style="font-size:13px;font-weight:500;color:#8a909c;margin-left:6px">VAT included · applies to sellers and agencies</span></h3>
+      <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b">Tenant screening (R, per completed screening)
+          <input type="number" min="0" value="{{ fees.screening }}" onChange="{{ onFeeScreening }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+          <span style="font-size:12px;font-weight:500;color:#8a909c">{{ screeningNote }}</span>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b">Featured credit top-up (R, per credit)
+          <input type="number" min="0" value="{{ fees.credit }}" onChange="{{ onFeeCredit }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+          <span style="font-size:12px;font-weight:500;color:#8a909c">Agencies buy extra credits once their monthly credits run out.</span>
+        </label>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isTable }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+      <div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px;flex-wrap:wrap">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <button onClick="{{ f.pick }}" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:7px;background:{{ f.bg }};color:{{ f.fg }};box-shadow:{{ f.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ f.label }}<span style="color:#8a909c;font-weight:500">{{ f.count }}</span></button>
+        </sc-for>
+      </div>
+      <span style="flex:1"></span>
+      <div style="position:relative;width:280px;max-width:100%">
+        <span style="position:absolute;left:12px;top:12px;color:#8a909c;display:flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"></path></svg></span>
+        <input type="search" placeholder="{{ searchPh }}" value="{{ q }}" onChange="{{ onSearch }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none;padding-left:36px" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+      </div>
+      <sc-if value="{{ canAdd }}">
+        <button onClick="{{ openAdd }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #4361ee;background:#4361ee;color:#fff;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:40px" style-hover="background:#3550e0;border-color:#3550e0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>{{ addLabel }}</button>
+      </sc-if>
+    </div>
+
+    <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+      <sc-if value="{{ hasSel }}">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 16px;background:#eef1fe;border-bottom:1px solid #dfe5fd">
+          <span style="font-size:13px;font-weight:700;color:#3150d8;margin-right:6px">{{ selLabel }}</span>
+          <sc-for list="{{ bulkActions }}" as="b"><button onClick="{{ b.run }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #e3e6ec;background:#fff;color:#14161b;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:32px" style-hover="background:#f5f6f9">{{ b.label }}</button></sc-for>
+          <span style="flex:1"></span>
+          <button onClick="{{ clearSel }}" aria-label="Clear selection" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #e3e6ec;background:#fff;color:#14161b;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:32px;padding:0 10px" style-hover="background:#f5f6f9"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>Clear</button>
+        </div>
+      </sc-if>
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:880px;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="background:#fafbfc">
+              <th style="width:44px;padding:{{ cellPad }};border-bottom:1px solid #eef0f3;text-align:left"><input type="checkbox" checked="{{ allSel }}" onChange="{{ toggleAll }}" aria-label="Select all"></th>
+              <sc-for list="{{ cols }}" as="c" hint-placeholder-count="6">
+                <th style="padding:{{ cellPad }};border-bottom:1px solid #eef0f3;text-align:left;white-space:nowrap"><button onClick="{{ c.sort }}" style="border:0;background:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#6b7180">{{ c.label }}<span style="color:#4361ee">{{ c.arrow }}</span></button></th>
+              </sc-for>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+              <tr onClick="{{ r.open }}" style="cursor:pointer;background:{{ r.bg }}" style-hover="background:#fafbfd">
+                <td onClick="{{ stop }}" style="padding:{{ cellPad }};border-bottom:1px solid #f0f1f4;vertical-align:middle"><input type="checkbox" checked="{{ r.sel }}" onChange="{{ r.toggle }}" aria-label="Select row"></td>
+                <sc-for list="{{ r.cells }}" as="cell">
+                  <td style="padding:{{ cellPad }};border-bottom:1px solid #f0f1f4;vertical-align:middle">
+                    <div style="font-weight:{{ cell.weight }};white-space:nowrap">{{ cell.text }}</div>
+                    <sc-if value="{{ cell.hasSub }}"><div style="font-size:12px;color:#8a909c;white-space:nowrap;margin-top:2px">{{ cell.sub }}</div></sc-if>
+                    <sc-if value="{{ cell.hasTag }}"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ cell.tagBg }};color:{{ cell.tagFg }}">{{ cell.tag }}</span></sc-if>
+                  </td>
+                </sc-for>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <sc-if value="{{ noRows }}"><p style="margin:0;padding:32px 16px;color:#8a909c">No results. Clear the search or pick another status.</p></sc-if>
+      <div style="padding:12px 16px;font-size:13px;color:#8a909c">{{ footLabel }}</div>
+    </div>
+  </sc-if>
+  </div>
+</main>
+</div>
+
+<sc-if value="{{ drawerOpen }}">
+  <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;background:rgba(20,22,27,.28);z-index:20"></div>
+  <aside style="position:fixed;top:0;right:0;bottom:0;width:min(520px,100vw);background:#fff;border-radius:16px 0 0 16px;box-shadow:-12px 0 40px rgba(20,22,27,.14);z-index:21;display:flex;flex-direction:column;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#14161b;font-size:14px">
+    <div style="padding:20px 24px;border-bottom:1px solid #eef0f3;display:flex;gap:12px;align-items:flex-start">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;color:#8a909c;text-transform:capitalize">{{ d.kicker }}</div>
+        <h2 style="margin:6px 0 10px;font-size:22px;font-weight:700;letter-spacing:-0.02em;text-wrap:pretty">{{ d.name }}</h2>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ d.tagBg }};color:{{ d.tagFg }}">{{ d.status }}</span>
+        <sc-if value="{{ d.hasPortal }}"><a href="{{ d.portalHref }}" target="_blank" style="font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:4px">{{ d.portalLabel }}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></sc-if></div>
+      </div>
+      <button onClick="{{ closeDrawer }}" aria-label="Close" style="width:36px;height:36px;border-radius:50%;border:1px solid #e7e9ee;background:#fff;display:grid;place-items:center;cursor:pointer;color:#14161b" style-hover="background:#f5f6f9"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:22px">
+      <sc-if value="{{ d.isListing }}">
+        <div style="height:220px;border-radius:12px;overflow:hidden;background:#eef0f4">
+          <image-slot id="listing-{{ d.id }}" shape="rect" placeholder="Drop listing photo"></image-slot>
+        </div>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:16px">
+        <sc-for list="{{ d.fields }}" as="f" hint-placeholder-count="6">
+          <div style="padding:10px 0;border-top:1px solid #f0f1f4">
+            <div style="font-size:12px;color:#8a909c">{{ f.label }}</div>
+            <div style="font-size:14px;font-weight:600;margin-top:2px">{{ f.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <sc-for list="{{ d.related }}" as="g">
+        <section style="display:flex;flex-direction:column;gap:8px">
+          <h6 style="margin:0;font-size:14px;font-weight:700">{{ g.title }}</h6>
+          <sc-for list="{{ g.items }}" as="it">
+            <button onClick="{{ it.open }}" style="display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1px solid #e7e9ee;border-radius:10px;background:#fff;cursor:pointer;color:#14161b;text-align:left" style-hover="border-color:#c9d2fb;background:#fafbff">
+              <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                <span style="font-weight:600;font-size:14px">{{ it.title }}</span>
+                <span style="font-size:12px;color:#8a909c">{{ it.sub }}</span>
+              </span>
+              <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ it.tagBg }};color:{{ it.tagFg }}">{{ it.tag }}</span>
+            </button>
+          </sc-for>
+          <sc-if value="{{ g.empty }}"><p style="font-size:13px;color:#8a909c;margin:0">None yet.</p></sc-if>
+        </section>
+      </sc-for>
+      <section style="display:flex;flex-direction:column">
+        <h6 style="margin:0 0 8px;font-size:14px;font-weight:700">Activity</h6>
+        <sc-for list="{{ d.log }}" as="l">
+          <div style="display:grid;grid-template-columns:96px 1fr;gap:12px;padding:9px 0;border-top:1px solid #f0f1f4;font-size:13px">
+            <span style="color:#8a909c">{{ l.when }}</span>
+            <span>{{ l.text }}</span>
+          </div>
+        </sc-for>
+      </section>
+    </div>
+    <div style="padding:16px 24px;border-top:1px solid #eef0f3;display:flex;gap:8px;flex-wrap:wrap">
+      <sc-for list="{{ d.actions }}" as="a">
+        <button onClick="{{ a.run }}" style="display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 18px;min-width:120px;border-radius:9px;border:1px solid {{ a.bd }};background:{{ a.bg }};color:{{ a.fg }};font-weight:600;font-size:13px;cursor:pointer" style-hover="filter:brightness(.96)">{{ a.label }}</button>
+      </sc-for>
+      <sc-if value="{{ d.noActions }}"><span style="font-size:13px;color:#8a909c">No actions available for this status.</span></sc-if>
+    </div>
+  </aside>
+</sc-if>
+
+<sc-if value="{{ dialogOpen }}">
+  <div onClick="{{ closeDialog }}" style="position:fixed;inset:0;z-index:30;background:rgba(20,22,27,.36);display:flex;align-items:center;justify-content:center;padding:16px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#14161b">
+    <div onClick="{{ stop }}" style="width:min(460px,100%);max-height:calc(100vh - 32px);overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(20,22,27,.22);padding:24px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">{{ dlg.title }}</div>
+      <div style="font-size:14px;color:#5b6170;line-height:1.5">{{ dlg.body }}</div>
+      <sc-if value="{{ dlg.isConfirm }}">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b">Reason (sent to the account holder)
+          <textarea value="{{ reason }}" onChange="{{ onReason }}" placeholder="e.g. Photos don't match the address" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none;height:88px;padding:10px 12px;resize:vertical;font-weight:400" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></textarea>
+        </label>
+      </sc-if>
+      <sc-if value="{{ dlg.isAdd }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ formFields }}" as="ff">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b">{{ ff.label }}
+              <sc-if value="{{ ff.isSelect }}">
+                <select value="{{ ff.value }}" onChange="{{ ff.change }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none;font-weight:400" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+                  <sc-for list="{{ ff.options }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for>
+                </select>
+              </sc-if>
+              <sc-if value="{{ ff.isText }}">
+                <input type="{{ ff.type }}" value="{{ ff.value }}" onChange="{{ ff.change }}" placeholder="{{ ff.ph }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;color:#14161b;width:100%;outline:none;font-weight:400" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+              </sc-if>
+            </label>
+          </sc-for>
+          <sc-if value="{{ hasFormErr }}"><div style="font-size:13px;font-weight:600;color:#c22f34">{{ formErr }}</div></sc-if>
+        </div>
+      </sc-if>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px">
+        <button onClick="{{ closeDialog }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #e3e6ec;background:#fff;color:#14161b;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:40px" style-hover="background:#f5f6f9">Cancel</button>
+        <button onClick="{{ confirmDialog }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;border:1px solid #4361ee;background:#4361ee;color:#fff;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:40px" style-hover="background:#3550e0;border-color:#3550e0">{{ dlg.confirmLabel }}</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}">
+  <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:#14161b;color:#fff;font-size:14px;font-weight:600;font-family:'Plus Jakarta Sans',system-ui,sans-serif;box-shadow:0 12px 30px rgba(20,22,27,.25);max-width:calc(100vw - 32px)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+    {{ toast }}
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comfortable&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;comfortable&quot;,&quot;tsType&quot;:&quot;'comfortable'|'compact'&quot;},&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;listings&quot;,&quot;sellers&quot;,&quot;agents&quot;,&quot;companies&quot;,&quot;screenings&quot;,&quot;payments&quot;,&quot;plans&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;confirmDestructive&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const KINDS = ['listings','sellers','agents','companies'];
+const SING = {listings:'listing',sellers:'private seller',agents:'agent',companies:'agency',screenings:'screening',payments:'payment'};
+const rc=n=>'R '+Number(n).toLocaleString('en-ZA',{minimumFractionDigits:2,maximumFractionDigits:2});
+const PACKNAME={Sale:'Sale Listing',Lite:'Sale Listing (Lite)',Rental:'Rental Listing'};
+const ACTIVE = {sellers:'Verified',agents:'Active',companies:'Active'};
+const PENDING = {sellers:'ID pending',agents:'FFC pending',companies:'Pending'};
+const ICONS = {
+  overview:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+  listings:'M3 10.5 12 3l9 7.5M5.5 9.5V21h13V9.5M10 21v-6h4v6',
+  sellers:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  agents:'M4 8h16v12H4zM9 8V5h6v3M4 13h16',
+  companies:'M4 21V4h10v17M14 9h6v12M7 8h3M7 12h3M7 16h3M17 13h0M17 17h0M2 21h20',
+  plans:'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
+  screenings:'M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1zM9 12l2 2 4-4',
+  payments:'M2 5h20v14H2zM2 10h20M6 15h4'
+};
+const SUBURBS = [['Irene','Centurion','Gauteng'],['Eldoraigne','Centurion','Gauteng'],['Waterkloof','Pretoria','Gauteng'],['Brooklyn','Pretoria','Gauteng'],['Bryanston','Sandton','Gauteng'],['Morningside','Sandton','Gauteng'],['Sea Point','Cape Town','Western Cape'],['Claremont','Cape Town','Western Cape'],['Die Boord','Stellenbosch','Western Cape'],['Umhlanga Ridge','Umhlanga','KwaZulu-Natal'],['Ballito','Ballito','KwaZulu-Natal'],['Heatherlands','George','Western Cape'],['Bendor','Polokwane','Limpopo']];
+const CITIES = [...new Set(SUBURBS.map(s=>s[1]))];
+const PROV = Object.fromEntries(SUBURBS.map(s=>[s[1],s[2]]));
+const TODAY = new Date(2026,9,2);
+
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const pick=(r,a)=>a[Math.floor(r()*a.length)];
+const slug=s=>s.toLowerCase().replace(/[^a-z]+/g,'.');
+const zar=n=>'R '+Math.round(n).toLocaleString('en-ZA');
+const dateOf=d=>new Date(TODAY.getFullYear(),TODAY.getMonth(),TODAY.getDate()-d);
+const fmtDate=d=>dateOf(d).toLocaleDateString('en-ZA',{day:'numeric',month:'short',year:'numeric'});
+const rel=d=>d<=0?'Today':d===1?'Yesterday':d<30?d+' days ago':fmtDate(d);
+const phone=r=>'0'+pick(r,['82','83','72','71','61','12','21','31'])+' '+(100+Math.floor(r()*900))+' '+(1000+Math.floor(r()*9000));
+
+function seed(){
+  const r=rng(243);
+  const companies=[
+    ['Highveld Realty','Centurion','Enterprise','Active'],['Jacaranda Estates','Pretoria','Pro','Active'],['Sandton Prime Properties','Sandton','Enterprise','Active'],
+    ['Cape Coast Properties','Cape Town','Enterprise','Active'],['Winelands Homes','Stellenbosch','Pro','Active'],['Umhlanga Shores Realty','Umhlanga','Pro','Active'],
+    ['Garden Route Realty','George','Starter','Pending'],['Bushveld Property Group','Polokwane','Starter','Suspended']
+  ].map((c,i)=>({id:'C'+String(i+1).padStart(2,'0'),name:c[0],city:c[1],plan:c[2],status:c[3],reg:(2008+i)+'/'+(100000+Math.floor(r()*899999))+'/07',email:'admin@'+c[0].toLowerCase().split(' ')[0]+'.co.za',phone:phone(r),joined:200+Math.floor(r()*1400),log:[]}));
+  const an=['Thandi Mokoena','Johan van der Merwe','Priya Naidoo','Sipho Dlamini','Annelie Botha','Lerato Khumalo','Ruan Pretorius','Ayesha Patel','Kagiso Molefe','Michelle Jacobs','Bongani Zulu','Carla du Plessis','Nomvula Ndlovu','Werner Steyn','Fatima Essop','Tshepo Mahlangu','Lindiwe Sithole','Pieter Joubert','Zanele Mthembu','Grant Fourie'];
+  const agents=an.map((n,i)=>{const c=companies[i%companies.length];const st=c.status==='Suspended'?'Suspended':[3,11,17].includes(i)?'FFC pending':i===14?'Suspended':'Active';
+    return {id:'A'+String(i+1).padStart(2,'0'),name:n,companyId:c.id,city:c.city,status:st,ffc:'2026'+(1000000+Math.floor(r()*8999999)),email:slug(n)+'@'+c.email.split('@')[1],phone:phone(r),joined:20+Math.floor(r()*900),log:[]};});
+  const sn=['Dawid Kruger','Naledi Mabaso','Sarah Williams','Mandla Shabalala','Elize Venter','Yusuf Adams','Refilwe Moloi','Craig Hendricks','Busisiwe Nkosi','Hennie Coetzee'];
+  const sellers=sn.map((n,i)=>({id:'S'+String(i+1).padStart(2,'0'),name:n,city:pick(r,CITIES),status:[2,6,9].includes(i)?'ID pending':i===4?'Suspended':'Verified',email:slug(n)+'@gmail.com',phone:phone(r),joined:3+Math.floor(r()*400),log:[]}));
+  const listings=[];
+  for(let i=0;i<42;i++){
+    const byAgent=r()<0.72;const lister=byAgent?pick(r,agents):pick(r,sellers);
+    const local=SUBURBS.filter(s=>s[1]===lister.city);const sub=local.length&&r()<0.8?pick(r,local):pick(r,SUBURBS);
+    const type=pick(r,['House','House','Apartment','Townhouse','Vacant land']);const sale=r()<0.78;
+    const beds=type==='Vacant land'?0:type==='Apartment'?1+Math.floor(r()*3):2+Math.floor(r()*4);
+    const price=sale?Math.round((type==='Vacant land'?400000+r()*2500000:950000+r()*8800000)/50000)*50000:Math.round((8500+r()*38000)/500)*500;
+    const x=r();const status=x<0.52?'Live':x<0.72?'Pending review':x<0.82?'Under offer':x<0.91?'Sold':'Removed';
+    listings.push({id:'L'+(10400+i*7),ref:'M243-'+(10400+i*7),type,sale,beds,baths:beds?Math.max(1,beds-Math.floor(r()*2)):0,size:type==='Vacant land'?Math.round(400+r()*1600):Math.round(55+beds*48+r()*90),
+      suburb:sub[0],city:sub[1],province:sub[2],price,listerKind:byAgent?'agents':'sellers',listerId:lister.id,status:(!byAgent&&lister.status==='Suspended')?'Removed':status,updated:Math.floor(r()*38),log:[]});
+  }
+  agents.forEach(a=>a.role='Agent');
+  companies.forEach(c=>{const p=agents.find(a=>a.companyId===c.id);if(p)p.role='Principal';});
+  listings.forEach(l=>{
+    if(l.listerKind==='sellers')l.plan=l.sale?(l.price<=500000&&l.type!=='Vacant land'?'Lite':'Sale'):'Rental';
+    else{l.mandate=r()<0.7?'Sole':'Open';l.mandDays=['Live','Pending review','Under offer'].includes(l.status)?Math.round(20+r()*140):-Math.round(1+r()*40);l.featured=l.status==='Live'&&r()<0.25;}
+  });
+  const rentals=listings.filter(l=>!l.sale);
+  const appl=['Kabelo Masilo','Zanele Mthembu','Bongani Zulu','Amahle Dube','Thabo Nkosi','Jessica Moodley','Pieter Erasmus','Lauren Pillay','Hendrik Visser','Nadia Osei'];
+  const SST=['Invite sent','In progress','Complete','Complete','Complete','Cancelled'];
+  const screenings=appl.map((n,i)=>{const l=rentals[i%rentals.length],st=SST[i%SST.length];
+    return {id:'SC'+String(i+1).padStart(2,'0'),name:n,email:slug(n)+'@gmail.com',listingId:l.id,status:st,result:st==='Complete'?(i%3?'Recommended':'Not recommended'):'',updated:Math.floor(r()*30),log:[]};});
+  const payments=[];let inv=24400;
+  const PAY=(accKind,accId,desc,amt,status,d)=>payments.push({id:'INV-'+(inv++),accKind,accId,desc,amt,status,updated:d,log:[]});
+  const PLAN_PRICE={Starter:1290,Pro:3490,Enterprise:8990},PACK_PRICE={Sale:2299,Lite:499,Rental:729};
+  companies.forEach(c=>['October','September','August'].forEach((m,j)=>PAY('companies',c.id,c.plan+' plan · '+m+' 2026',Math.round(PLAN_PRICE[c.plan]*115)/100,
+    c.status==='Suspended'&&j<2?'Overdue':j===0&&r()<0.4?'Due':'Paid',1+j*30)));
+  listings.filter(l=>l.listerKind==='sellers').forEach(l=>PAY('sellers',l.listerId,({Sale:'Sale Listing',Lite:'Sale Listing (Lite)',Rental:'Rental Listing'})[l.plan]+' · '+l.suburb,PACK_PRICE[l.plan],l.status==='Removed'?'Refunded':'Paid',l.updated+2));
+  screenings.filter(x=>x.status==='Complete').forEach(x=>{const l=listings.find(y=>y.id===x.listingId);PAY(l.listerKind==='agents'?'companies':'sellers',l.listerKind==='agents'?agents.find(a=>a.id===l.listerId).companyId:l.listerId,'Tenant screening · '+x.name,250,'Paid',x.updated);});
+  [companies[1],companies[2]].forEach((c,j)=>PAY('companies',c.id,'Featured credits top-up · 5 credits',750,'Paid',12+j*9));
+  payments.sort((a,b)=>a.updated-b.updated);
+  const fees={screening:250,credit:150};
+  const plans=[
+    {id:'Starter',name:'Starter',price:1290,seats:3,listings:25,featured:0,analytics:'Basic',status:'Active'},
+    {id:'Pro',name:'Pro',price:3490,seats:12,listings:150,featured:10,analytics:'Full',status:'Active'},
+    {id:'Enterprise',name:'Enterprise',price:8990,seats:0,listings:0,featured:40,analytics:'Full + API',status:'Active'}];
+  const packs=[
+    {id:'Sale',name:'Sale Listing',deal:'Sale',price:2299,months:6,photos:40,max:0,status:'Active'},
+    {id:'Lite',name:'Sale Listing (Lite)',deal:'Sale',price:499,months:6,photos:20,max:500000,status:'Active'},
+    {id:'Rental',name:'Rental Listing',deal:'Rent',price:729,months:3,photos:30,max:0,status:'Active'}];
+  const activity=[];for(let i=11;i>=0;i--){const d=dateOf(i*7+3);activity.push({label:d.toLocaleDateString('en-ZA',{day:'numeric',month:'short'}),sale:Math.round(16+(11-i)*1.5+r()*14),rent:Math.round(7+r()*9+(11-i)*0.6)});}
+  return {listings,sellers,agents,companies,plans,packs,activity,screenings,payments,fees};
+}
+
+function smooth(p){let d='M'+p[0][0].toFixed(1)+' '+p[0][1].toFixed(1);for(let i=0;i<p.length-1;i++){const p0=p[i-1]||p[i],p1=p[i],p2=p[i+1],p3=p[i+2]||p2;const f=v=>v.toFixed(1);d+=' C'+f(p1[0]+(p2[0]-p0[0])/6)+' '+f(p1[1]+(p2[1]-p0[1])/6)+' '+f(p2[0]-(p3[0]-p1[0])/6)+' '+f(p2[1]-(p3[1]-p1[1])/6)+' '+f(p2[0])+' '+f(p2[1]);}return d;}
+class Component extends DCLogic {
+  state = {hover:null,vatIncl:false,annualDisc:10,view:null,q:'',filter:'All',sort:{key:null,dir:1},sel:{},open:null,dialog:null,reason:'',form:{},formErr:'',toast:'',w:1280,data:seed()};
+
+  componentDidMount(){
+    this.onResize=()=>this.setState({w:window.innerWidth});this.onResize();
+    window.addEventListener('resize',this.onResize);
+    this.onKey=e=>{if(e.key==='Escape')this.setState(s=>s.dialog?{dialog:null}:{open:null});};
+    window.addEventListener('keydown',this.onKey);
+  }
+  componentWillUnmount(){window.removeEventListener('resize',this.onResize);window.removeEventListener('keydown',this.onKey);clearTimeout(this.tt);}
+
+  view(){return this.state.view||this.props.startView||'overview';}
+  find(kind,id){return this.state.data[kind].find(e=>e.id===id);}
+  title(kind,e){return kind==='listings'?(e.beds?e.beds+' bed ':'')+e.type.toLowerCase()+' in '+e.suburb:kind==='payments'?e.id+' · '+e.desc:kind==='screenings'?'Screening for '+e.name:e.name;}
+  acct(p){return this.find(p.accKind,p.accId);}
+  listerOf(l){return this.find(l.listerKind,l.listerId);}
+  listingsOf(kind,id){const L=this.state.data.listings;
+    if(kind==='companies'){const ag=new Set(this.state.data.agents.filter(a=>a.companyId===id).map(a=>a.id));return L.filter(l=>l.listerKind==='agents'&&ag.has(l.listerId));}
+    return L.filter(l=>l.listerKind===kind&&l.listerId===id);}
+  tagCls(st){return '';}
+  tone(st){return ({'Pending review':0,'FFC pending':0,'ID pending':0,'Pending':0,'Invite sent':0,'Due':0,'Suspended':1,'Removed':1,'Overdue':1,'Not recommended':1,'Under offer':2,'In progress':2,'Sold':3,'Archived':3,'Cancelled':3,'Refunded':3})[st]??4;}
+  tagBg(st){return ['#fff4e0','#fdecec','#eef1fe','#eff0f3','#e8f6ee'][this.tone(st)];}
+  tagFg(st){return ['#9a5a00','#c22f34','#3150d8','#4b5160','#17803d'][this.tone(st)];}
+  spark(n){const r=rng(n);let y=20;const p=[];for(let i=0;i<10;i++){y=Math.max(4,Math.min(36,y+(r()-0.42)*14));p.push([i*120/9,42-y]);}const line=smooth(p);return {line,area:line+' L120 44 L0 44 Z'};}
+  priceTxt(l){return zar(l.price)+(l.sale?'':' pm');}
+
+  flash(t){clearTimeout(this.tt);this.setState({toast:t});this.tt=setTimeout(()=>this.setState({toast:''}),2600);}
+  update(kind,ids,status,note){
+    const set=new Set(ids);
+    this.setState(s=>({data:{...s.data,[kind]:s.data[kind].map(e=>set.has(e.id)?{...e,status:status??e.status,updated:0,log:[{d:0,text:note}, ...e.log]}:e)}}));
+  }
+  confirmOr(opts){
+    if(this.props.confirmDestructive===false){opts.run('');return;}
+    this.setState({dialog:{mode:'confirm',...opts},reason:''});
+  }
+  doAction(kind,ids,act){
+    const n=ids.length,label=n>1?n+' '+SING[kind]+'s':this.title(kind,this.find(kind,ids[0]));
+    const go=(st,note,msg)=>r=>{this.update(kind,ids,st,note+(r?' — “'+r+'”':''));this.flash(msg);};
+    const m={
+      approve:()=>go('Live','Approved and published','Published '+label)(),
+      offer:()=>go('Under offer','Marked under offer','Marked under offer')(),
+      sold:()=>go('Sold','Marked sold','Marked sold')(),
+      relive:()=>go('Live','Returned to live','Back to live')(),
+      restore:()=>go('Pending review','Restored to review queue','Restored '+label)(),
+      reject:()=>this.confirmOr({title:'Remove '+label+'?',body:'The listing comes off the site immediately. The lister can resubmit after editing.',confirmLabel:'Remove listing',run:go('Removed','Removed by admin','Removed '+label)}),
+      verify:()=>go(ACTIVE[kind],kind==='agents'?'FFC verified with PPRA':kind==='sellers'?'ID and proof of ownership verified':'CIPC registration verified','Verified '+label)(),
+      reinstate:()=>go(ACTIVE[kind],'Account reinstated','Reinstated '+label)(),
+      cancel:()=>this.confirmOr({title:'Cancel '+label+'?',body:'The applicant link stops working and nobody is charged.',confirmLabel:'Cancel screening',run:go('Cancelled','Cancelled by admin','Cancelled '+label)}),
+      resend:()=>{this.update(kind,ids,null,'Invite resent by admin');this.flash('Invite resent');},
+      markpaid:()=>go('Paid','Marked paid by admin (EFT received)','Marked '+label+' as paid')(),
+      remind:()=>{this.update(kind,ids,null,'Payment reminder sent');this.flash('Reminder sent');},
+      refund:()=>this.confirmOr({title:'Refund '+label+'?',body:'The full amount goes back to the original payment method within 5 working days.',confirmLabel:'Refund payment',run:go('Refunded','Refunded by admin','Refunded '+label)}),
+      suspend:()=>this.confirmOr({title:'Suspend '+label+'?',body:'They will be signed out and blocked from publishing. Existing listings stay hidden until the account is reinstated.',confirmLabel:'Suspend account',run:go('Suspended','Account suspended','Suspended '+label)})
+    };
+    m[act]();
+    if(n>1)this.setState({sel:{}});
+  }
+  actionsFor(kind,e){
+    const A=(label,act,primary)=>({label,bg:primary?'#4361ee':'#fff',fg:primary?'#fff':'#14161b',bd:primary?'#4361ee':'#e3e6ec',run:()=>this.doAction(kind,[e.id],act)});
+    if(kind==='listings')return ({'Pending review':[A('Approve','approve',1),A('Reject','reject')],'Live':[A('Mark under offer','offer'),A('Remove','reject')],'Under offer':[A('Mark sold','sold',1),A('Back to live','relive'),A('Remove','reject')],'Sold':[A('Remove','reject')],'Removed':[A('Restore to review','restore')]})[e.status]||[];
+    if(kind==='screenings')return ['Invite sent','In progress'].includes(e.status)?[A('Resend invite','resend'),A('Cancel','cancel')]:[];
+    if(kind==='payments')return ['Due','Overdue'].includes(e.status)?[A('Mark paid','markpaid',1),A('Send reminder','remind')]:e.status==='Paid'?[A('Refund','refund')]:[];
+    if(e.status===PENDING[kind])return [A('Verify','verify',1),A('Suspend','suspend')];
+    if(e.status==='Suspended')return [A('Reinstate','reinstate',1)];
+    return [A('Suspend','suspend')];
+  }
+  openPlanForm(coll,item){
+    const blank=coll==='plans'?{name:'',price:'',seats:'',listings:'',featured:'0',analytics:'Basic'}:{name:'',deal:'Sale',price:'',months:'6',photos:'20',max:'0'};
+    const form=item?Object.fromEntries(Object.keys(blank).map(k=>[k,String(item[k])])):blank;
+    this.setState({dialog:{mode:'plan',coll,item},form,formErr:''});
+  }
+  openE(kind,id){this.setState({open:{kind,id}});}
+
+  cols(kind){
+    const c=(text,sub,tag,weight)=>({text:text??'',sub,hasSub:!!sub,tag,hasTag:!!tag,tagCls:'',tagBg:tag?this.tagBg(tag):'',tagFg:tag?this.tagFg(tag):'',weight:weight||400});
+    const D=this.state.data;
+    const agency=a=>D.companies.find(c=>c.id===a.companyId);
+    if(kind==='listings')return [
+      {key:'t',label:'Listing',cell:l=>c(this.title(kind,l),l.ref,null,600),val:l=>this.title(kind,l)},
+      {key:'loc',label:'Location',cell:l=>c(l.suburb,l.city+', '+l.province),val:l=>l.city+l.suburb},
+      {key:'p',label:'Price',cell:l=>c(this.priceTxt(l),l.sale?'For sale':'To rent',null,600),val:l=>l.sale?l.price:l.price*200},
+      {key:'by',label:'Listed by',cell:l=>{const x=this.listerOf(l);return c(x.name,l.listerKind==='agents'?'Agent · '+agency(x).name:'Private seller');},val:l=>this.listerOf(l).name},
+      {key:'pl',label:'Plan / mandate',cell:l=>l.listerKind==='sellers'?c(PACKNAME[l.plan],'Private listing plan'):c(l.mandate+' mandate',(l.mandDays<0?'Expired ':'Until ')+fmtDate(-l.mandDays)+(l.featured?' · Featured':'')),val:l=>l.plan||l.mandate},
+      {key:'st',label:'Status',cell:l=>c('',null,l.status),val:l=>l.status},
+      {key:'u',label:'Updated',cell:l=>c(rel(l.updated)),val:l=>l.updated}];
+    if(kind==='screenings')return [
+      {key:'t',label:'Applicant',cell:x=>c(x.name,x.email,null,600),val:x=>x.name},
+      {key:'l',label:'Property',cell:x=>{const l=this.find('listings',x.listingId);return c(this.title('listings',l),l.ref+' · '+this.priceTxt(l));},val:x=>x.listingId},
+      {key:'by',label:'Requested by',cell:x=>{const l=this.find('listings',x.listingId),p=this.listerOf(l);return c(p.name,l.listerKind==='agents'?'Agent · '+agency(p).name:'Private seller');},val:x=>this.listerOf(this.find('listings',x.listingId)).name},
+      {key:'st',label:'Status',cell:x=>c('',null,x.status),val:x=>x.status},
+      {key:'r',label:'Result',cell:x=>x.result?c('',null,x.result):c('—'),val:x=>x.result},
+      {key:'u',label:'Updated',cell:x=>c(rel(x.updated)),val:x=>x.updated}];
+    if(kind==='payments')return [
+      {key:'t',label:'Invoice',cell:p=>c(p.id,fmtDate(p.updated),null,600),val:p=>p.id},
+      {key:'a',label:'Account',cell:p=>{const a=this.acct(p);return c(a.name,p.accKind==='companies'?'Agency · '+a.plan+' plan':'Private seller');},val:p=>this.acct(p).name},
+      {key:'d',label:'Description',cell:p=>c(p.desc),val:p=>p.desc},
+      {key:'m',label:'Amount (incl. VAT)',cell:p=>c(rc(p.amt),null,null,600),val:p=>p.amt},
+      {key:'st',label:'Status',cell:p=>c('',null,p.status),val:p=>p.status}];
+    const count=e=>this.listingsOf(kind,e.id).length;
+    const live=e=>this.listingsOf(kind,e.id).filter(l=>l.status==='Live').length;
+    const lc={key:'n',label:'Listings',cell:e=>c(String(count(e)),live(e)+' live'),val:count};
+    const jc={key:'j',label:'Joined',cell:e=>c(fmtDate(e.joined)),val:e=>e.joined};
+    const sc={key:'st',label:'Status',cell:e=>c('',null,e.status),val:e=>e.status};
+    const nc={key:'t',label:'Name',cell:e=>c(e.name,e.email,null,600),val:e=>e.name};
+    if(kind==='sellers')return [nc,{key:'loc',label:'Location',cell:e=>c(e.city,PROV[e.city]),val:e=>e.city},{key:'ph',label:'Phone',cell:e=>c(e.phone),val:e=>e.phone},lc,sc,jc];
+    if(kind==='agents')return [nc,{key:'co',label:'Agency',cell:e=>c(agency(e).name,e.city),val:e=>agency(e).name},{key:'ffc',label:'FFC number',cell:e=>c(e.ffc),val:e=>e.ffc},lc,sc,jc];
+    const agentsN=e=>D.agents.filter(a=>a.companyId===e.id).length;
+    return [{key:'t',label:'Agency',cell:e=>c(e.name,'Reg. '+e.reg,null,600),val:e=>e.name},{key:'loc',label:'Head office',cell:e=>c(e.city,PROV[e.city]),val:e=>e.city},
+      {key:'pl',label:'Plan',cell:e=>c(e.plan),val:e=>e.plan},{key:'ag',label:'Agents',cell:e=>c(String(agentsN(e))),val:agentsN},lc,sc];
+  }
+  statuses(kind){if(kind==='screenings')return ['Invite sent','In progress','Complete','Cancelled'];if(kind==='payments')return ['Paid','Due','Overdue','Refunded'];return kind==='listings'?['Pending review','Live','Under offer','Sold','Removed']:[ACTIVE[kind],PENDING[kind],'Suspended'];}
+  search(kind,e){const q=this.state.q.trim().toLowerCase();if(!q)return true;
+    const x=kind==='listings'?[this.title(kind,e),e.ref,e.suburb,e.city,this.listerOf(e).name]:kind==='screenings'?[e.name,e.email,this.find('listings',e.listingId).ref]:kind==='payments'?[e.id,e.desc,this.acct(e).name]:[e.name,e.email,e.city,e.ffc||'',e.reg||''];
+    return x.join(' ').toLowerCase().includes(q);}
+
+  drawer(){
+    const o=this.state.open;if(!o)return null;const e=this.find(o.kind,o.id);if(!e)return null;
+    const D=this.state.data,k=o.kind,F=(label,value)=>({label,value:String(value)});
+    const item=(kind,x)=>({title:this.title(kind,x),sub:kind==='listings'?this.priceTxt(x)+' · '+x.suburb:kind==='agents'?x.email:kind==='payments'?rc(x.amt)+' · '+fmtDate(x.updated):kind==='screenings'?x.email+' · '+rel(x.updated):x.city,tag:x.status,tagBg:this.tagBg(x.status),tagFg:this.tagFg(x.status),open:()=>this.openE(kind,x.id)});
+    const grp=(title,kind,arr)=>({title:title+' ('+arr.length+')',items:arr.map(x=>item(kind,x)),empty:!arr.length});
+    let fields,related,base;
+    const pays=(kind,id)=>D.payments.filter(p=>p.accKind===kind&&p.accId===id);
+    const scrOf=ls=>{const ids=new Set(ls.map(l=>l.id));return D.screenings.filter(x=>ids.has(x.listingId));};
+    let portal=null;
+    if(k==='screenings'){const l=this.find('listings',e.listingId),p=this.listerOf(l);
+      fields=[F('Applicant',e.name),F('Email',e.email),F('Status',e.status),F('Result',e.result||'—'),F('Fee',rc(D.fees.screening)+' if completed'),F('Requested by',p.name)];
+      if(e.status==='Complete')fields.push(F('Credit score',e.result==='Recommended'?'Good (690+)':'Poor (under 580)'),F('Affordability',e.result==='Recommended'?'Rent under 30% of income':'Rent over 40% of income'));
+      related=[grp('Property','listings',[l]),grp('Requested by',l.listerKind,[p])];
+      base=[{d:e.updated+1,text:'Invite sent to '+e.email}];
+    } else if(k==='payments'){const a=this.acct(e);
+      fields=[F('Invoice',e.id),F('Date',fmtDate(e.updated)),F('Description',e.desc),F('Amount incl. VAT',rc(e.amt)),F('VAT (15%)',rc(e.amt-e.amt/1.15)),F('Method',e.accKind==='companies'?'Debit order':'Card'),F('Status',e.status),F('Account',a.name)];
+      related=[grp('Account',e.accKind,[a])];
+      base=[{d:e.updated,text:'Invoice issued'}];
+    } else if(k==='listings'){const l=this.listerOf(e);
+      fields=[F('Reference',e.ref),F('Deal',e.sale?'For sale':'To rent'),F('Price',this.priceTxt(e)),F('Type',e.type),F('Bedrooms',e.beds||'—'),F('Bathrooms',e.baths||'—'),F(e.type==='Vacant land'?'Erf size':'Floor size',e.size+' m²'),F('Suburb',e.suburb),F('City',e.city),F('Province',e.province),
+        ...(e.listerKind==='sellers'?[F('Plan',PACKNAME[e.plan])]:[F('Mandate',e.mandate),F('Mandate expires',(e.mandDays<0?'Expired ':'')+fmtDate(-e.mandDays)),F('Featured',e.featured?'Yes · 7 days':'No')])];
+      related=[grp('Listed by',e.listerKind,[l])];
+      if(!e.sale)related.push(grp('Tenant screenings','screenings',scrOf([e])));
+      if(e.listerKind==='agents')related.push(grp('Agency','companies',[D.companies.find(c=>c.id===l.companyId)]));
+      base=[{d:e.updated+2,text:'Submitted by '+l.name}];
+    } else {
+      const ls=this.listingsOf(k,e.id);
+      fields=[F('Email',e.email),F('Phone',e.phone)];
+      if(k==='sellers')fields.push(F('Location',e.city+', '+PROV[e.city]),F('ID verification',e.status==='ID pending'?'Documents uploaded':e.status==='Verified'?'Verified':'—'));
+      if(k==='agents'){const c=D.companies.find(c=>c.id===e.companyId);fields.push(F('Agency',c.name),F('Role',e.role),F('Branch',e.city),F('FFC number',e.ffc),F('FFC valid until','31 Dec 2026'));}
+      if(k==='companies'){const pl=D.plans.find(p=>p.name===e.plan)||{},lim=n=>n?' / '+n:' · unlimited',ag=D.agents.filter(a=>a.companyId===e.id&&a.status!=='Suspended').length,act=ls.filter(l=>['Live','Under offer','Pending review'].includes(l.status)).length;
+        fields.push(F('Registration',e.reg),F('Head office',e.city+', '+PROV[e.city]),F('Plan',e.plan),F('Seats used',ag+lim(pl.seats)),F('Active listings',act+lim(pl.listings)),F('Featured live',ls.filter(l=>l.featured).length+' of '+(pl.featured||0)+' credits'));}
+      fields.push(F('Joined',fmtDate(e.joined)),F('Listings',ls.length+' ('+ls.filter(l=>l.status==='Live').length+' live)'));
+      related=[];
+      if(k==='agents')related.push(grp('Agency','companies',[D.companies.find(c=>c.id===e.companyId)]));
+      if(k==='companies')related.push(grp('Agents','agents',D.agents.filter(a=>a.companyId===e.id)));
+      related.push(grp('Listings','listings',ls));
+      if(k==='sellers')related.push(grp('Tenant screenings','screenings',scrOf(ls)));
+      if(k!=='agents')related.push(grp('Payments','payments',pays(k,e.id)));
+      portal=k==='sellers'?'Maison243%20Seller%20Portal.dc.html':'Maison243%20Agency%20Portal.dc.html';
+      base=[{d:e.joined,text:k==='companies'?'Agency account created':'Account created'}];
+    }
+    const actions=this.actionsFor(k,e);
+    return {id:e.id,isListing:k==='listings',kicker:SING[k]+' · '+e.id,name:this.title(k,e),status:e.status,tagBg:this.tagBg(e.status),tagFg:this.tagFg(e.status),fields,related,actions,noActions:!actions.length,hasPortal:!!portal,portalHref:portal||'',portalLabel:k==='sellers'?'Open seller portal':'Open agency portal',
+      log:[...e.log,...base].map(l=>({when:rel(l.d),text:l.text}))};
+  }
+
+  renderVals(){
+    const s=this.state,D=s.data,v=this.view(),narrow=s.w<960,isTable=v!=='overview'&&v!=='plans';
+    const pendingAcc=k=>D[k].filter(e=>e.status===PENDING[k]);
+    const counts={overview:'',listings:D.listings.filter(l=>l.status==='Pending review').length,sellers:pendingAcc('sellers').length,agents:pendingAcc('agents').length,companies:pendingAcc('companies').length,payments:D.payments.filter(p=>p.status==='Overdue').length};
+    const nav=(id,label)=>({label,icon:ICONS[id],count:counts[id]?counts[id]:'',hasCount:!!counts[id],bg:v===id?'#eceef3':'transparent',fg:v===id?'#14161b':'#5b6170',
+      go:()=>this.setState({view:id,filter:'All',q:'',sel:{},sort:{key:null,dir:1}})});
+    const goto=(view,filter)=>()=>this.setState({view,filter,q:'',sel:{},sort:{key:null,dir:1}});
+    const out={
+      gridCols:narrow?'minmax(0,1fr)':'248px minmax(0,1fr)',asideDir:narrow?'row':'column',asideH:narrow?'auto':'100vh',
+      asideBorderR:narrow?'0':'1px solid #e7e9ee',asideBorderB:narrow?'1px solid #e7e9ee':'0',brandRule:'0',navLabel:narrow?'none':'block',headerPos:narrow?'static':'sticky',split:s.w<1180?'minmax(0,1fr)':'minmax(0,1.8fr) minmax(300px,1fr)',goPlans:()=>this.setState({view:'plans',sel:{},q:'',open:null}),asideFoot:narrow?'none':'flex',
+      mainPad:narrow?'16px':'24px 28px',cellPad:this.props.density==='compact'?'7px 14px':'14px 14px',
+      navItems:[nav('overview','Overview'),nav('listings','Listings'),nav('sellers','Private sellers'),nav('agents','Agents'),nav('companies','Agencies'),nav('screenings','Tenant screenings'),nav('payments','Payments'),nav('plans','Plans & pricing')],
+      isOverview:v==='overview',isPlans:v==='plans',isTable,stop:e=>e.stopPropagation(),
+      kicker:isTable?'Manage':v==='plans'?'Settings':'Thursday 2 October 2026',title:{overview:'Overview',listings:'Listings',sellers:'Private sellers',agents:'Agents',companies:'Agencies',screenings:'Tenant screenings',payments:'Payments',plans:'Plans & pricing'}[v],
+      q:s.q,onSearch:e=>this.setState({q:e.target.value,sel:{}}),searchPh:'Search '+(v==='companies'?'agencies':v==='sellers'?'sellers':v==='payments'?'invoices':v)+'…',
+      canAdd:isTable&&['sellers','agents','companies'].includes(v),addLabel:'Add '+(SING[v]||''),
+      openAdd:()=>this.setState({dialog:{mode:'add',kind:v},form:{city:CITIES[0],companyId:D.companies[0].id},formErr:''}),
+      goPending:goto('listings','Pending review'),toast:s.toast,hasToast:!!s.toast
+    };
+    out.navMain=out.navItems.slice(0,7);out.navOther=out.navItems.slice(7);
+    if(v==='plans'){
+      const vat=n=>s.vatIncl?n*1.15:n,disc=Math.min(50,Math.max(0,Number(s.annualDisc)||0));
+      const suffix=s.vatIncl?' incl. VAT':' excl. VAT';
+      const lim=n=>n?String(n):'Unlimited';
+      const toggle=(coll,x)=>()=>{const st=x.status==='Active'?'Archived':'Active';
+        this.setState(S=>({data:{...S.data,[coll]:S.data[coll].map(p=>p.id===x.id?{...p,status:st}:p)}}));
+        this.flash((st==='Archived'?'Archived ':'Restored ')+x.name);};
+      const so=on=>({bg:on?'#fff':'transparent',fg:on?'#14161b':'#5b6170',sh:on?'0 1px 2px rgba(20,22,27,.1)':'none'});
+      out.vatOpts=[{...so(!s.vatIncl),label:'Excl. VAT',active:!s.vatIncl,pick:()=>this.setState({vatIncl:false})},{...so(s.vatIncl),label:'Incl. VAT',active:s.vatIncl,pick:()=>this.setState({vatIncl:true})}];
+      out.annualDisc=s.annualDisc;out.onDisc=e=>this.setState({annualDisc:e.target.value});
+      out.plansView=D.plans.map(p=>{const subs=D.companies.filter(c=>c.plan===p.name).length;return {name:p.name,status:p.status,tagBg:this.tagBg(p.status),tagFg:this.tagFg(p.status),opacity:p.status==='Active'?1:.55,
+        price:zar(vat(p.price)),annual:zar(vat(p.price)*12*(1-disc/100))+' / year billed annually'+(disc?' ('+disc+'% off)':'')+suffix,
+        specs:[{label:'Agencies on plan',value:String(subs)},{label:'Agent seats',value:lim(p.seats)},{label:'Active listings',value:lim(p.listings)},{label:'Featured credits / month',value:String(p.featured)},{label:'Analytics',value:p.analytics}],
+        edit:()=>this.openPlanForm('plans',p),toggle:toggle('plans',p),toggleLabel:p.status==='Active'?'Archive':'Restore'};});
+      out.fees=D.fees;const setFee=key=>e=>this.setState(S=>({data:{...S.data,fees:{...S.data.fees,[key]:e.target.value}}}));
+      out.onFeeScreening=setFee('screening');out.onFeeCredit=setFee('credit');
+      out.screeningNote=D.screenings.filter(x=>x.status==='Complete').length+' completed screenings · '+rc(D.payments.filter(p=>p.desc.startsWith('Tenant screening')&&p.status==='Paid').reduce((a,p)=>a+p.amt,0))+' collected';
+      out.packsView=D.packs.map(k=>({name:k.name,deal:k.deal==='Rent'?'To rent':'For sale',price:zar(k.price),months:k.months+' months',max:k.max?zar(k.max):'No limit',photos:'Up to '+k.photos,users:String(D.listings.filter(l=>l.plan===k.id).length),
+        status:k.status,tagBg:this.tagBg(k.status),tagFg:this.tagFg(k.status),opacity:k.status==='Active'?1:.55,
+        edit:()=>this.openPlanForm('packs',k),toggle:toggle('packs',k),toggleLabel:k.status==='Active'?'Archive':'Restore'}));
+      out.addPlan=()=>this.openPlanForm('plans',null);out.addPack=()=>this.openPlanForm('packs',null);
+    } else if(!isTable){
+      const live=D.listings.filter(l=>l.status==='Live'),pend=D.listings.filter(l=>l.status==='Pending review');
+      const pa=pendingAcc('agents'),ps=pendingAcc('sellers'),pc=pendingAcc('companies');
+      const susp=['sellers','agents','companies'].reduce((n,k)=>n+D[k].filter(e=>e.status==='Suspended').length,0);
+      out.stats=[
+        {label:'Live listings',value:live.length,sub:live.filter(l=>l.sale).length+' for sale · '+live.filter(l=>!l.sale).length+' to rent',color:'var(--color-text)',go:goto('listings','Live')},
+        {label:'Awaiting review',value:pend.length,sub:'Oldest '+rel(Math.max(0,...pend.map(l=>l.updated))).toLowerCase(),color:pend.length?'var(--color-accent)':'var(--color-text)',go:goto('listings','Pending review')},
+        {label:'Accounts to verify',value:pa.length+ps.length+pc.length,sub:pa.length+' agents · '+ps.length+' sellers · '+pc.length+' agencies',color:'var(--color-text)',go:goto(pa.length?'agents':ps.length?'sellers':'companies',null)},
+        {label:'Suspended accounts',value:susp,sub:'Across sellers, agents, agencies',color:'var(--color-text)',go:goto('agents','Suspended')}];
+      out.stats.forEach((st,i)=>{const sp=this.spark(7+i*13);st.line=sp.line;st.area=sp.area;st.stroke=i%2?'#e5484d':'#1f9d55';st.fill=i%2?'rgba(229,72,77,.1)':'rgba(31,157,85,.1)';});
+      out.stats[2].go=()=>{const k=pa.length?'agents':ps.length?'sellers':'companies';goto(k,PENDING[k])();};
+      out.reviewQueue=[...pend].sort((a,b)=>b.updated-a.updated).slice(0,4).map(l=>{const x=this.listerOf(l);return {id:l.id,deal:l.sale?'For sale':'To rent',loc:l.suburb+', '+l.city,beds:l.beds||'—',baths:l.baths||'—',size:l.size+' m²',by:'Listed by '+(l.listerKind==='agents'?x.name:'private seller '+x.name),when:rel(l.updated),title:this.title('listings',l),sub:l.suburb+', '+l.city+' · '+(l.listerKind==='agents'?x.name:'Private: '+x.name)+' · '+rel(l.updated),price:this.priceTxt(l),
+        approve:()=>this.doAction('listings',[l.id],'approve'),reject:()=>this.doAction('listings',[l.id],'reject'),open:()=>this.openE('listings',l.id)};});
+      out.reviewEmpty=!pend.length;
+      const acc=[...pa.map(e=>['agents',e,'Agent','FFC '+e.ffc+' · '+D.companies.find(c=>c.id===e.companyId).name]),...ps.map(e=>['sellers',e,'Seller','ID documents uploaded · '+e.city]),...pc.map(e=>['companies',e,'Agency','Reg. '+e.reg+' · '+e.city])];
+      out.verifyQueue=acc.map(([k,e,kind,sub])=>({ini:e.name.split(' ').map(w=>w[0]).slice(0,2).join(''),name:e.name,sub,kind,verify:()=>this.doAction(k,[e.id],'verify'),open:()=>this.openE(k,e.id)}));
+      out.verifyEmpty=!acc.length;
+      const act=D.activity,n=act.length,max=Math.ceil(Math.max(...act.map(q=>Math.max(q.sale,q.rent)))/10)*10+10;
+      const W=600,H=200,X=i=>(i+0.5)*W/n,Y=val=>H-(val/max)*H;
+      const sl=smooth(act.map((q,i)=>[X(i),Y(q.sale)])),rl=smooth(act.map((q,i)=>[X(i),Y(q.rent)])),h=s.hover;
+      out.chart={sale:sl,saleArea:sl+' L'+X(n-1)+' '+H+' L'+X(0)+' '+H+' Z',rent:rl,yTicks:[4,3,2,1,0].map(k=>({label:String(Math.round(max*k/4))})),
+        cols:act.map((q,i)=>({label:q.label,lblColor:h===i?'#4361ee':'#8a909c',lblWeight:h===i?700:500,band:h===i?'rgba(67,97,238,.07)':'transparent',enter:()=>this.setState({hover:i})})),
+        leave:()=>this.setState({hover:null}),hasTip:h!=null,tip:{}};
+      if(h!=null){const q=act[h];out.chart.tip={label:'Week of '+q.label,sale:q.sale,rent:q.rent,left:((h+0.5)/n*100)+'%',saleTop:(Y(q.sale)/H*100)+'%',rentTop:(Y(q.rent)/H*100)+'%',shift:h>=n/2?'calc(-100% - 14px)':'14px'};}
+      const segs=[['Live','#4361ee'],['Under offer','#e5484d'],['Pending review','#d9defa']].map(([st,c])=>({label:st,color:c,n:D.listings.filter(l=>l.status===st).length}));
+      const tot=segs.reduce((m,g)=>m+g.n,0)||1,L=Math.PI*90,gap=30;let at=0;
+      const gs=segs.map(g=>{const share=g.n/tot*L,len=Math.max(0.01,share-gap);const o={...g,count:String(g.n),dash:len+' '+(L*2),off:String(-(at+gap/2))};at+=share;return o;});
+      out.gauge=gs;out.gA=gs[0];out.gB=gs[1];out.gC=gs[2];out.gaugePct=Math.round(segs[0].n/tot*100)+'%';
+      out.soldN=D.listings.filter(l=>l.status==='Sold').length;
+    } else {
+      const cols=this.cols(v),all=D[v].filter(e=>this.search(v,e));
+      const f=s.filter||'All';
+      let rows=f==='All'?all:all.filter(e=>e.status===f);
+      if(s.sort.key){const c=cols.find(c=>c.key===s.sort.key);rows=[...rows].sort((a,b)=>{const x=c.val(a),y=c.val(b);return (x>y?1:x<y?-1:0)*s.sort.dir;});}
+      else if(v==='listings')rows=[...rows].sort((a,b)=>a.updated-b.updated);
+      out.cols=cols.map(c=>({label:c.label,arrow:s.sort.key===c.key?(s.sort.dir>0?'↑':'↓'):'',sort:()=>this.setState(st=>({sort:{key:c.key,dir:st.sort.key===c.key?-st.sort.dir:1}}))}));
+      out.filters=['All',...this.statuses(v)].map(x=>({label:x,count:x==='All'?all.length:all.filter(e=>e.status===x).length,active:f===x,bg:f===x?'#fff':'transparent',fg:f===x?'#14161b':'#5b6170',sh:f===x?'0 1px 2px rgba(20,22,27,.1)':'none',pick:()=>this.setState({filter:x,sel:{}})}));
+      const o=s.open;
+      out.rows=rows.map(e=>({sel:!!s.sel[e.id],bg:s.sel[e.id]?'#f1f4ff':o&&o.id===e.id?'#f7f8fa':'transparent',
+        toggle:()=>this.setState(st=>({sel:{...st.sel,[e.id]:!st.sel[e.id]}})),open:()=>this.openE(v,e.id),cells:cols.map(c=>c.cell(e))}));
+      const selIds=rows.filter(e=>s.sel[e.id]).map(e=>e.id);
+      out.allSel=rows.length>0&&selIds.length===rows.length;
+      out.toggleAll=()=>this.setState({sel:out.allSel?{}:Object.fromEntries(rows.map(e=>[e.id,true]))});
+      out.hasSel=selIds.length>0;out.selLabel=selIds.length+' selected';out.clearSel=()=>this.setState({sel:{}});
+      const sel=D[v].filter(e=>selIds.includes(e.id));
+      const B=(label,act,ok)=>{const ids=sel.filter(ok).map(e=>e.id);return ids.length?{label:label+' '+ids.length,run:()=>this.doAction(v,ids,act)}:null;};
+      out.bulkActions=(v==='listings'?[B('Approve','approve',e=>e.status==='Pending review'),B('Remove','reject',e=>e.status!=='Removed')]
+        :v==='screenings'?[B('Cancel','cancel',e=>['Invite sent','In progress'].includes(e.status))]
+        :v==='payments'?[B('Mark paid','markpaid',e=>['Due','Overdue'].includes(e.status)),B('Remind','remind',e=>['Due','Overdue'].includes(e.status))]
+        :[B('Verify','verify',e=>e.status===PENDING[v]),B('Suspend','suspend',e=>e.status!=='Suspended'),B('Reinstate','reinstate',e=>e.status==='Suspended')]).filter(Boolean);
+      out.noRows=!rows.length;out.footLabel='Showing '+rows.length+' of '+D[v].length+' '+(v==='companies'?'agencies':v==='sellers'?'private sellers':v==='payments'?'invoices':v);
+    }
+    const d=this.drawer();out.drawerOpen=!!d;out.d=d||{};out.closeDrawer=()=>this.setState({open:null});
+    const dl=s.dialog;out.dialogOpen=!!dl;out.closeDialog=()=>this.setState({dialog:null});
+    out.reason=s.reason;out.onReason=e=>this.setState({reason:e.target.value});
+    if(dl&&dl.mode==='plan'){
+      const k=dl.coll,fm=s.form,set=key=>e=>this.setState({form:{...s.form,[key]:e.target.value},formErr:''});
+      const T=(key,label,type,ph)=>({label,isText:true,isSelect:false,type,ph,value:fm[key]??'',change:set(key)});
+      const S=(key,label,opts)=>({label,isText:false,isSelect:true,options:opts.map(o=>({value:o,label:o})),value:fm[key]??'',change:set(key)});
+      out.formFields=k==='plans'
+        ?[T('name','Plan name','text','e.g. Growth'),T('price','Monthly price, excl. VAT (R)','number','0'),T('seats','Agent seats (0 = unlimited)','number','0'),T('listings','Active listings (0 = unlimited)','number','0'),T('featured','Featured credits per month','number','0'),S('analytics','Analytics',['Basic','Full','Full + API'])]
+        :[T('name','Plan name','text','e.g. Rental Listing (Lite)'),S('deal','Deal',['Sale','Rent']),T('price','Price per listing, incl. VAT (R)','number','0'),T('months','Advertised for (months)','number','6'),T('photos','Max photos','number','20'),T('max','Max asking price, R (0 = no limit)','number','0')];
+      const orig=dl.item,subs=orig?(k==='plans'?D.companies.filter(c=>c.plan===orig.name).length:D.listings.filter(l=>l.plan===orig.id).length):0;
+      out.dlg={title:(orig?'Edit ':'New ')+(k==='plans'?'agency plan':'seller listing plan'),confirmLabel:orig?'Save changes':'Create',isAdd:true,isConfirm:false,
+        body:orig?(subs+' '+(k==='plans'?'agencies':'listings')+' currently on '+orig.name+'. A new price applies from their next '+(k==='plans'?'renewal':'listing or renewal')+'.'):'New '+(k==='plans'?'plans':'listing plans')+' are live for sign-up as soon as you create them.'};
+      out.formErr=s.formErr;out.hasFormErr=!!s.formErr;
+      out.confirmDialog=()=>{
+        const name=(fm.name||'').trim();
+        if(!name)return this.setState({formErr:'Name is required.'});
+        if(D[k].some(p=>p.name.toLowerCase()===name.toLowerCase()&&(!orig||p.id!==orig.id)))return this.setState({formErr:'That name is already in use.'});
+        const nums=k==='plans'?['price','seats','listings','featured']:['price','months','photos','max'];
+        const bad=nums.find(n=>fm[n]===''||isNaN(Number(fm[n]))||Number(fm[n])<0);
+        if(bad)return this.setState({formErr:'Enter a number of 0 or more for every numeric field.'});
+        if(k==='packs'&&Number(fm.months)<1)return this.setState({formErr:'A listing plan must run for at least 1 month.'});
+        const rec={...(orig||{id:k==='plans'?name:'PK'+(D.packs.length+1),status:'Active'}),...fm,name};nums.forEach(n=>rec[n]=Number(fm[n]));
+        this.setState(st=>({dialog:null,data:{...st.data,[k]:orig?st.data[k].map(p=>p.id===orig.id?rec:p):[...st.data[k],rec],
+          companies:k==='plans'&&orig&&orig.name!==name?st.data.companies.map(c=>c.plan===orig.name?{...c,plan:name}:c):st.data.companies}}));
+        this.flash((orig?'Saved ':'Created ')+name);
+      };
+    } else if(dl&&dl.mode==='add'){
+      const k=dl.kind,fm=s.form,set=key=>e=>this.setState({form:{...s.form,[key]:e.target.value},formErr:''});
+      const T=(key,label,type,ph)=>({label,isText:true,isSelect:false,type,ph,value:fm[key]||'',change:set(key)});
+      const S=(key,label,options)=>({label,isText:false,isSelect:true,options,value:fm[key]||'',change:set(key)});
+      out.formFields=[T('name',k==='companies'?'Agency name':'Full name','text',k==='companies'?'e.g. Karoo Country Realty':'e.g. Ntombi Radebe'),T('email','Email','email','name@domain.co.za'),T('phone','Phone','tel','082 000 0000'),
+        ...(k==='agents'?[S('companyId','Agency',D.companies.map(c=>({value:c.id,label:c.name})))]:[]),
+        ...(k==='companies'?[T('reg','CIPC registration no.','text','2026/123456/07')]:[]),S('city',k==='companies'?'Head office':'City',CITIES.map(c=>({value:c,label:c})))];
+      out.dlg={title:'Add '+SING[k],body:'The account is created as pending and receives an email to finish '+(k==='agents'?'FFC':k==='sellers'?'ID':'company')+' verification.',confirmLabel:'Create '+SING[k],isAdd:true,isConfirm:false};
+      out.formErr=s.formErr;out.hasFormErr=!!s.formErr;
+      out.confirmDialog=()=>{
+        if(!(fm.name||'').trim())return this.setState({formErr:'Name is required.'});
+        if(!/^\S+@\S+\.\S+$/.test(fm.email||''))return this.setState({formErr:'Enter a valid email address.'});
+        const id=k[0].toUpperCase()+String(D[k].length+1).padStart(2,'0');
+        const company=D.companies.find(c=>c.id===fm.companyId);
+        const e={id,name:fm.name.trim(),email:fm.email.trim(),phone:fm.phone||'—',city:k==='agents'?company.city:fm.city,status:PENDING[k],joined:0,log:[{d:0,text:'Created by admin · invitation sent'}],
+          ...(k==='agents'?{companyId:fm.companyId,ffc:'Awaiting'}:{}),...(k==='companies'?{reg:fm.reg||'Awaiting',plan:'Starter'}:{})};
+        if(k==='agents')e.city=fm.city;
+        this.setState(st=>({data:{...st.data,[k]:[e,...st.data[k]]},dialog:null,filter:'All',q:''}));
+        this.flash('Invitation sent to '+e.email);
+      };
+    } else if(dl){
+      out.dlg={title:dl.title,body:dl.body,confirmLabel:dl.confirmLabel,isConfirm:true,isAdd:false};
+      out.confirmDialog=()=>{dl.run(s.reason.trim());this.setState({dialog:null});};
+      out.formFields=[];out.hasFormErr=false;
+    } else {out.dlg={};out.confirmDialog=()=>{};out.formFields=[];out.hasFormErr=false;}
+    return out;
+  }
+}
+</script>
+</body>
+</html>

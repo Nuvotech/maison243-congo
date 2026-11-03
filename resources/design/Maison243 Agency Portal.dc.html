@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0;background:#f4f5f8;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#14161b;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+button,input,select,textarea{font-family:inherit}
+a{color:#4361ee;text-decoration:none}
+a:hover{color:#2f4bd6}
+input[type=radio]{accent-color:#4361ee}
+:focus-visible{outline:2px solid #4361ee;outline-offset:2px}
+</style>
+</helmet>
+
+<div style="display:grid;grid-template-columns:{{ gridCols }};min-height:100vh;background:#f4f5f8;color:#14161b;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:14px">
+
+<aside style="display:flex;flex-direction:{{ asideDir }};gap:22px;padding:20px 14px;border-right:{{ asideBorderR }};border-bottom:{{ asideBorderB }};position:sticky;top:0;align-self:start;height:{{ asideH }};background:#f8f9fb;z-index:5;overflow-x:auto">
+  <div style="display:flex;align-items:center;gap:10px;padding:2px 8px 6px;flex:none">
+    <span style="width:32px;height:32px;flex:none;border-radius:9px;background:#14161b;color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px">M</span>
+    <span style="display:{{ lblDisp }};flex-direction:column;line-height:1.15"><span style="font-weight:700;font-size:19px;letter-spacing:-0.02em">Maison243</span><span style="font-size:11px;font-weight:600;color:#4361ee">for agents</span></span>
+  </div>
+  <div style="display:{{ g1Disp }};flex-direction:column;gap:8px;flex:none">
+    <div style="display:{{ groupDisp }};font-size:12px;color:#8a909c;padding:0 12px">{{ g1Label }}</div>
+    <nav style="display:flex;flex-direction:{{ asideDir }};gap:2px"><sc-for list="{{ nav1 }}" as="n" hint-placeholder-count="2">
+        <button onClick="{{ n.go }}" title="{{ n.label }}" style="position:relative;display:flex;align-items:center;justify-content:{{ n.justify }};gap:10px;width:100%;padding:9px 12px;border:0;border-radius:9px;cursor:pointer;font-size:14px;font-weight:500;text-align:left;white-space:nowrap;background:{{ n.bg }};color:{{ n.fg }}" style-hover="background:#eceef3;color:#14161b">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="{{ n.icon }}"></path></svg>
+          <span style="flex:1;display:{{ n.lblDisp }}">{{ n.label }}</span>
+          <sc-if value="{{ n.hasBadge }}"><span style="position:{{ n.badgePos }};top:4px;right:6px;min-width:20px;height:20px;padding:0 7px;border-radius:10px;background:{{ n.badgeBg }};color:{{ n.badgeFg }};font-size:11px;font-weight:700;display:grid;place-items:center">{{ n.badge }}</span></sc-if>
+        </button>
+      </sc-for></nav>
+  </div>
+  <div style="display:{{ g2Disp }};flex-direction:column;gap:8px;flex:none">
+    <div style="display:{{ groupDisp }};font-size:12px;color:#8a909c;padding:0 12px">{{ g2Label }}</div>
+    <nav style="display:flex;flex-direction:{{ asideDir }};gap:2px"><sc-for list="{{ nav2 }}" as="n" hint-placeholder-count="2">
+        <button onClick="{{ n.go }}" title="{{ n.label }}" style="position:relative;display:flex;align-items:center;justify-content:{{ n.justify }};gap:10px;width:100%;padding:9px 12px;border:0;border-radius:9px;cursor:pointer;font-size:14px;font-weight:500;text-align:left;white-space:nowrap;background:{{ n.bg }};color:{{ n.fg }}" style-hover="background:#eceef3;color:#14161b">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="{{ n.icon }}"></path></svg>
+          <span style="flex:1;display:{{ n.lblDisp }}">{{ n.label }}</span>
+          <sc-if value="{{ n.hasBadge }}"><span style="position:{{ n.badgePos }};top:4px;right:6px;min-width:20px;height:20px;padding:0 7px;border-radius:10px;background:{{ n.badgeBg }};color:{{ n.badgeFg }};font-size:11px;font-weight:700;display:grid;place-items:center">{{ n.badge }}</span></sc-if>
+        </button>
+      </sc-for></nav>
+  </div>
+  <div style="display:{{ g3Disp }};flex-direction:column;gap:8px;flex:none">
+    <div style="display:{{ groupDisp }};font-size:12px;color:#8a909c;padding:0 12px">{{ g3Label }}</div>
+    <nav style="display:flex;flex-direction:{{ asideDir }};gap:2px"><sc-for list="{{ nav3 }}" as="n" hint-placeholder-count="2">
+        <button onClick="{{ n.go }}" title="{{ n.label }}" style="position:relative;display:flex;align-items:center;justify-content:{{ n.justify }};gap:10px;width:100%;padding:9px 12px;border:0;border-radius:9px;cursor:pointer;font-size:14px;font-weight:500;text-align:left;white-space:nowrap;background:{{ n.bg }};color:{{ n.fg }}" style-hover="background:#eceef3;color:#14161b">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="{{ n.icon }}"></path></svg>
+          <span style="flex:1;display:{{ n.lblDisp }}">{{ n.label }}</span>
+          <sc-if value="{{ n.hasBadge }}"><span style="position:{{ n.badgePos }};top:4px;right:6px;min-width:20px;height:20px;padding:0 7px;border-radius:10px;background:{{ n.badgeBg }};color:{{ n.badgeFg }};font-size:11px;font-weight:700;display:grid;place-items:center">{{ n.badge }}</span></sc-if>
+        </button>
+      </sc-for></nav>
+  </div>
+  <button onClick="{{ toggleCollapse }}" style="margin-top:auto;display:{{ collapseDisp }};align-items:center;justify-content:{{ collapseJustify }};gap:10px;padding:9px 12px;border:0;border-radius:9px;background:transparent;color:#5b6170;font-size:13px;font-weight:500;cursor:pointer" style-hover="background:#eceef3;color:#14161b">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ collapseIcon }}"></path></svg>
+    <span style="display:{{ lblDispB }}">Collapse menu</span>
+  </button>
+</aside>
+
+<main style="min-width:0;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;gap:16px;padding:12px 28px;min-height:72px;background:#fff;border-bottom:1px solid #e7e9ee;position:{{ headerPos }};top:0;z-index:4">
+    <div style="flex:1;min-width:0">
+      <div style="font-size:12px;color:#8a909c">{{ crumb }}</div>
+      <h1 style="margin:2px 0 0;font-size:22px;font-weight:700;letter-spacing:-0.02em">{{ title }}</h1>
+    </div>
+    <div style="display:{{ wideDisp }};align-items:center;gap:10px;padding:6px 12px 6px 6px;border:1px solid #e7e9ee;border-radius:10px">
+      <span style="width:30px;height:30px;border-radius:8px;background:#7a3fbf;color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px">JE</span>
+      <span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-weight:700;font-size:13px">Jacaranda Estates</span><span style="font-size:11px;color:#8a909c">{{ agencySub }}</span></span>
+    </div>
+    <button onClick="{{ goProfile }}" style="display:flex;align-items:center;gap:10px;border:0;background:none;padding:4px;border-radius:10px;cursor:pointer;color:#14161b;text-align:left" style-hover="background:#f5f6f9">
+      <span style="width:38px;height:38px;border-radius:50%;background:#e3e8fd;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:13px">{{ meIni }}</span>
+      <span style="display:{{ wideDisp }};flex-direction:column;line-height:1.25"><span style="font-weight:600;font-size:14px">{{ meName }}</span><span style="font-size:12px;color:#8a909c">{{ meRole }}</span></span>
+    </button>
+  </header>
+
+  <div style="padding:{{ mainPad }};display:flex;flex-direction:column;gap:20px;flex:1">
+
+  <sc-if value="{{ isListings }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+      <div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px;flex-wrap:wrap;align-self:flex-start"><sc-for list="{{ propTabs }}" as="t" hint-placeholder-count="2"><button onClick="{{ t.pick }}" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:7px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ t.label }}<sc-if value="{{ t.hasCount }}"><span style="color:#8a909c;font-weight:500">{{ t.count }}</span></sc-if></button></sc-for></div>
+      <span style="flex:1"></span>
+      <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+        <span style="font-size:13px;color:#5b6170">{{ quotaLabel }}</span>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+        <div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px;flex-wrap:wrap;align-self:flex-start"><sc-for list="{{ statusTabs }}" as="f" hint-placeholder-count="2"><button onClick="{{ f.pick }}" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:7px;background:{{ f.bg }};color:{{ f.fg }};box-shadow:{{ f.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ f.label }}<sc-if value="{{ f.hasCount }}"><span style="color:#8a909c;font-weight:500">{{ f.count }}</span></sc-if></button></sc-for></div>
+        <span style="flex:1"></span>
+        <sc-if value="{{ isPrincipal }}">
+          <select value="{{ agentFilter }}" onChange="{{ onAgentFilter }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;width:200px" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ agentFilterOpts }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
+        </sc-if>
+        <div style="position:relative;width:260px;max-width:100%">
+          <span style="position:absolute;left:12px;top:12px;color:#8a909c;display:flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"></path></svg></span>
+          <input type="search" placeholder="Search number, address…" value="{{ q }}" onChange="{{ onSearch }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;padding-left:36px" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd">
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+        <div style="overflow-x:auto">
+          <table style="width:100%;min-width:1040px;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:#fafbfc">
+              <th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">List no.</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Address</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Price</th>
+              <sc-if value="{{ isPrincipal }}"><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Agent</th></sc-if>
+              <th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Mandate</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Status</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Modified</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap"></th>
+            </tr></thead>
+            <tbody>
+              <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+                <tr style-hover="background:#fafbfd">
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><button onClick="{{ r.open }}" style="border:0;background:none;padding:0;cursor:pointer;color:#4361ee;font-weight:600;font-size:14px" style-hover="text-decoration:underline">{{ r.id }}</button></td>
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="font-weight:600;white-space:nowrap">{{ r.addr }}</div><div style="font-size:12px;color:#8a909c;margin-top:2px;white-space:nowrap">{{ r.addr2 }}</div></td>
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right;font-weight:600;white-space:nowrap">{{ r.price }}</td>
+                  <sc-if value="{{ isPrincipal }}"><td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;white-space:nowrap">{{ r.agent }}</td></sc-if>
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="white-space:nowrap">{{ r.mandate }}</div><div style="font-size:12px;color:{{ r.mandColor }};margin-top:2px;white-space:nowrap">{{ r.mandSub }}</div></td>
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="display:flex;gap:6px;align-items:center"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ r.tagBg }};color:{{ r.tagFg }}">{{ r.status }}</span><sc-if value="{{ r.featured }}"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:#14161b;color:#fff">Featured</span></sc-if></div></td>
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;white-space:nowrap;color:#5b6170">{{ r.modified }}</td>
+                  <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="display:flex;gap:6px;justify-content:flex-end">
+                    <sc-for list="{{ r.actions }}" as="a"><button onClick="{{ a.run }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:32px;padding:0 12px;border:1px solid {{ a.bd }};background:{{ a.bg }};color:{{ a.fg }}" style-hover="filter:brightness(.95)">{{ a.label }}</button></sc-for>
+                  </div></td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <sc-if value="{{ noRows }}"><p style="margin:0;padding:32px 16px;color:#8a909c">No listings match these filters.</p></sc-if>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px">
+          <span style="font-size:13px;color:#8a909c;flex:1">{{ rangeLabel }}</span>
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#5b6170">Rows
+            <select value="{{ size }}" onChange="{{ onSize }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;width:72px;height:34px"><option value="5">5</option><option value="10">10</option><option value="25">25</option></select>
+          </label>
+          <button onClick="{{ prev }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:34px;opacity:{{ prevOp }}" style-hover="background:#f5f6f9">Previous</button>
+          <sc-for list="{{ pages }}" as="pg"><button onClick="{{ pg.go }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:34px;min-width:34px;padding:0 10px;justify-content:center;border:1px solid {{ pg.bd }};background:{{ pg.bg }};color:{{ pg.fg }}">{{ pg.n }}</button></sc-for>
+          <button onClick="{{ next }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:34px;opacity:{{ nextOp }}" style-hover="background:#f5f6f9">Next</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isForm }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:26px;max-width:980px">
+        <section style="display:flex;flex-direction:column;gap:14px">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Listing &amp; mandate</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end">
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Deal<div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px;flex-wrap:wrap;align-self:flex-start"><sc-for list="{{ dealOpts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:7px;background:{{ o.bg }};color:{{ o.fg }};box-shadow:{{ o.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ o.label }}<sc-if value="{{ o.hasCount }}"><span style="color:#8a909c;font-weight:500">{{ o.count }}</span></sc-if></button></sc-for></div></div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0;width:200px">Property type
+              <select value="{{ fv.type }}" onChange="{{ fs.type }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ typeOpts }}" as="o"><option value="{{ o }}">{{ o }}</option></sc-for></select>
+            </label>
+            <sc-if value="{{ isPrincipal }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0;width:220px">Listing agent
+                <select value="{{ fv.agentId }}" onChange="{{ fs.agentId }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ agentOpts }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
+              </label>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Mandate<div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px;flex-wrap:wrap;align-self:flex-start"><sc-for list="{{ mandOpts }}" as="m" hint-placeholder-count="2"><button onClick="{{ m.pick }}" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:7px;background:{{ m.bg }};color:{{ m.fg }};box-shadow:{{ m.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ m.label }}<sc-if value="{{ m.hasCount }}"><span style="color:#8a909c;font-weight:500">{{ m.count }}</span></sc-if></button></sc-for></div></div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0;width:180px">Mandate expires<input type="date" value="{{ fv.mandExp }}" onChange="{{ fs.mandExp }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          </div>
+        </section>
+        <section style="display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid #f0f1f4">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Address</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Street address<input value="{{ fv.street }}" onChange="{{ fs.street }}" placeholder="e.g. 12 Albert St" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Unit &amp; complex (optional)<input value="{{ fv.unit }}" onChange="{{ fs.unit }}" placeholder="e.g. Unit 4, The Oaks" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Suburb<input value="{{ fv.suburb }}" onChange="{{ fs.suburb }}" placeholder="e.g. Waterkloof" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">City
+              <select value="{{ fv.city }}" onChange="{{ fs.city }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ cityOpts }}" as="o"><option value="{{ o }}">{{ o }}</option></sc-for></select>
+            </label>
+          </div>
+        </section>
+        <section style="display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid #f0f1f4">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Details</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">{{ priceLabel }}<input type="number" min="0" value="{{ fv.price }}" onChange="{{ fs.price }}" placeholder="0" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+            <sc-if value="{{ hasRooms }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Bedrooms<input type="number" min="0" value="{{ fv.beds }}" onChange="{{ fs.beds }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Bathrooms<input type="number" min="0" value="{{ fv.baths }}" onChange="{{ fs.baths }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+            </sc-if>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">{{ sizeLabel }}<input type="number" min="0" value="{{ fv.size }}" onChange="{{ fs.size }}" placeholder="0" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Description
+            <textarea value="{{ fv.desc }}" onChange="{{ fs.desc }}" placeholder="Layout, finishes, security, schools and transport nearby." style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;height:110px;padding:10px 12px;resize:vertical;line-height:1.5" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></textarea>
+            <span style="font-size:12px;font-weight:500;color:#8a909c">{{ descCount }}</span>
+          </label>
+        </section>
+        <section style="display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid #f0f1f4">
+          <div><h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Photos</h3><p style="margin:4px 0 0;font-size:13px;color:#8a909c">The first photo is the cover image.</p></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px">
+            <div style="height:130px;border-radius:10px;overflow:hidden;background:#eef0f4"><image-slot id="ag-photo-{{ photoKey }}-1" shape="rect" placeholder="Cover photo"></image-slot></div>
+            <div style="height:130px;border-radius:10px;overflow:hidden;background:#eef0f4"><image-slot id="ag-photo-{{ photoKey }}-2" shape="rect" placeholder="Photo 2"></image-slot></div>
+            <div style="height:130px;border-radius:10px;overflow:hidden;background:#eef0f4"><image-slot id="ag-photo-{{ photoKey }}-3" shape="rect" placeholder="Photo 3"></image-slot></div>
+            <div style="height:130px;border-radius:10px;overflow:hidden;background:#eef0f4"><image-slot id="ag-photo-{{ photoKey }}-4" shape="rect" placeholder="Photo 4"></image-slot></div>
+          </div>
+        </section>
+        <sc-if value="{{ hasFormErr }}">
+          <div style="display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:10px;background:#fdecec;color:#c22f34;font-size:13px;font-weight:600">
+            <sc-for list="{{ formErrs }}" as="e"><span>{{ e }}</span></sc-for>
+          </div>
+        </sc-if>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-top:22px;border-top:1px solid #f0f1f4">
+          <button onClick="{{ cancelForm }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:42px" style-hover="background:#f5f6f9">Cancel</button>
+          <span style="flex:1;font-size:12px;color:#8a909c;text-align:right">{{ submitNote }}</span>
+          <button onClick="{{ saveDraft }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:42px" style-hover="background:#f5f6f9">{{ draftLabel }}</button>
+          <sc-if value="{{ showSubmit }}"><button onClick="{{ submitForm }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff;height:42px" style-hover="background:#3550e0;border-color:#3550e0">Submit for review</button></sc-if>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ isLeads }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;gap:2px;padding:4px;background:#eceef3;border-radius:10px;flex-wrap:wrap;align-self:flex-start"><sc-for list="{{ leadFilters }}" as="f" hint-placeholder-count="2"><button onClick="{{ f.pick }}" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:7px;background:{{ f.bg }};color:{{ f.fg }};box-shadow:{{ f.sh }};font-weight:600;font-size:13px;cursor:pointer">{{ f.label }}<sc-if value="{{ f.hasCount }}"><span style="color:#8a909c;font-weight:500">{{ f.count }}</span></sc-if></button></sc-for></div>
+    <div style="display:grid;grid-template-columns:{{ leadCols }};gap:16px;align-items:start">
+      <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+        <sc-for list="{{ leadList }}" as="l" hint-placeholder-count="6">
+          <button onClick="{{ l.open }}" style="display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:0;border-bottom:1px solid #f0f1f4;border-left:3px solid {{ l.edge }};background:{{ l.bg }};cursor:pointer;text-align:left;color:#14161b;width:100%" style-hover="background:#fafbfd">
+            <span style="width:38px;height:38px;flex:none;border-radius:50%;background:#eef1fe;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:13px">{{ l.ini }}</span>
+            <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+              <span style="display:flex;gap:8px;align-items:center"><span style="font-weight:{{ l.weight }};font-size:14px;flex:1">{{ l.name }}</span><span style="font-size:12px;color:#8a909c;white-space:nowrap">{{ l.when }}</span></span>
+              <span style="font-size:12px;color:#5b6170;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.prop }}</span>
+              <span style="font-size:13px;color:#8a909c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.snippet }}</span>
+            </span>
+          </button>
+        </sc-for>
+        <sc-if value="{{ noLeads }}"><p style="margin:0;padding:28px 16px;color:#8a909c">No leads here.</p></sc-if>
+      </div>
+      <sc-if value="{{ hasLead }}">
+        <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+            <span style="width:48px;height:48px;flex:none;border-radius:50%;background:#eef1fe;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:16px">{{ lead.ini }}</span>
+            <div style="flex:1;min-width:180px">
+              <div style="font-size:19px;font-weight:700">{{ lead.name }}</div>
+              <div style="font-size:13px;color:#8a909c;margin-top:2px">{{ lead.via }} · {{ lead.when }}</div>
+            </div>
+            <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ lead.tagBg }};color:{{ lead.tagFg }}">{{ lead.status }}</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a href="{{ lead.mailto }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;text-decoration:none" style-hover="background:#f5f6f9"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M2 4h20v16H2zM22 6l-10 7L2 6"></path></svg>{{ lead.email }}</a>
+            <a href="{{ lead.tel }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;text-decoration:none" style-hover="background:#f5f6f9"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg>{{ lead.phone }}</a>
+          </div>
+          <div style="padding:14px 16px;border-radius:12px;background:#f5f6f9;font-size:14px;line-height:1.6;text-wrap:pretty">{{ lead.msg }}</div>
+          <button onClick="{{ lead.openProp }}" style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #e7e9ee;border-radius:12px;background:#fff;cursor:pointer;text-align:left;color:#14161b" style-hover="border-color:#c9d2fb">
+            <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:#8a909c">Enquiry about</span><span style="font-weight:600">{{ lead.prop }}</span><span style="font-size:12px;color:#5b6170">{{ lead.propSub }}</span></span>
+            <span style="font-weight:700;color:#4361ee;white-space:nowrap">{{ lead.price }}</span>
+          </button>
+          <sc-if value="{{ lead.canAssign }}">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Assigned agent
+              <select value="{{ lead.agentId }}" onChange="{{ lead.assign }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ agentOpts }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
+            </label>
+          </sc-if>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f0f1f4">
+            <sc-for list="{{ lead.actions }}" as="a"><button onClick="{{ a.run }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:40px;border:1px solid {{ a.bd }};background:{{ a.bg }};color:{{ a.fg }}" style-hover="filter:brightness(.95)">{{ a.label }}</button></sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isScreen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:18px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#f7f9ff;border-color:#dfe5fd">
+      <span style="width:42px;height:42px;flex:none;border-radius:12px;background:#4361ee;color:#fff;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1zM9 12l2 2 4-4"></path></svg></span>
+      <div style="flex:1;min-width:240px">
+        <div style="font-weight:700;font-size:15px">Screen tenants before you sign</div>
+        <div style="font-size:13px;color:#5b6170;margin-top:3px;line-height:1.5">We email the applicant a secure link to verify their ID, credit record and affordability. R 250 per screening, charged only when the applicant completes it.</div>
+      </div>
+      <button onClick="{{ openScreen }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff;height:40px" style-hover="background:#3550e0;border-color:#3550e0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 5v14M5 12h14"></path></svg>Request screening</button>
+    </div>
+    <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:820px;border-collapse:collapse;font-size:14px">
+          <thead><tr style="background:#fafbfc"><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Applicant</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Property</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Requested</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Status</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Result</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap"></th></tr></thead>
+          <tbody>
+            <sc-for list="{{ scrRows }}" as="s" hint-placeholder-count="4">
+              <tr>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="font-weight:600">{{ s.name }}</div><div style="font-size:12px;color:#8a909c;margin-top:2px">{{ s.email }}</div></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="white-space:nowrap">{{ s.prop }}</div><div style="font-size:12px;color:#8a909c;margin-top:2px">{{ s.propSub }}</div></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;white-space:nowrap;color:#5b6170">{{ s.date }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ s.tagBg }};color:{{ s.tagFg }}">{{ s.status }}</span></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;font-weight:600;color:{{ s.resColor }}">{{ s.result }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right"><sc-if value="{{ s.hasAct }}"><button onClick="{{ s.run }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:32px" style-hover="background:#f5f6f9">{{ s.act }}</button></sc-if></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isPerf }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <label style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#3a3f4b">Listing
+        <select value="{{ perfSel }}" onChange="{{ onPerf }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;width:320px;max-width:70vw" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ perfOpts }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
+      </label>
+      <span style="flex:1"></span>
+      <span style="font-size:12px;font-weight:600;color:#3a3f4b;border:1px solid #e7e9ee;background:#fff;border-radius:8px;padding:8px 12px">Last 30 days</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <sc-for list="{{ perfStats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:13px;font-weight:600;color:#3a3f4b">{{ s.label }}</span>
+          <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1">{{ s.value }}</span>
+          <span style="font-size:12px;color:#8a909c">{{ s.sub }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:12px"><h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Daily views</h3><span style="font-size:12px;color:#8a909c">Hover a bar for the day's count</span></div>
+      <div style="display:flex;align-items:flex-end;gap:4px;height:200px;padding-top:8px;border-bottom:1px solid #e9ecf1">
+        <sc-for list="{{ bars }}" as="b" hint-placeholder-count="30"><div title="{{ b.tip }}" style="flex:1;height:{{ b.h }};min-height:2px;border-radius:5px 5px 0 0;background:{{ b.color }}" style-hover="background:#2f4bd6"></div></sc-for>
+      </div>
+      <div style="display:flex;gap:4px">
+        <sc-for list="{{ bars }}" as="b" hint-placeholder-count="30"><span style="flex:1;min-width:0;font-size:11px;color:#8a909c;white-space:nowrap;overflow:visible">{{ b.label }}</span></sc-for>
+      </div>
+    </section>
+    <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:760px;border-collapse:collapse;font-size:14px">
+          <thead><tr style="background:#fafbfc"><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Listing</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Status</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Views</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Enquiries</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Saves</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Enquiry rate</th></tr></thead>
+          <tbody>
+            <sc-for list="{{ perfRows }}" as="r" hint-placeholder-count="4">
+              <tr>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="font-weight:600;white-space:nowrap">{{ r.addr }}</div><div style="font-size:12px;color:#8a909c;margin-top:2px">{{ r.sub }}</div></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ r.tagBg }};color:{{ r.tagFg }}">{{ r.status }}</span></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right;font-weight:600">{{ r.views }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ r.leads }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ r.saves }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ r.rate }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <sc-if value="{{ isPrincipal }}">
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+        <div style="padding:18px 20px 12px"><h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Agent leaderboard</h3></div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;min-width:760px;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:#fafbfc"><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Agent</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Active listings</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Views</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Enquiries</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Avg. first reply</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Sold or let (90 days)</th></tr></thead>
+            <tbody>
+              <sc-for list="{{ board }}" as="b" hint-placeholder-count="4">
+                <tr><td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;flex:none;border-radius:50%;background:#eef1fe;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:12px">{{ b.ini }}</span><span style="font-weight:600">{{ b.name }}</span></div></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ b.active }}</td><td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right;font-weight:600">{{ b.views }}</td><td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ b.leads }}</td><td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ b.reply }}</td><td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ b.closed }}</td></tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </sc-if>
+  </sc-if>
+
+
+  <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:6px;min-width:240px;flex:1;max-width:420px">
+        <span style="font-size:13px;font-weight:600;color:#3a3f4b">{{ seatLabel }}</span>
+        <div style="height:8px;border-radius:4px;background:#e7e9ee;overflow:hidden"><div style="height:100%;width:{{ seatPct }};background:#4361ee;border-radius:4px"></div></div>
+      </div>
+      <span style="flex:1"></span>
+      <button onClick="{{ openInvite }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff;height:40px" style-hover="background:#3550e0;border-color:#3550e0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 5v14M5 12h14"></path></svg>Invite agent</button>
+    </div>
+    <div style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:960px;border-collapse:collapse;font-size:14px">
+          <thead><tr style="background:#fafbfc"><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Name</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Role</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">FFC number</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Active listings</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Leads (30 days)</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Status</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap"></th></tr></thead>
+          <tbody>
+            <sc-for list="{{ teamRows }}" as="m" hint-placeholder-count="6">
+              <tr style="opacity:{{ m.op }}">
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="display:flex;align-items:center;gap:10px"><span style="width:36px;height:36px;flex:none;border-radius:50%;background:#eef1fe;color:#3150d8;display:grid;place-items:center;font-weight:700;font-size:12px">{{ m.ini }}</span><span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600">{{ m.name }}</span><span style="font-size:12px;color:#8a909c">{{ m.email }}</span></span></div></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle">{{ m.role }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="white-space:nowrap">{{ m.ffc }}</div><div style="font-size:12px;color:#8a909c;margin-top:2px">{{ m.ffcSub }}</div></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ m.listings }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right">{{ m.leads }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ m.tagBg }};color:{{ m.tagFg }}">{{ m.status }}</span></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><div style="display:flex;gap:6px;justify-content:flex-end"><sc-for list="{{ m.actions }}" as="a"><button onClick="{{ a.run }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:32px;padding:0 12px;border:1px solid {{ a.bd }};background:{{ a.bg }};color:{{ a.fg }}" style-hover="filter:brightness(.95)">{{ a.label }}</button></sc-for></div></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:{{ cols2 }};gap:16px;align-items:start">
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+          <div style="width:96px;height:96px;flex:none;border-radius:{{ photoRadius }};overflow:hidden;background:#eef0f4"><image-slot id="{{ photoId }}" shape="rect" placeholder="{{ photoPh }}"></image-slot></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ profTitle }}</h3><span style="font-size:13px;color:#8a909c">{{ profSub }}</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+          <sc-for list="{{ pf }}" as="f" hint-placeholder-count="6">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">{{ f.label }}<input type="{{ f.type }}" value="{{ f.value }}" onChange="{{ f.change }}" disabled="{{ f.ro }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;background:{{ f.bg }};color:{{ f.fg }}" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          </sc-for>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">{{ aboutLabel }}
+          <textarea value="{{ about }}" onChange="{{ onAbout }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none;height:110px;padding:10px 12px;resize:vertical;line-height:1.5" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></textarea>
+        </label>
+        <sc-if value="{{ hasNotif }}">
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;padding-top:18px;border-top:1px solid #f0f1f4">Notifications</h3>
+          <sc-for list="{{ notif }}" as="n">
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600">{{ n.label }}</span><span style="font-size:13px;color:#8a909c">{{ n.sub }}</span></span>
+              <button onClick="{{ n.toggle }}" aria-label="{{ n.label }}" style="width:42px;height:24px;flex:none;border-radius:12px;border:0;padding:3px;background:{{ n.track }};display:flex;justify-content:{{ n.side }};cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)"></span></button>
+            </div>
+          </sc-for>
+        </sc-if>
+        <sc-if value="{{ hasProfErr }}"><div style="font-size:13px;font-weight:600;color:#c22f34">{{ profErr }}</div></sc-if>
+        <div style="display:flex;gap:8px;padding-top:18px;border-top:1px solid #f0f1f4"><button onClick="{{ saveProfile }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff;height:42px" style-hover="background:#3550e0;border-color:#3550e0">Save changes</button></div>
+      </section>
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px">
+        <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Compliance</h3>
+        <sc-for list="{{ checks }}" as="c">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:#e8f6ee;color:#17803d">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:700">{{ c.t }}</span><span style="font-size:12px">{{ c.s }}</span></span>
+          </div>
+        </sc-for>
+        <p style="margin:4px 0 0;font-size:13px;color:#6b7180;line-height:1.5">{{ checkNote }}</p>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isBilling }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:{{ cols2 }};gap:16px;align-items:start">
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:13px;color:#8a909c">Current plan</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:4px"><span style="font-size:26px;font-weight:700;letter-spacing:-0.02em">{{ plan.name }}</span><span style="font-size:15px;font-weight:600">{{ plan.price }}</span><span style="font-size:13px;color:#8a909c">/ month excl. VAT</span></div>
+            <div style="font-size:13px;color:#5b6170;margin-top:4px">Renews 1 Nov 2026 · debit order</div>
+          </div>
+          <button onClick="{{ openPlan }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff;height:40px" style-hover="background:#3550e0;border-color:#3550e0">Change plan</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+          <sc-for list="{{ usage }}" as="u" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid #e7e9ee;border-radius:12px">
+              <span style="font-size:13px;font-weight:600;color:#3a3f4b">{{ u.label }}</span>
+              <span style="font-size:20px;font-weight:700">{{ u.value }}</span>
+              <div style="height:6px;border-radius:3px;background:#e7e9ee;overflow:hidden"><div style="height:100%;width:{{ u.pct }};background:{{ u.color }};border-radius:3px"></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Payment method</h3>
+        <div style="display:flex;flex-direction:column;gap:22px;padding:18px;border-radius:14px;background:#14161b;color:#fff">
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span>Debit order</span><span style="opacity:.7">Default</span></div>
+          <div style="font-size:18px;font-weight:600;letter-spacing:.08em">FNB Business •••• 6610</div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;opacity:.8"><span>JACARANDA ESTATES (PTY) LTD</span><span>1st of month</span></div>
+        </div>
+        <button onClick="{{ updatePay }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:40px" style-hover="background:#f5f6f9">Update bank details</button>
+      </section>
+    </div>
+    <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;overflow:hidden">
+      <div style="padding:18px 20px 12px;display:flex;align-items:center;gap:12px"><h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em;flex:1">Invoices</h3><span style="font-size:13px;color:#8a909c">{{ dueLabel }}</span></div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;min-width:720px;border-collapse:collapse;font-size:14px">
+          <thead><tr style="background:#fafbfc"><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Invoice</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Date</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Description</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap;text-align:right">Amount (incl. VAT)</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap">Status</th><th style="text-align:left;padding:12px 14px;font-size:12px;font-weight:600;color:#6b7180;border-bottom:1px solid #eef0f3;white-space:nowrap"></th></tr></thead>
+          <tbody>
+            <sc-for list="{{ invoices }}" as="i" hint-placeholder-count="5">
+              <tr>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;font-weight:600;white-space:nowrap">{{ i.no }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;white-space:nowrap;color:#5b6170">{{ i.date }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle">{{ i.desc }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right;font-weight:600;white-space:nowrap">{{ i.amount }}</td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle"><span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;background:{{ i.tagBg }};color:{{ i.tagFg }}">{{ i.status }}</span></td>
+                <td style="padding:13px 14px;border-bottom:1px solid #f0f1f4;vertical-align:middle;text-align:right"><button onClick="{{ i.run }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;height:32px;border:1px solid {{ i.bd }};background:{{ i.bg }};color:{{ i.fg }}" style-hover="filter:brightness(.95)">{{ i.act }}</button></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isHelp }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:{{ leadCols2 }};gap:16px;align-items:start">
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:8px 22px">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid #f0f1f4">
+            <button onClick="{{ q.toggle }}" style="display:flex;align-items:center;gap:12px;width:100%;padding:16px 0;border:0;background:none;cursor:pointer;text-align:left;color:#14161b;font-size:15px;font-weight:600">
+              <span style="flex:1">{{ q.q }}</span>
+              <span style="display:flex;transform:{{ q.rot }};color:#8a909c"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+            <sc-if value="{{ q.open }}"><p style="margin:0 0 16px;font-size:14px;color:#5b6170;line-height:1.6;text-wrap:pretty">{{ q.a }}</p></sc-if>
+          </div>
+        </sc-for>
+      </section>
+      <section style="background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-0.01em">Talk to us</h3>
+        <p style="margin:0;font-size:14px;color:#5b6170;line-height:1.5">Our agency support team is available Monday to Friday, 08:00 to 17:00.</p>
+        <a href="tel:+27102430243" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:44px;text-decoration:none" style-hover="background:#f5f6f9"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg>010 243 0243</a>
+        <a href="mailto:agents@maison243.co.za" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:44px;text-decoration:none" style-hover="background:#f5f6f9"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M2 4h20v16H2zM22 6l-10 7L2 6"></path></svg>agents@maison243.co.za</a>
+      </section>
+    </div>
+  </sc-if>
+
+
+  <div style="margin-top:auto;padding-top:12px;font-size:12px;color:#8a909c">© Maison243 2026</div>
+  </div>
+</main>
+</div>
+
+<sc-if value="{{ dialogOpen }}">
+  <div onClick="{{ closeDialog }}" style="position:fixed;inset:0;z-index:30;background:rgba(20,22,27,.36);display:flex;align-items:center;justify-content:center;padding:16px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#14161b">
+    <div onClick="{{ stop }}" style="width:min(520px,100%);max-height:calc(100vh - 32px);overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(20,22,27,.22);padding:24px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">{{ dlg.title }}</div>
+      <div style="font-size:14px;color:#5b6170;line-height:1.5">{{ dlg.body }}</div>
+      <sc-if value="{{ dlg.isPlan }}">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ planOpts }}" as="k">
+            <button onClick="{{ k.pick }}" style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;border:{{ k.bd }};background:{{ k.bg }};cursor:pointer;text-align:left;color:#14161b">
+              <span style="width:18px;height:18px;flex:none;border-radius:50%;border:{{ k.ring }};background:#fff"></span>
+              <span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:700">{{ k.name }}</span><span style="font-size:12px;color:#6b7180">{{ k.meta }}</span></span>
+              <span style="font-weight:700;white-space:nowrap">{{ k.price }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ dlg.isInvite }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Full name<input value="{{ iv.name }}" onChange="{{ is.name }}" placeholder="e.g. Kagiso Molefe" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Work email<input type="email" value="{{ iv.email }}" onChange="{{ is.email }}" placeholder="name@jacaranda.co.za" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">FFC number (agents only)<input value="{{ iv.ffc }}" onChange="{{ is.ffc }}" placeholder="e.g. 2026 1234567" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Role
+            <select value="{{ iv.role }}" onChange="{{ is.role }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><option value="Agent">Agent: lists properties and handles leads</option><option value="Admin">Admin: manages listings for the whole agency</option></select>
+          </label>
+        </div>
+      </sc-if>
+      <sc-if value="{{ dlg.isScreen }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Applicant's full name<input value="{{ sv.name }}" onChange="{{ ss.name }}" placeholder="e.g. Ayanda Zwane" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Applicant's email<input type="email" value="{{ sv.email }}" onChange="{{ ss.email }}" placeholder="name@email.com" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3a3f4b;min-width:0">Rental property
+            <select value="{{ sv.prop }}" onChange="{{ ss.prop }}" style="height:40px;padding:0 12px;border:1px solid #e3e6ec;border-radius:9px;background:#fff;font:inherit;font-size:14px;font-weight:400;color:#14161b;width:100%;outline:none" style-focus="border-color:#4361ee;box-shadow:0 0 0 3px #e3e8fd"><sc-for list="{{ rentalOpts }}" as="o"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
+          </label>
+        </div>
+      </sc-if>
+      <sc-if value="{{ dlg.isReport }}">
+        <div style="padding:12px 14px;border-radius:10px;font-weight:700;background:{{ report.bg }};color:{{ report.fg }}">{{ report.verdict }}</div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ report.rows }}" as="r"><div style="display:flex;gap:12px;padding:10px 0;border-top:1px solid #f0f1f4;font-size:14px"><span style="flex:1;color:#6b7180">{{ r.label }}</span><span style="font-weight:600;text-align:right">{{ r.value }}</span></div></sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasDlgErr }}"><div style="font-size:13px;font-weight:600;color:#c22f34">{{ dlgErr }}</div></sc-if>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px">
+        <button onClick="{{ closeDialog }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #e3e6ec;background:#fff;color:#14161b;height:40px" style-hover="background:#f5f6f9">{{ dlg.cancelLabel }}</button>
+        <sc-if value="{{ dlg.hasConfirm }}"><button onClick="{{ confirmDialog }}" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;border:1px solid #4361ee;background:#4361ee;color:#fff;height:40px" style-hover="background:#3550e0;border-color:#3550e0">{{ dlg.confirmLabel }}</button></sc-if>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}">
+  <div style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:#14161b;color:#fff;font-size:14px;font-weight:600;font-family:'Plus Jakarta Sans',system-ui,sans-serif;box-shadow:0 12px 30px rgba(20,22,27,.25);max-width:calc(100vw - 32px)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+    {{ toast }}
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;role&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;principal&quot;,&quot;agent&quot;],&quot;default&quot;:&quot;principal&quot;,&quot;tsType&quot;:&quot;'principal'|'agent'&quot;},&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;listings&quot;,&quot;leads&quot;,&quot;screen&quot;,&quot;perf&quot;,&quot;team&quot;,&quot;agency&quot;,&quot;profile&quot;,&quot;billing&quot;,&quot;help&quot;],&quot;default&quot;:&quot;listings&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const TODAY=new Date(2026,9,2);
+const PLANS=[{id:'Starter',price:1290,seats:3,listings:25,credits:0},{id:'Pro',price:3490,seats:12,listings:150,credits:10},{id:'Enterprise',price:8990,seats:0,listings:0,credits:40}];
+const incl=n=>'R '+(n*1.15).toLocaleString('en-ZA',{minimumFractionDigits:2,maximumFractionDigits:2});
+const zar=n=>'R '+Math.round(n).toLocaleString('en-ZA');
+const dAgo=d=>new Date(TODAY.getFullYear(),TODAY.getMonth(),TODAY.getDate()-d);
+const dmy=d=>{const x=dAgo(d);return String(x.getDate()).padStart(2,'0')+'/'+String(x.getMonth()+1).padStart(2,'0')+'/'+x.getFullYear();};
+const nice=d=>dAgo(d).toLocaleDateString('en-ZA',{day:'numeric',month:'short',year:'numeric'});
+const iso=ahead=>{const x=dAgo(-ahead);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');};
+const daysTo=s=>{if(!s)return null;const [y,m,d]=s.split('-').map(Number);return Math.round((new Date(y,m-1,d)-TODAY)/864e5);};
+const fmtIso=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('en-ZA',{day:'numeric',month:'short',year:'numeric'});};
+const rel=d=>d<=0?'Today':d===1?'Yesterday':d+' days ago';
+const ini=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('');
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+const TONE={Live:0,Complete:0,Paid:0,Contacted:0,Active:0,'Pending review':1,'Invite sent':1,Invited:1,'FFC pending':1,Expired:2,Due:2,'Under offer':3,New:3,'In progress':3};
+const tone=s=>[['#e8f6ee','#17803d'],['#fff4e0','#9a5a00'],['#fdecec','#c22f34'],['#eef1fe','#3150d8'],['#eff0f3','#4b5160']][TONE[s]??4];
+const ICON={listings:'M3 10.5 12 3l9 7.5M5.5 9.5V21h13V9.5M10 21v-6h4v6',leads:'M22 12h-6l-2 3h-4l-2-3H2M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z',screen:'M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1zM9 12l2 2 4-4',perf:'M3 3v18h18M18 17V9M13 17V5M8 17v-3',team:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8',profile:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',agency:'M4 21V4h10v17M14 9h6v12M7 8h3M7 12h3M7 16h3M2 21h20',billing:'M2 5h20v14H2zM2 10h20M6 15h4',help:'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01'};
+const TYPES=['House','Apartment','Townhouse','Cluster','Vacant land'];
+const CITIES=['Pretoria','Centurion','Johannesburg','Sandton','Cape Town','Durban','Stellenbosch','George','Polokwane'];
+const TITLES={listings:'Listings',leads:'Leads',screen:'Tenant screenings',perf:'Performance',team:'Team',agency:'Agency profile',profile:'My profile',billing:'Plan & billing',help:'Help'};
+const CRUMB={listings:'Work',leads:'Work',screen:'Work',perf:'Work',team:'Agency',agency:'Agency',billing:'Agency',profile:'Account',help:'Support'};
+const PRINCIPAL_ONLY=['team','agency','billing'];
+const ACTIVE_ST=['Live','Under offer','Pending review'];
+const REPLY={A1:'2h 05m',A2:'38m',A3:'1h 14m',A4:'3h 40m',A5:'—',A7:'5h 10m'};
+const FAQS=[
+ ['How does the listing quota work?','Every listing that is live, under offer or in review counts towards your plan. Drafts, expired and closed listings do not.'],
+ ['What are featured credits?','One credit puts a live listing at the top of search results and in the homepage carousel for 7 days. Credits reset on the 1st of each month.'],
+ ['Why is an agent marked FFC pending?','We check every Fidelity Fund Certificate with the PPRA before an agent can publish. It usually takes one working day. They can prepare drafts in the meantime.'],
+ ['An agent has left. What happens to their listings?','Deactivate them under Team to free up the seat. Their listings stay live. Open each one and pick a new listing agent; the leads move with the listing.'],
+ ['Can we list on an open mandate?','Yes. Sole mandates get a badge on the listing and rank slightly higher in search, but open mandates are allowed.']];
+function seed(){
+ const M=(id,name,role,email,phone,ffc,status,joined)=>({id,name,role,email,phone,ffc,status,joined});
+ const team=[
+  M('A1','Johan van der Merwe','Principal','johan@jacaranda.co.za','082 455 1023','2026 1048231','Active',1460),
+  M('A2','Michelle Jacobs','Agent','michelle@jacaranda.co.za','083 671 2290','2026 3317094','Active',820),
+  M('A3','Lerato Khumalo','Agent','lerato@jacaranda.co.za','072 908 4416','2026 2280561','Active',410),
+  M('A4','Sipho Dlamini','Agent','sipho@jacaranda.co.za','061 223 7785','2026 4419830','Active',240),
+  M('A5','Pieter Joubert','Agent','pieter@jacaranda.co.za','076 512 3348','2026 5502217','FFC pending',12),
+  M('A6','Thandi Mokoena','Admin','thandi@jacaranda.co.za','084 300 9921','','Invited',2),
+  M('A7','Ruan Pretorius','Agent','ruan@jacaranda.co.za','079 640 1187','2025 8810342','Deactivated',530)];
+ const L=(id,agentId,street,unit,suburb,type,deal,price,beds,baths,size,status,mod,mandate,mandDays,featured,listed)=>({id,agentId,street,unit,suburb,city:'Pretoria',type,deal,price,beds,baths,size,status,mod,mandate,mandExp:iso(mandDays),featured,listed,
+   desc:type==='Vacant land'?'Level stand in a secure estate with mountain views. Services at the boundary, building plans available on request.':beds+'-bedroom '+type.toLowerCase()+' in '+suburb+'. Open-plan living, covered patio, secure parking and fibre. Walking distance to schools and shops.'});
+ const listings=[
+  L('117402215','A2','12 Albert St','','Waterkloof','House','Sale',5950000,5,4,480,'Live',2,'Sole',84,true,30),
+  L('117402398','A2','63 Bronkhorst St','Unit 4, The Oaks','Groenkloof','Townhouse','Sale',1895000,3,2,165,'Under offer',5,'Sole',40,false,52),
+  L('117403011','A2','221 Justice Mahomed St','Flat 908, Brooklyn Towers','Brooklyn','Apartment','Rent',11500,2,2,118,'Live',1,'Open',60,false,12),
+  L('117403544','A2','7 Lois Ave','','Menlo Park','House','Sale',3250000,4,3,295,'Pending review',0,'Sole',120,false,null),
+  L('117404102','A2','18 Hans Strijdom Dr','','Erasmuskloof','House','Sale',4100000,4,3,350,'Draft',3,'Sole',90,false,null),
+  L('117399870','A2','45 Atterbury Rd','Unit 12, Glen Manor','Faerie Glen','Townhouse','Rent',9800,3,2,140,'Let',21,'Open',-21,false,70),
+  L('117404460','A3','92 Garsfontein Rd','','Garsfontein','House','Sale',2780000,3,2,240,'Live',4,'Sole',70,true,18),
+  L('117404781','A3','1115 Burnett St','Flat 3, Hatfield Square','Hatfield','Apartment','Rent',6200,1,1,52,'Live',6,'Open',45,false,25),
+  L('117401908','A3','30 Rubida St','','Moreleta Park','House','Sale',2390000,3,2,210,'Expired',15,'Sole',-15,false,105),
+  L('117405020','A4','Erf 640, Silver Lakes Golf Estate','','Silver Lakes','Vacant land','Sale',1450000,0,0,980,'Live',8,'Sole',100,false,33),
+  L('117405233','A4','14 Pretorius St','Unit 21, Arcadia Heights','Arcadia','Apartment','Rent',7400,2,1,78,'Pending review',1,'Open',60,false,null),
+  L('117398811','A4','5 Kingfisher Ave','','Equestria','House','Sale',2650000,3,2,260,'Sold',30,'Sole',-30,false,88),
+  L('117405601','A1','3 Monument Rd','','Waterkloof Ridge','House','Sale',8900000,5,5,620,'Live',3,'Sole',150,true,9),
+  L('117405744','A5','27 Cliff Ave','Unit 8, Faerie Glen Villas','Faerie Glen','Townhouse','Rent',10200,3,2,150,'Draft',2,'Open',60,false,null),
+  L('117400302','A7','16 Lynnwood Rd','','Lynnwood','House','Sale',3100000,4,2,280,'Withdrawn',40,'Sole',-40,false,null),
+  L('117405890','A1','Erf 22, Mooikloof Equestrian Estate','','Mooikloof','Vacant land','Sale',3200000,0,0,10000,'Live',11,'Sole',110,false,40)];
+ const own=id=>listings.find(l=>l.id===id).agentId;
+ const LD=(id,name,email,phone,propId,msg,d,via,status)=>({id,name,email,phone,propId,agentId:own(propId),msg,d,via,status});
+ const leads=[
+  LD('LD1','Megan Botha','megan.botha@outlook.com','071 334 0918','117402215','We are pre-approved and would love to view on Sunday. Is the pool heated and is there a generator or solar backup?',0,'Enquiry form','New'),
+  LD('LD2','Kabelo Masilo','kabelo.m@icloud.com','083 902 4411','117403011','Is the apartment available from 1 November? Does the rent include water and the second parking bay?',0,'WhatsApp','New'),
+  LD('LD3','Riaan Swart','riaan@swartfamily.co.za','076 218 5530','117405601','Relocating from Cape Town in January. Could you send the floor plan and the rates and taxes figure?',1,'Enquiry form','New'),
+  LD('LD4','Ayesha Patel','ayesha.patel@gmail.com','082 640 1199','117404460','Would the seller consider R 2.65 million? We have a cash deposit of 20%.',1,'Enquiry form','New'),
+  LD('LD5','Craig Hendricks','craig.h@mweb.co.za','084 551 2270','117402215','Please call me back about a second viewing with my wife.',3,'Call back','Contacted'),
+  LD('LD6','Zanele Mthembu','zanele.m@gmail.com','072 118 4436','117404781','Student at UP. My parents will sign surety. Is the flat furnished?',4,'Enquiry form','Contacted'),
+  LD('LD7','Werner Steyn','werner@steynbuild.co.za','079 330 8812','117405020','What are the building guidelines and the levy for the estate?',6,'Enquiry form','Contacted'),
+  LD('LD8','Fatima Essop','fatima.essop@outlook.com','061 772 9034','117402398','Is the offer accepted already, or can we still submit one?',9,'Enquiry form','Closed')];
+ const screenings=[
+  {id:'SC1',name:'Kabelo Masilo',email:'kabelo.m@icloud.com',propId:'117403011',d:1,status:'Invite sent',result:''},
+  {id:'SC2',name:'Zanele Mthembu',email:'zanele.m@gmail.com',propId:'117404781',d:3,status:'In progress',result:''},
+  {id:'SC3',name:'Bongani Zulu',email:'bongani.zulu@gmail.com',propId:'117399870',d:24,status:'Complete',result:'Recommended'}];
+ const invoices=[
+  {no:'JE-10931',d:1,desc:'Pro plan · October 2026',amt:3490,status:'Due'},
+  {no:'JE-10844',d:18,desc:'Featured credits top-up · 5 credits',amt:750,status:'Paid'},
+  {no:'JE-10790',d:31,desc:'Pro plan · September 2026',amt:3490,status:'Paid'},
+  {no:'JE-10652',d:62,desc:'Pro plan · August 2026',amt:3490,status:'Paid'},
+  {no:'JE-10511',d:92,desc:'Pro plan · July 2026',amt:3490,status:'Paid'}];
+ return {team,listings,leads,screenings,invoices};
+}
+const BLANK={deal:'Sale',type:'House',agentId:'',mandate:'Sole',mandExp:iso(90),street:'',unit:'',suburb:'',city:'Pretoria',price:'',beds:'3',baths:'2',size:'',desc:''};
+const btn=(label,run,primary)=>({label,run,bg:primary?'#4361ee':'#fff',fg:primary?'#fff':'#14161b',bd:primary?'#4361ee':'#e3e6ec'});
+
+class Component extends DCLogic {
+  state={view:null,tab:'current',editId:null,q:'',status:'All',agentFilter:'all',page:1,size:10,form:{...BLANK},formErrs:[],leadFilter:'All',leadSel:null,perfSel:'all',faq:0,collapsed:null,
+    dialog:null,dlgForm:{},dlgErr:'',plan:'Pro',creditsUsed:3,about:null,prof:{},profErr:'',notif:{leads:true,wa:true,weekly:true},toast:'',w:1280,data:seed()};
+  componentDidMount(){this.onResize=()=>this.setState({w:window.innerWidth});this.onResize();window.addEventListener('resize',this.onResize);
+    this.onKey=e=>{if(e.key==='Escape')this.setState({dialog:null});};window.addEventListener('keydown',this.onKey);}
+  componentWillUnmount(){window.removeEventListener('resize',this.onResize);window.removeEventListener('keydown',this.onKey);clearTimeout(this.tt);}
+  flash(t){clearTimeout(this.tt);this.setState({toast:t});this.tt=setTimeout(()=>this.setState({toast:''}),2800);}
+  isP(){return (this.props.role??'principal')!=='agent';}
+  me(){return this.isP()?'A1':'A2';}
+  view(){const v=this.state.view||this.props.startView||'listings';if(!this.isP()&&PRINCIPAL_ONLY.includes(v))return 'listings';if(this.isP()&&v==='profile')return 'agency';return v;}
+  go(view){this.setState({view,dialog:null});}
+  planObj(){return PLANS.find(p=>p.id===this.state.plan);}
+  member(id){return this.state.data.team.find(m=>m.id===id);}
+  lst(id){return this.state.data.listings.find(l=>l.id===id);}
+  mine(){const L=this.state.data.listings;return this.isP()?L:L.filter(l=>l.agentId===this.me());}
+  addr(p){return (p.unit?p.unit+', ':'')+p.street;}
+  short(p){return p.street+(p.unit?' ('+p.unit.split(',')[0]+')':'');}
+  price(p){return zar(p.price)+(p.deal==='Rent'?' pm':'');}
+  activeCount(){return this.state.data.listings.filter(l=>ACTIVE_ST.includes(l.status)).length;}
+  quotaOk(){const lim=this.planObj().listings;return !lim||this.activeCount()<lim;}
+  setL(id,patch,msg){this.setState(s=>({data:{...s.data,listings:s.data.listings.map(l=>l.id===id?{...l,...patch,mod:0}:l)}}));if(msg)this.flash(msg);}
+  setM(id,patch,msg){this.setState(s=>({data:{...s.data,team:s.data.team.map(m=>m.id===id?{...m,...patch}:m)}}));if(msg)this.flash(msg);}
+  agentOpts(){return this.state.data.team.filter(m=>['Active','FFC pending'].includes(m.status)&&m.role!=='Admin').map(m=>({value:m.id,label:m.name+(m.status==='FFC pending'?' (FFC pending)':'')}));}
+  openForm(id){const p=id&&this.lst(id);
+    const form=p?{deal:p.deal,type:p.type,agentId:p.agentId,mandate:p.mandate,mandExp:p.mandExp,street:p.street,unit:p.unit,suburb:p.suburb,city:p.city,price:String(p.price),beds:String(p.beds),baths:String(p.baths),size:String(p.size),desc:p.desc}:{...BLANK,agentId:this.me()};
+    this.setState({view:'listings',tab:'form',editId:id||null,form,formErrs:[]});}
+  submitL(id){const p=this.lst(id),m=this.member(p.agentId);
+    if(m.status!=='Active')return this.flash(m.name.split(' ')[0]+"'s FFC is still being checked. Keep it as a draft for now.");
+    if(!this.quotaOk())return this.flash('Listing quota reached. Upgrade your plan or close a listing first.');
+    if(daysTo(p.mandExp)<1)return this.openForm(id);
+    this.setL(id,{status:'Pending review',listed:null},'Submitted for review');}
+  feature(p){const lim=this.planObj().credits;if(this.state.creditsUsed>=lim)return this.flash(lim?'No featured credits left this month.':'Your plan has no featured credits.');
+    this.setState(s=>({creditsUsed:s.creditsUsed+1}));this.setL(p.id,{featured:true},'Featured for 7 days · '+(lim-this.state.creditsUsed-1)+' credits left');}
+  saveForm(submit){
+    const s=this.state,f=s.form,errs=[],land=f.type==='Vacant land',agent=this.member(f.agentId);
+    if(!f.street.trim())errs.push('Add the street address.');
+    if(!f.suburb.trim())errs.push('Add the suburb.');
+    if(!(Number(f.price)>0))errs.push('Enter a '+(f.deal==='Rent'?'monthly rent':'price')+' above zero.');
+    if(!(Number(f.size)>0))errs.push('Enter the '+(land?'erf':'floor')+' size.');
+    if(submit){
+      if(!f.mandExp||daysTo(f.mandExp)<1)errs.push('The mandate expiry date must be in the future.');
+      if(f.desc.trim().length<40)errs.push('Write a description of at least 40 characters.');
+      if(agent&&agent.status!=='Active')errs.push(agent.name+"'s FFC is still being checked with the PPRA. Save as a draft for now.");
+      const ed=s.editId&&this.lst(s.editId);if(!(ed&&ACTIVE_ST.includes(ed.status))&&!this.quotaOk())errs.push('Your plan\'s listing quota is full.');
+    }
+    if(errs.length)return this.setState({formErrs:errs});
+    const vals={deal:f.deal,type:f.type,agentId:f.agentId||this.me(),mandate:f.mandate,mandExp:f.mandExp,street:f.street.trim(),unit:f.unit.trim(),suburb:f.suburb.trim(),city:f.city,price:Number(f.price),beds:land?0:Number(f.beds)||0,baths:land?0:Number(f.baths)||0,size:Number(f.size),desc:f.desc.trim()};
+    if(s.editId){const patch={...vals};if(submit){patch.status='Pending review';patch.listed=null;}this.setL(s.editId,patch,submit?'Submitted for review':'Changes saved');}
+    else{const id=String(117406000+s.data.listings.length*113+Math.floor(Math.random()*90));
+      this.setState(st=>({data:{...st.data,listings:[{id,...vals,status:submit?'Pending review':'Draft',mod:0,featured:false,listed:null},...st.data.listings]}}));
+      this.flash(submit?'Listing '+id+' submitted for review':'Saved as draft '+id);}
+    this.setState({tab:'current',editId:null,form:{...BLANK},formErrs:[],page:1,q:'',status:'All'});
+  }
+  rowActs(p){
+    const edit=btn('Edit',()=>this.openForm(p.id));
+    switch(p.status){
+      case 'Draft':return [btn('Submit',()=>this.submitL(p.id),1),edit];
+      case 'Expired':return [btn('Renew',()=>this.openForm(p.id),1)];
+      case 'Live':return [edit,...(p.featured?[]:[btn('Feature',()=>this.feature(p))]),btn(p.deal==='Sale'?'Under offer':'Mark let',()=>this.setL(p.id,{status:p.deal==='Sale'?'Under offer':'Let',featured:false},p.deal==='Sale'?'Marked under offer':'Marked as let')),btn('Withdraw',()=>this.setL(p.id,{status:'Withdrawn',featured:false},'Listing withdrawn'))];
+      case 'Under offer':return [btn('Mark sold',()=>this.setL(p.id,{status:'Sold'},'Marked as sold'),1),btn('Back to live',()=>this.setL(p.id,{status:'Live'},'Back to live'))];
+      case 'Pending review':return [edit];
+      default:return [btn('Relist',()=>this.setL(p.id,{status:'Draft',mandExp:iso(90)},'Moved to drafts'),1)];
+    }
+  }
+  series(p){
+    if(!p.listed)return Array(30).fill(0);
+    const r=rng(Number(p.id.slice(-5))),base=p.deal==='Rent'?48:p.type==='House'?30:12,on=['Live','Under offer'].includes(p.status);
+    return Array.from({length:30},(_,i)=>{const day=29-i;if(day>p.listed||(!on&&day<p.mod))return 0;return Math.round(base*(0.45+r()*1.1)*(p.featured&&day<7?1.8:1));});
+  }
+  renderVals(){
+    const s=this.state,D=s.data,v=this.view(),P=this.isP(),me=this.member(this.me()),narrow=s.w<960,col=!narrow&&(s.collapsed??false),hide=narrow||col,plan=this.planObj();
+    const mine=this.mine(),myIds=new Set(mine.map(l=>l.id));
+    const myLeads=D.leads.filter(l=>P||l.agentId===this.me()),due=D.invoices.filter(i=>i.status==='Due');
+    const N=(id,label,badge,badgeBg,badgeFg)=>({label,icon:ICON[id],go:()=>this.go(id),bg:v===id?'#eceef3':'transparent',fg:v===id?'#14161b':'#5b6170',
+      justify:col?'center':'flex-start',lblDisp:col?'none':'block',hasBadge:!!badge,badge:badge||'',badgeBg:badgeBg||'#e5484d',badgeFg:badgeFg||'#fff',badgePos:col?'absolute':'static'});
+    const newN=myLeads.filter(l=>l.status==='New').length;
+    const out={
+      gridCols:narrow?'minmax(0,1fr)':col?'76px minmax(0,1fr)':'248px minmax(0,1fr)',asideDir:narrow?'row':'column',asideH:narrow?'auto':'100vh',
+      asideBorderR:narrow?'0':'1px solid #e7e9ee',asideBorderB:narrow?'1px solid #e7e9ee':'0',lblDisp:col?'none':'flex',lblDispB:col?'none':'block',groupDisp:hide?'none':'block',
+      collapseDisp:narrow?'none':'flex',collapseJustify:col?'center':'flex-start',collapseIcon:col?'m9 18 6-6-6-6':'m15 18-6-6 6-6',toggleCollapse:()=>this.setState({collapsed:!col}),
+      headerPos:narrow?'static':'sticky',mainPad:narrow?'16px':'24px 28px',wideDisp:s.w<1100?'none':'flex',
+      leadCols:s.w<1180?'minmax(0,1fr)':'minmax(320px,1fr) minmax(0,1.5fr)',cols2:s.w<1180?'minmax(0,1fr)':'minmax(0,1.7fr) minmax(280px,1fr)',
+      g1Disp:'flex',g1Label:'Work',nav1:[N('listings','Listings'),N('leads','Leads',newN||''),N('screen','Tenant screenings'),N('perf','Performance')],
+      g2Disp:'flex',g2Label:P?'Agency':'Account',nav2:P?[N('team','Team'),N('agency','Agency profile'),N('billing','Plan & billing',due.length||'')]:[N('profile','My profile')],
+      g3Disp:'flex',g3Label:'Support',nav3:[N('help','Help')],
+      title:v==='listings'&&s.tab==='form'?(s.editId?'Edit listing '+s.editId:'New listing'):TITLES[v],crumb:CRUMB[v],
+      meName:me.name,meIni:ini(me.name),meRole:P?'Principal':'Agent · FFC '+me.ffc,agencySub:plan.id+' plan · '+D.team.filter(m=>m.status!=='Deactivated').length+' members',
+      goProfile:()=>this.go(P?'agency':'profile'),isPrincipal:P,
+      isListings:v==='listings',isLeads:v==='leads',isScreen:v==='screen',isPerf:v==='perf',isTeam:v==='team',isProfile:v==='agency'||v==='profile',isBilling:v==='billing',isHelp:v==='help',
+      stop:e=>e.stopPropagation(),toast:s.toast,hasToast:!!s.toast,agentOpts:this.agentOpts()
+    };
+    const segOpt=(label,on,pick,count)=>({label,pick,bg:on?'#fff':'transparent',fg:on?'#14161b':'#5b6170',sh:on?'0 1px 2px rgba(20,22,27,.1)':'none',hasCount:count!=null,count:count??''});
+    if(v==='listings'){
+      const isForm=s.tab==='form';
+      out.propTabs=[segOpt(P?'All listings':'My listings',!isForm,()=>this.setState({tab:'current',editId:null,formErrs:[]}),mine.length),segOpt(s.editId?'Edit listing':'New listing',isForm,()=>{if(!isForm)this.openForm(null);})];
+      out.isList=!isForm;out.isForm=isForm;
+      out.quotaLabel=(plan.listings?this.activeCount()+' of '+plan.listings+' active listings':'Unlimited listings')+' · '+(plan.credits?Math.max(0,plan.credits-s.creditsUsed)+' featured credits left':'no featured credits');
+      if(!isForm){
+        const GROUPS={All:null,Live:['Live'],'In review':['Pending review'],Drafts:['Draft'],'Under offer':['Under offer'],Expired:['Expired'],Closed:['Sold','Let','Withdrawn']};
+        const byAgent=mine.filter(l=>s.agentFilter==='all'||l.agentId===s.agentFilter);
+        out.statusTabs=Object.keys(GROUPS).map(k=>segOpt(k,s.status===k,()=>this.setState({status:k,page:1}),GROUPS[k]?byAgent.filter(l=>GROUPS[k].includes(l.status)).length:byAgent.length));
+        out.agentFilter=s.agentFilter;out.onAgentFilter=e=>this.setState({agentFilter:e.target.value,page:1});
+        out.agentFilterOpts=[{value:'all',label:'All agents'},...D.team.filter(m=>m.role!=='Admin'&&m.status!=='Invited').map(m=>({value:m.id,label:m.name}))];
+        const q=s.q.trim().toLowerCase(),g=GROUPS[s.status];
+        const all=byAgent.filter(l=>(!g||g.includes(l.status))&&(!q||[l.id,this.addr(l),l.suburb,l.city,l.type].join(' ').toLowerCase().includes(q))).sort((a,b)=>a.mod-b.mod);
+        const pages=Math.max(1,Math.ceil(all.length/s.size)),page=Math.min(s.page,pages),start=(page-1)*s.size;
+        out.rows=all.slice(start,start+s.size).map(p=>{const [bg,fg]=tone(p.status),dt=daysTo(p.mandExp),closed=['Sold','Let','Withdrawn'].includes(p.status);
+          return {id:p.id,open:()=>this.openForm(p.id),addr:this.addr(p),addr2:p.suburb+' · '+p.type+' · '+(p.deal==='Rent'?'To rent':'For sale'),price:this.price(p),agent:this.member(p.agentId).name,
+            mandate:p.mandate+' mandate',mandSub:closed?'Closed':dt<0?'Expired '+fmtIso(p.mandExp):'Until '+fmtIso(p.mandExp),mandColor:!closed&&dt<30?'#c22f34':'#8a909c',
+            status:p.status,tagBg:bg,tagFg:fg,featured:!!p.featured,modified:dmy(p.mod),actions:this.rowActs(p)};});
+        out.noRows=!all.length;out.q=s.q;out.onSearch=e=>this.setState({q:e.target.value,page:1});
+        out.rangeLabel=all.length?'Showing '+(start+1)+'–'+Math.min(start+s.size,all.length)+' of '+all.length:'';
+        out.size=String(s.size);out.onSize=e=>this.setState({size:Number(e.target.value),page:1});
+        out.pages=Array.from({length:pages},(_,i)=>({n:i+1,go:()=>this.setState({page:i+1}),bg:i+1===page?'#4361ee':'#fff',fg:i+1===page?'#fff':'#14161b',bd:i+1===page?'#4361ee':'#e3e6ec'}));
+        out.prev=()=>page>1&&this.setState({page:page-1});out.next=()=>page<pages&&this.setState({page:page+1});out.prevOp=page>1?1:.45;out.nextOp=page<pages?1:.45;
+      } else {
+        const f=s.form,set=k=>e=>this.setState({form:{...s.form,[k]:e.target.value},formErrs:[]});
+        const ed=s.editId&&this.lst(s.editId),canSubmit=!ed||['Draft','Expired'].includes(ed.status);
+        out.fv=f;out.fs=Object.fromEntries(Object.keys(BLANK).map(k=>[k,set(k)]));
+        const pick=(k,val)=>()=>this.setState({form:{...s.form,[k]:val}});
+        out.dealOpts=[segOpt('For sale',f.deal==='Sale',pick('deal','Sale')),segOpt('To rent',f.deal==='Rent',pick('deal','Rent'))];
+        out.mandOpts=[segOpt('Sole',f.mandate==='Sole',pick('mandate','Sole')),segOpt('Open',f.mandate==='Open',pick('mandate','Open'))];
+        out.typeOpts=TYPES;out.cityOpts=CITIES;out.hasRooms=f.type!=='Vacant land';
+        out.priceLabel=f.deal==='Rent'?'Monthly rent (R)':'Asking price (R)';out.sizeLabel=f.type==='Vacant land'?'Erf size (m²)':'Floor size (m²)';
+        out.descCount=f.desc.trim().length+' characters'+(f.desc.trim().length<40?' · at least 40 to submit':'');
+        out.photoKey=s.editId||'new';out.formErrs=s.formErrs;out.hasFormErr=s.formErrs.length>0;
+        out.cancelForm=()=>this.setState({tab:'current',editId:null,formErrs:[]});
+        out.draftLabel=ed?'Save changes':'Save as draft';out.saveDraft=()=>this.saveForm(false);
+        out.showSubmit=canSubmit;out.submitForm=()=>this.saveForm(true);
+        out.submitNote=canSubmit?(plan.listings?'Uses 1 of your '+plan.listings+' active listings ('+this.activeCount()+' in use)':'Included in your plan'):'Edits to live listings publish straight away';
+      }
+    }
+    if(v==='leads'){
+      const F=['All','New','Contacted','Closed'];
+      out.leadFilters=F.map(x=>segOpt(x,s.leadFilter===x,()=>this.setState({leadFilter:x,leadSel:null}),x==='All'?myLeads.length:myLeads.filter(l=>l.status===x).length));
+      const list=myLeads.filter(l=>s.leadFilter==='All'||l.status===s.leadFilter).sort((a,b)=>a.d-b.d);
+      const sel=list.find(l=>l.id===s.leadSel)||list[0];
+      out.leadList=list.map(l=>{const p=this.lst(l.propId);return {ini:ini(l.name),name:l.name,when:rel(l.d),prop:this.short(p)+(P?' · '+this.member(l.agentId).name.split(' ')[0]:''),snippet:l.msg,weight:l.status==='New'?700:600,
+        bg:sel&&sel.id===l.id?'#f5f7ff':'#fff',edge:sel&&sel.id===l.id?'#4361ee':l.status==='New'?'#c9d2fb':'transparent',open:()=>this.setState({leadSel:l.id})};});
+      out.noLeads=!list.length;out.hasLead=!!sel;
+      if(sel){const p=this.lst(sel.propId),[bg,fg]=tone(sel.status);
+        const upd=(patch,msg)=>{this.setState(S=>({data:{...S.data,leads:S.data.leads.map(l=>l.id===sel.id?{...l,...patch}:l)}}));this.flash(msg);};
+        const setSt=(st,msg)=>()=>upd({status:st},msg);
+        out.lead={ini:ini(sel.name),name:sel.name,via:sel.via,when:rel(sel.d),status:sel.status,tagBg:bg,tagFg:fg,email:sel.email,phone:sel.phone,
+          mailto:'mailto:'+sel.email+'?subject='+encodeURIComponent('Re: '+this.short(p)),tel:'tel:'+sel.phone.replace(/\s/g,''),msg:sel.msg,
+          prop:this.addr(p),propSub:p.suburb+' · '+p.type+' · '+(p.deal==='Rent'?'To rent':'For sale'),price:this.price(p),openProp:()=>this.openForm(p.id),
+          canAssign:P,agentId:sel.agentId,assign:e=>upd({agentId:e.target.value},'Lead assigned to '+this.member(e.target.value).name),
+          actions:sel.status==='New'?[btn('Mark as contacted',setSt('Contacted','Marked as contacted'),1),btn('Close lead',setSt('Closed','Lead closed'))]
+            :sel.status==='Contacted'?[btn('Close lead',setSt('Closed','Lead closed'),1),btn('Back to new',setSt('New','Moved back to new'))]:[btn('Reopen',setSt('Contacted','Lead reopened'))]};
+      } else out.lead={actions:[]};
+    }
+    if(v==='screen'){
+      out.scrRows=D.screenings.filter(x=>myIds.has(x.propId)).sort((a,b)=>a.d-b.d).map(x=>{const p=this.lst(x.propId),[bg,fg]=tone(x.status);
+        const act=x.status==='Complete'?'View report':x.status==='Invite sent'?'Resend invite':'Send reminder';
+        const run=x.status==='Complete'?()=>this.setState({dialog:{mode:'report',id:x.id}}):()=>this.flash((x.status==='Invite sent'?'Invite resent to ':'Reminder sent to ')+x.email);
+        return {name:x.name,email:x.email,prop:this.short(p),propSub:p.suburb+' · '+this.price(p),date:nice(x.d),status:x.status,tagBg:bg,tagFg:fg,
+          result:x.result||'—',resColor:x.result==='Recommended'?'#17803d':x.result?'#c22f34':'#8a909c',hasAct:true,act,run};});
+      out.openScreen=()=>{const r=mine.find(p=>p.deal==='Rent'&&p.status==='Live')||mine.find(p=>p.deal==='Rent');this.setState({dialog:{mode:'screen'},dlgForm:{name:'',email:'',prop:r?r.id:''},dlgErr:''});};
+    }
+    if(v==='perf'){
+      const listed=mine.filter(p=>p.listed);
+      const sel=s.perfSel==='all'?listed:listed.filter(p=>p.id===s.perfSel);
+      out.perfOpts=[{value:'all',label:P?'All agency listings':'All my listings'},...listed.map(p=>({value:p.id,label:this.short(p)+' · '+p.id}))];
+      out.perfSel=s.perfSel;out.onPerf=e=>this.setState({perfSel:e.target.value});
+      const days=Array(30).fill(0);sel.forEach(p=>this.series(p).forEach((n,i)=>days[i]+=n));
+      const views=days.reduce((a,b)=>a+b,0),ids=new Set(sel.map(p=>p.id));
+      const leads=D.leads.filter(l=>ids.has(l.propId)&&l.d<30).length,saves=Math.round(views*0.05);
+      out.perfStats=[{label:'Views',value:views.toLocaleString('en-ZA'),sub:'+14% on the previous 30 days'},
+        {label:'Enquiries',value:String(leads),sub:D.leads.filter(l=>ids.has(l.propId)&&l.status==='New').length+' waiting for a reply'},
+        {label:'Saved to favourites',value:String(saves),sub:'Buyers and renters who shortlisted'},
+        {label:'Enquiry rate',value:(views?(leads/views*100).toFixed(1):'0.0')+'%',sub:'Enquiries per 100 views'}];
+      const mx=Math.max(1,...days);
+      out.bars=days.map((n,i)=>{const d=29-i;return {h:(n/mx*100)+'%',tip:nice(d)+': '+n+' views',label:i%7===0?dAgo(d).toLocaleDateString('en-ZA',{day:'numeric',month:'short'}):'',color:d===0?'#4361ee':'#b9c6fb'};});
+      out.perfRows=listed.map(p=>{const vv=this.series(p).reduce((a,b)=>a+b,0),ll=D.leads.filter(l=>l.propId===p.id&&l.d<30).length,[bg,fg]=tone(p.status);
+        return {addr:this.short(p),sub:(P?this.member(p.agentId).name+' · ':'')+this.price(p),status:p.status,tagBg:bg,tagFg:fg,views:vv.toLocaleString('en-ZA'),leads:String(ll),saves:String(Math.round(vv*0.05)),rate:vv?(ll/vv*100).toFixed(1)+'%':'—'};});
+      if(P)out.board=D.team.filter(m=>m.role!=='Admin'&&m.status!=='Invited').map(m=>{const ls=D.listings.filter(l=>l.agentId===m.id);
+        const vv=ls.reduce((a,l)=>a+this.series(l).reduce((x,y)=>x+y,0),0);
+        return {ini:ini(m.name),name:m.name,active:String(ls.filter(l=>ACTIVE_ST.includes(l.status)).length),views:vv,leads:String(D.leads.filter(l=>l.agentId===m.id&&l.d<30).length),reply:REPLY[m.id]||'—',closed:String(ls.filter(l=>['Sold','Let'].includes(l.status)&&l.mod<90).length)};})
+        .sort((a,b)=>b.views-a.views).map(b=>({...b,views:b.views.toLocaleString('en-ZA')}));
+      else out.board=[];
+    }
+    if(v==='team'){
+      const used=D.team.filter(m=>m.status!=='Deactivated').length;
+      out.seatLabel=plan.seats?used+' of '+plan.seats+' seats used':used+' seats · unlimited on '+plan.id;out.seatPct=plan.seats?Math.min(100,used/plan.seats*100)+'%':'20%';
+      const seatFree=!plan.seats||used<plan.seats;
+      out.teamRows=D.team.map(m=>{const [bg,fg]=tone(m.status),ls=D.listings.filter(l=>l.agentId===m.id);
+        let actions=[];
+        if(m.role!=='Principal'){
+          if(m.status==='Invited')actions=[btn('Resend',()=>this.flash('Invite resent to '+m.email)),btn('Cancel invite',()=>{this.setState(S=>({data:{...S.data,team:S.data.team.filter(x=>x.id!==m.id)}}));this.flash('Invite cancelled');})];
+          else if(m.status==='Deactivated')actions=[btn('Reactivate',()=>seatFree?this.setM(m.id,{status:'Active'},m.name+' reactivated'):this.flash('No free seats. Upgrade your plan first.'))];
+          else actions=[btn('Deactivate',()=>this.setM(m.id,{status:'Deactivated'},m.name+' deactivated · seat freed'))];
+        }
+        return {ini:ini(m.name),name:m.name,email:m.email,role:m.role,ffc:m.ffc||'—',ffcSub:m.status==='FFC pending'?'Checking with PPRA':m.ffc?'Valid until 31 Dec '+m.ffc.slice(0,4):m.role==='Admin'?'Not required':'',
+          listings:String(ls.filter(l=>ACTIVE_ST.includes(l.status)).length),leads:String(D.leads.filter(l=>l.agentId===m.id&&l.d<30).length),status:m.status,tagBg:bg,tagFg:fg,op:m.status==='Deactivated'?.6:1,actions};});
+      out.openInvite=()=>seatFree?this.setState({dialog:{mode:'invite'},dlgForm:{name:'',email:'',ffc:'',role:'Agent'},dlgErr:''}):this.flash('All '+plan.seats+' seats are in use. Upgrade or deactivate someone first.');
+    }
+    if(v==='agency'||v==='profile'){
+      const isAg=v==='agency';
+      const defaults=isAg?{name:'Jacaranda Estates',reg:'2009/214577/07',ffc:'2026 0091124',vat:'4870261193',addr:'412 Lois Ave, Waterkloof Glen, Pretoria',phone:'012 460 1180',email:'info@jacaranda.co.za',web:'jacaranda.co.za'}
+        :{first:me.name.split(' ')[0],last:me.name.split(' ').slice(1).join(' '),email:me.email,phone:me.phone,ffc:me.ffc,branch:'Waterkloof Glen'};
+      const pv={...defaults,...s.prof},set=k=>e=>this.setState({prof:{...pv,[k]:e.target.value},profErr:''});
+      const F=(k,label,type,ro)=>({label,type:type||'text',value:pv[k],change:set(k),ro:!!ro,bg:ro?'#f5f6f9':'#fff',fg:ro?'#5b6170':'#14161b'});
+      out.pf=isAg?[F('name','Trading name'),F('reg','CIPC registration no.','text',1),F('ffc','PPRA firm FFC','text',1),F('vat','VAT number'),F('addr','Office address'),F('phone','Office phone','tel'),F('email','Public email','email'),F('web','Website')]
+        :[F('first','First name'),F('last','Last name'),F('email','Email','email'),F('phone','Mobile','tel'),F('ffc','FFC number','text',1),F('branch','Branch','text',1)];
+      out.profTitle=isAg?pv.name:pv.first+' '+pv.last;out.profSub=isAg?'Shown on every listing and your agency page':'Agent at Jacaranda Estates · shown on your listings';
+      out.photoId=isAg?'agency-logo':'agent-photo-'+me.id;out.photoPh=isAg?'Logo':'Photo';out.photoRadius=isAg?'14px':'50%';
+      out.aboutLabel=isAg?'About the agency':'Short bio';
+      out.about=s.about??(isAg?'Family-owned agency selling homes in the eastern suburbs of Pretoria since 2009. Specialists in Waterkloof, Brooklyn and Menlo Park.':'Fifteen years selling family homes in Waterkloof and Groenkloof. Fluent in English, Afrikaans and isiZulu.');
+      out.onAbout=e=>this.setState({about:e.target.value});
+      out.hasNotif=!isAg;
+      const NT=[['leads','Email me new enquiries','Instant email for every lead on my listings'],['wa','WhatsApp alerts','When someone asks for a viewing'],['weekly','Weekly performance report','Views and enquiries every Monday']];
+      out.notif=NT.map(([k,label,sub])=>({label,sub,track:s.notif[k]?'#4361ee':'#d5d9e1',side:s.notif[k]?'flex-end':'flex-start',toggle:()=>this.setState({notif:{...s.notif,[k]:!s.notif[k]}})}));
+      out.checks=isAg?[{t:'CIPC registration verified',s:'Jacaranda Estates (Pty) Ltd'},{t:'PPRA firm certificate',s:'Valid until 31 Dec 2026'},{t:'Trust account audit',s:'FY2026 audit report received'}]
+        :[{t:'Fidelity Fund Certificate',s:'Valid until 31 Dec 2026'},{t:'Linked to Jacaranda Estates',s:'Approved by Johan van der Merwe'}];
+      out.checkNote=isAg?'Registration and FFC details are locked once verified. Contact support to change them.':'Your FFC number is managed by your principal. Ask them to update it if your certificate is renewed.';
+      out.profErr=s.profErr;out.hasProfErr=!!s.profErr;
+      out.saveProfile=()=>{if(!/^\S+@\S+\.\S+$/.test(pv.email))return this.setState({profErr:'Enter a valid email address.'});if(isAg&&!pv.name.trim())return this.setState({profErr:'Trading name is required.'});this.flash(isAg?'Agency profile saved':'Profile saved');};
+    }
+    if(v==='billing'){
+      const used=D.team.filter(m=>m.status!=='Deactivated').length,act=this.activeCount();
+      const U=(label,n,lim)=>({label,value:lim?n+' / '+lim:n+' · unlimited',pct:lim?Math.min(100,n/lim*100)+'%':'12%',color:lim&&n/lim>0.85?'#e5484d':'#4361ee'});
+      out.plan={name:plan.id,price:zar(plan.price)};
+      out.usage=[U('Seats',used,plan.seats),U('Active listings',act,plan.listings),plan.credits?U('Featured credits used',s.creditsUsed,plan.credits):{label:'Featured credits',value:'Not included',pct:'0%',color:'#4361ee'}];
+      out.openPlan=()=>this.setState({dialog:{mode:'plan'},dlgForm:{plan:s.plan},dlgErr:''});
+      out.invoices=[...D.invoices].sort((a,b)=>a.d-b.d).map(i=>{const [bg,fg]=tone(i.status),isDue=i.status==='Due';
+        return {no:i.no,date:nice(i.d),desc:i.desc,amount:incl(i.amt),status:i.status,tagBg:bg,tagFg:fg,act:isDue?'Pay now':'Download',bg:isDue?'#4361ee':'#fff',fg:isDue?'#fff':'#14161b',bd:isDue?'#4361ee':'#e3e6ec',
+          run:isDue?()=>{this.setState(S=>({data:{...S.data,invoices:S.data.invoices.map(x=>x.no===i.no?{...x,status:'Paid'}:x)}}));this.flash('Paid '+incl(i.amt));}:()=>this.flash('Downloading '+i.no+'.pdf')};});
+      out.dueLabel=due.length?due.length+' unpaid · '+incl(due.reduce((a,i)=>a+i.amt,0))+' due':'All paid up';
+      out.updatePay=()=>this.flash('Opening secure debit order form');
+    }
+    if(v==='help')out.faqs=FAQS.map(([q,a],i)=>({q,a,open:s.faq===i,rot:s.faq===i?'rotate(180deg)':'none',toggle:()=>this.setState({faq:s.faq===i?null:i})}));
+    const dl=s.dialog;out.dialogOpen=!!dl;out.closeDialog=()=>this.setState({dialog:null});out.dlgErr=s.dlgErr;out.hasDlgErr=!!s.dlgErr;
+    out.dlg={};out.confirmDialog=()=>{};out.report={rows:[]};out.sv={};out.ss={};out.iv={};out.is={};out.rentalOpts=[];out.planOpts=[];
+    const f=s.dlgForm,setD=k=>e=>this.setState({dlgForm:{...s.dlgForm,[k]:e.target.value},dlgErr:''});
+    if(dl&&dl.mode==='plan'){
+      const used=D.team.filter(m=>m.status!=='Deactivated').length,act=this.activeCount();
+      out.planOpts=PLANS.map(k=>({name:k.id+(k.id===s.plan?' (current)':''),price:zar(k.price)+' pm',meta:(k.seats||'Unlimited')+' seats · '+(k.listings||'unlimited')+' active listings · '+k.credits+' featured credits',
+        bd:f.plan===k.id?'2px solid #4361ee':'1px solid #e3e6ec',bg:f.plan===k.id?'#f5f7ff':'#fff',ring:f.plan===k.id?'5px solid #4361ee':'1.5px solid #c5cad4',pick:()=>this.setState({dlgForm:{plan:k.id},dlgErr:''})}));
+      out.dlg={title:'Change plan',body:'Upgrades apply immediately and are pro-rated. Downgrades apply from your next billing date. Prices exclude VAT.',isPlan:true,hasConfirm:true,cancelLabel:'Cancel',confirmLabel:f.plan===s.plan?'Keep current plan':'Switch to '+f.plan};
+      out.confirmDialog=()=>{if(f.plan===s.plan)return this.setState({dialog:null});const k=PLANS.find(x=>x.id===f.plan);
+        if(k.seats&&used>k.seats)return this.setState({dlgErr:'You have '+used+' seats in use. '+k.id+' allows '+k.seats+'. Deactivate members first.'});
+        if(k.listings&&act>k.listings)return this.setState({dlgErr:'You have '+act+' active listings. '+k.id+' allows '+k.listings+'.'});
+        this.setState({plan:k.id,dialog:null,creditsUsed:Math.min(s.creditsUsed,k.credits)});this.flash('Plan changed to '+k.id);};
+    } else if(dl&&dl.mode==='invite'){
+      out.iv=f;out.is={name:setD('name'),email:setD('email'),ffc:setD('ffc'),role:setD('role')};
+      out.dlg={title:'Invite a team member',body:'They get an email to set a password. Agents can publish once we have checked their FFC with the PPRA.',isInvite:true,hasConfirm:true,cancelLabel:'Cancel',confirmLabel:'Send invite'};
+      out.confirmDialog=()=>{if(!f.name.trim())return this.setState({dlgErr:'Enter their name.'});if(!/^\S+@\S+\.\S+$/.test(f.email))return this.setState({dlgErr:'Enter a valid email address.'});
+        if(f.role==='Agent'&&!/^\d{4}\s?\d{7}$/.test(f.ffc.trim()))return this.setState({dlgErr:'Enter an 11-digit FFC number, e.g. 2026 1234567.'});
+        this.setState(S=>({dialog:null,data:{...S.data,team:[...S.data.team,{id:'A'+Date.now(),name:f.name.trim(),role:f.role,email:f.email.trim(),phone:'—',ffc:f.role==='Agent'?f.ffc.trim():'',status:'Invited',joined:0}]}}));
+        this.flash('Invite sent to '+f.email.trim());};
+    } else if(dl&&dl.mode==='screen'){
+      out.sv=f;out.ss={name:setD('name'),email:setD('email'),prop:setD('prop')};
+      out.rentalOpts=mine.filter(p=>p.deal==='Rent').map(p=>({value:p.id,label:this.short(p)+' · '+this.price(p)}));
+      out.dlg={title:'Request a tenant screening',body:'We email the applicant a secure link. R 250 per completed screening, billed to the agency.',isScreen:true,hasConfirm:true,cancelLabel:'Cancel',confirmLabel:'Send invite'};
+      out.confirmDialog=()=>{if(!f.name.trim())return this.setState({dlgErr:"Enter the applicant's name."});if(!/^\S+@\S+\.\S+$/.test(f.email))return this.setState({dlgErr:'Enter a valid email address.'});
+        this.setState(S=>({dialog:null,data:{...S.data,screenings:[{id:'SC'+Date.now(),name:f.name.trim(),email:f.email.trim(),propId:f.prop,d:0,status:'Invite sent',result:''},...S.data.screenings]}}));this.flash('Invite sent to '+f.email.trim());};
+    } else if(dl&&dl.mode==='report'){
+      const x=D.screenings.find(z=>z.id===dl.id),ok=x.result==='Recommended',p=this.lst(x.propId);
+      out.dlg={title:x.name,body:'Screening for '+this.short(p)+' · completed '+nice(Math.max(0,x.d-1)),isReport:true,hasConfirm:false,cancelLabel:'Close'};
+      out.report={verdict:ok?'Recommended':'Not recommended',bg:ok?'#e8f6ee':'#fdecec',fg:ok?'#17803d':'#c22f34',rows:[
+        {label:'ID verification',value:'Verified with Home Affairs'},{label:'Credit score',value:ok?'698 · Good':'541 · Poor'},
+        {label:'Affordability',value:ok?'Rent is 27% of net income':'Rent is 46% of net income'},{label:'Judgements & defaults',value:ok?'None':'1 default judgement (2024)'},
+        {label:'Previous landlord',value:ok?'Positive reference':'No reference supplied'}]};
+    }
+    return out;
+  }
+}
+</script>
+</body>
+</html>
